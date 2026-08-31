@@ -15,7 +15,7 @@ body{overflow-x:hidden}
 header{position:fixed;z-index:30;inset:0 0 auto 0;padding:24px 5vw;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
 .logo{font-weight:850;font-size:20px;letter-spacing:-.05em}
 .tag{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--soft)}
-.story{height:500vh}
+.story{height:560vh}
 .stage{position:sticky;top:0;height:100svh;overflow:hidden}
 .hero{position:absolute;inset:0;display:grid;grid-template-columns:1.02fr .98fr;align-items:center;padding:8vh 6vw 4vh}
 .hero-copy{z-index:7;max-width:790px}
@@ -31,8 +31,8 @@ h1{font-size:clamp(62px,7.2vw,118px);line-height:.88;letter-spacing:-.07em;margi
 .figure .fill{fill:var(--paper);stroke:var(--ink);stroke-width:4;vector-effect:non-scaling-stroke}
 #world{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
 #tangle,#tangle2,#threadOrder{fill:none;stroke:var(--ink);stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-#tangle{stroke-width:4.7}
-#tangle2{stroke-width:2.4;opacity:.55}
+#tangle{stroke-width:6.2}
+#tangle2{stroke-width:3.1;opacity:.38}
 #threadOrder{stroke-width:3;opacity:0}
 .objects{position:absolute;inset:0;z-index:5;pointer-events:none}
 .obj{position:absolute;transform:translate(-50%,-50%);opacity:0;will-change:transform,left,top,opacity}
@@ -98,14 +98,31 @@ h1{font-size:clamp(62px,7.2vw,118px);line-height:.88;letter-spacing:-.07em;margi
    </div>
    <div class="figure-area" id="figureArea">
     <svg class="figure" viewBox="0 0 520 640" aria-label="Personaggio Stealth">
-      <path class="fill" d="M233 82c57-18 110 20 116 79 4 42-17 82-56 100-34 16-82 8-108-20-26-28-32-73-13-107 13-24 34-43 61-52Z"/>
-      <path class="thin" d="M192 121c18-26 38-40 69-45 37-6 70 9 89 35M188 158c13-12 27-17 44-17m49 2c15 1 27 6 39 16M218 185c7 6 15 7 23 1m46 0c8 5 16 5 23-2M242 219c17 10 38 11 57-1"/>
-      <path class="line" d="M210 267c-38 12-65 41-78 83-12 39-17 97-7 150M311 269c37 12 66 43 78 85 11 39 13 94 3 146"/>
-      <path class="line" d="M188 300c-8 68-2 134 9 201M331 301c7 69 1 134-10 201"/>
-      <path class="line" d="M196 500c-16 34-27 66-34 102m159-102c17 34 28 66 35 102"/>
-      <path class="thin" d="M122 498c25 14 48 17 74 7m196-7c-25 14-48 17-73 7"/>
-      <path class="hot" d="M154 350c40-18 71-18 110-2 37 15 71 15 107-2"/>
-      <path class="thin" d="M124 486c-31 0-54 11-67 32-8 12-7 25 2 34 10 10 27 8 38-6 10-13 18-32 27-60Z"/>
+      <defs>
+        <filter id="roughen" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency=".012" numOctaves="1" seed="8" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.4"/>
+        </filter>
+      </defs>
+      <g filter="url(#roughen)">
+        <path class="fill" d="M224 91c18-17 42-27 70-28 32-1 62 12 82 36 19 23 27 53 23 83-5 37-25 69-57 89-31 20-72 27-108 15-39-12-66-42-76-81-9-37 0-73 24-99 11-12 24-22 42-15Z"/>
+        <path class="thin" d="M184 137c10-34 42-62 80-70 45-10 92 8 118 43"/>
+        <path class="thin" d="M192 159c18-13 39-18 61-13M293 146c21-1 39 5 56 19"/>
+        <path class="thin" d="M219 183c7-5 16-5 23 0m65 1c8-5 16-4 23 1"/>
+        <path class="thin" d="M261 177c-4 20-7 38-7 54 10 4 20 4 30 1"/>
+        <path class="thin" d="M233 248c18 10 39 13 60 6 12-4 22-10 30-18"/>
+        <path class="line" d="M184 289c-40 20-67 55-77 104-8 40-4 88 6 131"/>
+        <path class="line" d="M336 289c41 18 70 52 82 99 10 41 8 89 0 136"/>
+        <path class="thin" d="M206 306c20 22 34 46 42 73m65-73c-18 22-30 47-36 73"/>
+        <path class="line" d="M205 315c-10 65-7 128 6 192m104-192c10 64 8 128-5 192"/>
+        <path class="hot" d="M145 366c42-19 80-20 118-4 36 15 70 16 111-1"/>
+        <path class="thin" d="M128 516c28 13 55 14 82 3m200-3c-29 14-57 15-83 4"/>
+        <path class="line" d="M211 505c-15 35-26 71-31 108m130-108c17 34 29 70 36 108"/>
+        <path class="thin" d="M112 508c-30 4-53 16-68 36-10 13-11 28-2 39 10 12 28 11 42-3 14-14 21-36 28-72Z"/>
+        <path class="thin" d="M414 508c29 3 52 15 67 36 9 13 10 28 1 39-10 12-28 11-42-3-13-14-20-36-26-72Z"/>
+        <path class="thin" d="M178 610c17 7 34 8 52 2m94 0c17 6 34 5 51-2"/>
+        <path class="thin" d="M213 105c11-15 25-25 42-30 9 19 26 32 53 37 22 4 42 2 61-7"/>
+      </g>
     </svg>
    </div>
   </div>
@@ -155,13 +172,12 @@ h1{font-size:clamp(62px,7.2vw,118px);line-height:.88;letter-spacing:-.07em;margi
  const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
  const m=(x,a,b,c,d)=>c+(d-c)*clamp((x-a)/(b-a));
  const smooth=t=>t*t*(3-2*t);
-
- const chaosD=`M1180 570
- C1120 530 1130 465 1050 470
- C960 476 960 590 1040 615
- C1120 642 1180 570 1110 520
- C1030 462 945 520 980 608
- C1012 690 1120 677 1148 600
+ const chaosD=`M1240 560
+ C1160 515 1165 430 1065 438
+ C955 447 930 595 1030 630
+ C1138 675 1215 585 1125 505
+ C1010 430 915 510 955 615
+ C995 716 1128 700 1170 604
  C1188 490 1030 416 928 448
  C814 484 846 620 942 634
  C1052 648 1040 482 924 500
@@ -179,37 +195,26 @@ h1{font-size:clamp(62px,7.2vw,118px);line-height:.88;letter-spacing:-.07em;margi
  C592 760 616 584 494 550
  C390 520 316 578 330 662
  C346 760 492 798 558 724`;
-
  p1.setAttribute('d',chaosD); p2.setAttribute('d',chaosD);
  const length=p1.getTotalLength();
  p1.style.strokeDasharray=length; p2.style.strokeDasharray=length;
-
- const chaotic=[
-  [59,61,-13],[51,70,8],[66,52,12],[43,58,-8],[56,46,5],[36,68,-17]
- ];
- const ordered=[
-  [34,43,0],[47,43,0],[60,43,0],[66,59,0],[53,59,0],[40,59,0]
- ];
-
+ const chaotic=[[59,61,-13],[51,70,8],[66,52,12],[43,58,-8],[56,46,5],[36,68,-17]];
+ const ordered=[[34,43,0],[47,43,0],[60,43,0],[66,59,0],[53,59,0],[40,59,0]];
  function lerpPath(progress){
    p1.style.opacity=String(1-m(progress,.66,.9,0,1));
    orderLine.style.opacity=String(m(progress,.68,.9,0,1));
    p2.style.opacity=String(.30*(1-m(progress,.58,.8,0,1)));
  }
-
  function update(){
    const r=story.getBoundingClientRect(), max=story.offsetHeight-innerHeight, s=clamp(-r.top/max);
-
    heroCopy.style.opacity=String(1-m(s,.06,.22,0,1));
    heroCopy.style.transform=`translateY(${m(s,.06,.22,0,-55)}px)`;
    figure.style.transform=`translate(${m(s,.10,.36,0,11)}vw,${m(s,.10,.36,0,4)}vh) scale(${m(s,.1,.42,1,.76)})`;
    figure.style.opacity=String(1-m(s,.34,.55,0,.78));
-
    const draw=m(s,.12,.48,0,1);
    p1.style.strokeDashoffset=String(length*(1-draw));
    p2.style.strokeDashoffset=String(length*(1-draw));
    lerpPath(s);
-
    objs.forEach((el,i)=>{
      const vis=m(s,.27+i*.025,.36+i*.025,0,1);
      const t=s<.61?0:smooth(m(s,.61,.88,0,1));
@@ -218,15 +223,12 @@ h1{font-size:clamp(62px,7.2vw,118px);line-height:.88;letter-spacing:-.07em;margi
      el.style.left=x+'%'; el.style.top=y+'%'; el.style.opacity=String(vis);
      el.style.transform=`translate(-50%,-50%) rotate(${rot}deg) scale(${.78+.22*vis})`;
    });
-
-   const ci=m(s,.34,.43,0,1)*(1-m(s,.52,.61,0,1));
+   const ci=m(s,.30,.38,0,1)*(1-m(s,.58,.68,0,1));
    chaos.style.opacity=String(ci);
-   chaos.style.transform=`translate(-50%,calc(-50% + ${m(s,.34,.61,26,-20)}px))`;
-
-   const ti=m(s,.61,.72,0,1)*(1-m(s,.86,.96,0,1));
+   chaos.style.transform=`translate(-50%,calc(-50% + ${m(s,.30,.68,26,-20)}px))`;
+   const ti=m(s,.64,.72,0,1)*(1-m(s,.90,.97,0,1));
    turn.style.opacity=String(ti);
-   turn.style.transform=`translate(-50%,calc(-50% + ${m(s,.61,.96,24,-18)}px))`;
-
+   turn.style.transform=`translate(-50%,calc(-50% + ${m(s,.64,.97,24,-18)}px))`;
    grid.style.opacity=String(m(s,.73,.91,0,1));
    pill.style.opacity=String(m(s,.82,.94,0,1));
  }
