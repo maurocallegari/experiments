@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F2EEE5">
+<title>Stealth — Disorder / Order</title>
+<style>
+:root{
+  --paper:#f2eee5; --ink:#171715; --soft:#77736c; --hot:#ef5b3e; --card:#f8f5ee;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{overflow-x:hidden}
+header{position:fixed;z-index:30;inset:0 0 auto 0;padding:24px 5vw;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.logo{font-weight:850;font-size:20px;letter-spacing:-.05em}
+.tag{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--soft)}
+.story{height:500vh}
+.stage{position:sticky;top:0;height:100svh;overflow:hidden}
+.hero{position:absolute;inset:0;display:grid;grid-template-columns:1.02fr .98fr;align-items:center;padding:8vh 6vw 4vh}
+.hero-copy{z-index:7;max-width:790px}
+.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.15em;color:var(--soft);font-weight:750;margin-bottom:22px}
+h1{font-size:clamp(62px,7.2vw,118px);line-height:.88;letter-spacing:-.07em;margin:0;max-width:860px}
+.lead{font-size:clamp(18px,1.4vw,24px);line-height:1.45;color:var(--soft);max-width:650px;margin:26px 0 0}
+.cta{display:inline-flex;gap:12px;margin-top:30px;padding-bottom:5px;border-bottom:1.5px solid;font-weight:750}
+.figure-area{position:relative;height:78vh;display:grid;place-items:center;z-index:5}
+.figure{width:min(36vw,510px);overflow:visible}
+.figure .line{fill:none;stroke:var(--ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.figure .thin{fill:none;stroke:var(--ink);stroke-width:3.1;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.figure .hot{fill:none;stroke:var(--hot);stroke-width:7;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.figure .fill{fill:var(--paper);stroke:var(--ink);stroke-width:4;vector-effect:non-scaling-stroke}
+#world{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+#tangle,#tangle2,#threadOrder{fill:none;stroke:var(--ink);stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+#tangle{stroke-width:4.7}
+#tangle2{stroke-width:2.4;opacity:.55}
+#threadOrder{stroke-width:3;opacity:0}
+.objects{position:absolute;inset:0;z-index:5;pointer-events:none}
+.obj{position:absolute;transform:translate(-50%,-50%);opacity:0;will-change:transform,left,top,opacity}
+.paper-card{width:82px;height:96px;background:var(--card);border:2px solid var(--ink);border-radius:7px;padding:10px;box-shadow:5px 5px 0 var(--ink)}
+.paper-card i{display:block;height:2px;background:var(--ink);margin:9px 0;opacity:.55}
+.sheet{width:96px;height:76px;border:2px solid var(--ink);background:var(--card);box-shadow:5px 5px 0 var(--ink);display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr)}
+.sheet span{border-right:1px solid #aaa;border-bottom:1px solid #aaa}
+.mail{width:94px;height:66px;border:2px solid var(--ink);background:var(--card);position:relative;box-shadow:5px 5px 0 var(--ink)}
+.mail:before,.mail:after{content:"";position:absolute;top:0;width:2px;height:58px;background:var(--ink);transform-origin:top}
+.mail:before{left:0;transform:rotate(-55deg)} .mail:after{right:0;transform:rotate(55deg)}
+.phone{width:54px;height:98px;border:3px solid var(--ink);border-radius:13px;background:var(--card);box-shadow:5px 5px 0 var(--ink);padding:10px 7px}
+.bubble{border:1.5px solid var(--ink);border-radius:8px;height:23px;margin:5px 0;background:#fff}
+.db{width:84px;height:76px;position:relative}
+.db:before,.db:after{content:"";position:absolute;left:0;width:80px;height:30px;border:3px solid var(--ink);border-radius:50%;background:var(--card)}
+.db:before{top:0}.db:after{bottom:0}
+.db .mid{position:absolute;left:0;top:15px;width:80px;height:45px;border-left:3px solid var(--ink);border-right:3px solid var(--ink);background:var(--card)}
+.stamp{width:86px;height:86px;border:3px solid var(--hot);border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:900;letter-spacing:.09em;transform:rotate(-12deg);background:var(--paper)}
+.copy-layer{position:absolute;inset:0;z-index:6;pointer-events:none}
+.bigcopy{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(900px,84vw);text-align:center;font-weight:850;font-size:clamp(46px,6vw,92px);line-height:.92;letter-spacing:-.06em;opacity:0}
+.bigcopy small{display:block;font-size:clamp(16px,1.4vw,23px);font-weight:500;line-height:1.45;letter-spacing:0;color:var(--soft);margin:20px auto 0;max-width:700px}
+.order-grid{position:absolute;inset:0;z-index:4;opacity:0;pointer-events:none}
+.order-grid:before,.order-grid:after{content:"";position:absolute;left:19%;right:19%;height:1px;background:#cfc8bd}
+.order-grid:before{top:42%}.order-grid:after{top:61%}
+.order-grid .v{position:absolute;top:30%;bottom:25%;width:1px;background:#cfc8bd}
+.order-grid .v1{left:37%}.order-grid .v2{left:50%}.order-grid .v3{left:63%}
+.system-pill{position:absolute;left:50%;top:51.5%;transform:translate(-50%,-50%);padding:12px 18px;border-radius:999px;background:var(--ink);color:var(--paper);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:0;z-index:8}
+.after{min-height:125vh;background:#f8f5ef;border-top:1px solid #d7d0c5;padding:16vh 6vw 12vh}
+.after .kicker{margin-bottom:22px}
+.after h2{font-size:clamp(52px,6.5vw,100px);line-height:.92;letter-spacing:-.065em;margin:0 0 13vh;max-width:1000px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:6vw}
+.step{border-top:2px solid;padding-top:18px}
+.step .n{font-size:12px;color:var(--soft);margin-bottom:40px}
+.step h3{font-size:clamp(28px,3vw,44px);letter-spacing:-.04em;margin:0 0 14px}
+.step p{font-size:18px;line-height:1.5;color:var(--soft);max-width:360px}
+.scrollmark{position:fixed;z-index:20;right:20px;bottom:20px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);border:1px solid #d3ccc0;background:rgba(242,238,229,.88);padding:9px 12px;border-radius:99px}
+@media(max-width:800px){
+ header{padding:18px 20px}.tag{display:none}
+ .hero{grid-template-columns:1fr;padding:12vh 22px 6vh;align-items:start}
+ h1{font-size:clamp(54px,15vw,78px);max-width:94vw}
+ .lead{font-size:18px;max-width:87vw}
+ .figure-area{position:absolute;right:-18vw;bottom:-4vh;width:70vw;height:52vh;opacity:.58}
+ .figure{width:72vw}
+ .objects .obj{scale:.72}
+ .bigcopy{width:88vw;font-size:clamp(42px,12vw,64px)}
+ .order-grid:before,.order-grid:after{left:8%;right:8%}
+ .order-grid .v1{left:30%}.order-grid .v2{left:50%}.order-grid .v3{left:70%}
+ .after{padding:13vh 22px 10vh}.steps{grid-template-columns:1fr;gap:70px}
+ .scrollmark{right:12px;bottom:12px}
+}
+</style>
+</head>
+<body>
+<header><div class="logo">stealth</div><div class="tag">software su misura, senza rumore</div></header>
+
+<section class="story" id="story">
+ <div class="stage">
+  <div class="hero" id="hero">
+   <div class="hero-copy" id="heroCopy">
+    <div class="kicker">Software per aziende reali</div>
+    <h1>Quando il lavoro si ingarbuglia, lo rimettiamo in ordine.</h1>
+    <p class="lead">Partiamo da processi, persone e strumenti già esistenti. Poi costruiamo solo ciò che serve davvero.</p>
+    <div class="cta">Scopri come lavoriamo <span>↘</span></div>
+   </div>
+   <div class="figure-area" id="figureArea">
+    <svg class="figure" viewBox="0 0 520 640" aria-label="Personaggio Stealth">
+      <path class="fill" d="M233 82c57-18 110 20 116 79 4 42-17 82-56 100-34 16-82 8-108-20-26-28-32-73-13-107 13-24 34-43 61-52Z"/>
+      <path class="thin" d="M192 121c18-26 38-40 69-45 37-6 70 9 89 35M188 158c13-12 27-17 44-17m49 2c15 1 27 6 39 16M218 185c7 6 15 7 23 1m46 0c8 5 16 5 23-2M242 219c17 10 38 11 57-1"/>
+      <path class="line" d="M210 267c-38 12-65 41-78 83-12 39-17 97-7 150M311 269c37 12 66 43 78 85 11 39 13 94 3 146"/>
+      <path class="line" d="M188 300c-8 68-2 134 9 201M331 301c7 69 1 134-10 201"/>
+      <path class="line" d="M196 500c-16 34-27 66-34 102m159-102c17 34 28 66 35 102"/>
+      <path class="thin" d="M122 498c25 14 48 17 74 7m196-7c-25 14-48 17-73 7"/>
+      <path class="hot" d="M154 350c40-18 71-18 110-2 37 15 71 15 107-2"/>
+      <path class="thin" d="M124 486c-31 0-54 11-67 32-8 12-7 25 2 34 10 10 27 8 38-6 10-13 18-32 27-60Z"/>
+    </svg>
+   </div>
+  </div>
+
+  <svg id="world" viewBox="0 0 1600 900" preserveAspectRatio="none">
+    <path id="tangle2" d=""/>
+    <path id="tangle" d=""/>
+    <path id="threadOrder" d="M230 378 C430 378 470 460 620 460 S810 378 980 378 S1140 460 1360 460"/>
+  </svg>
+
+  <div class="objects">
+    <div class="obj paper-card" data-i="0"><i></i><i></i><i></i><i></i></div>
+    <div class="obj sheet" data-i="1"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="obj mail" data-i="2"></div>
+    <div class="obj phone" data-i="3"><div class="bubble"></div><div class="bubble"></div></div>
+    <div class="obj db" data-i="4"><div class="mid"></div></div>
+    <div class="obj stamp" data-i="5">DOPPIO<br>DATO</div>
+  </div>
+
+  <div class="order-grid" id="grid"><span class="v v1"></span><span class="v v2"></span><span class="v v3"></span></div>
+  <div class="system-pill" id="pill">un solo flusso</div>
+
+  <div class="copy-layer">
+    <div class="bigcopy" id="chaosCopy">Tutto funziona.<br>Ma niente lavora insieme.<small>Fogli, mail, documenti, chat, software e dati: ogni pezzo risolve qualcosa, mentre il processo complessivo diventa sempre più difficile da governare.</small></div>
+    <div class="bigcopy" id="turnCopy">Non serve aggiungere un altro strumento.<small>Serve capire il lavoro, sciogliere i nodi e collegare ciò che conta.</small></div>
+  </div>
+ </div>
+</section>
+
+<section class="after">
+ <div class="kicker">Il nostro lavoro</div>
+ <h2>Mettiamo ordine.<br>Poi costruiamo.</h2>
+ <div class="steps">
+  <article class="step"><div class="n">01 — capire</div><h3>Guardiamo il lavoro.</h3><p>Flussi, persone, passaggi manuali, software esistenti e dati. Prima di parlare di funzionalità.</p></article>
+  <article class="step"><div class="n">02 — ridisegnare</div><h3>Togliamo attrito.</h3><p>Riduciamo duplicazioni e passaggi inutili, scegliendo dove integrare, automatizzare o semplificare.</p></article>
+  <article class="step"><div class="n">03 — costruire</div><h3>Facciamo il software.</h3><p>Gestionali, portali, integrazioni e automazioni costruiti attorno al modo in cui l’azienda deve davvero funzionare.</p></article>
+ </div>
+</section>
+<div class="scrollmark">scroll</div>
+
+<script>
+(()=>{
+ const story=document.querySelector('#story'), heroCopy=document.querySelector('#heroCopy'), figure=document.querySelector('#figureArea');
+ const p1=document.querySelector('#tangle'), p2=document.querySelector('#tangle2'), grid=document.querySelector('#grid'), pill=document.querySelector('#pill');
+ const chaos=document.querySelector('#chaosCopy'), turn=document.querySelector('#turnCopy'), orderLine=document.querySelector('#threadOrder');
+ const objs=[...document.querySelectorAll('.obj')];
+ const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+ const m=(x,a,b,c,d)=>c+(d-c)*clamp((x-a)/(b-a));
+ const smooth=t=>t*t*(3-2*t);
+
+ const chaosD=`M1180 570
+ C1120 530 1130 465 1050 470
+ C960 476 960 590 1040 615
+ C1120 642 1180 570 1110 520
+ C1030 462 945 520 980 608
+ C1012 690 1120 677 1148 600
+ C1188 490 1030 416 928 448
+ C814 484 846 620 942 634
+ C1052 648 1040 482 924 500
+ C800 520 760 656 860 704
+ C966 755 1034 616 930 562
+ C810 500 692 548 700 650
+ C708 760 855 788 892 680
+ C930 565 790 477 680 505
+ C572 532 566 672 660 710
+ C760 752 806 610 704 564
+ C600 518 472 540 470 650
+ C468 756 618 793 658 680
+ C705 548 552 478 442 526
+ C328 575 352 724 472 742
+ C592 760 616 584 494 550
+ C390 520 316 578 330 662
+ C346 760 492 798 558 724`;
+
+ p1.setAttribute('d',chaosD); p2.setAttribute('d',chaosD);
+ const length=p1.getTotalLength();
+ p1.style.strokeDasharray=length; p2.style.strokeDasharray=length;
+
+ const chaotic=[
+  [59,61,-13],[51,70,8],[66,52,12],[43,58,-8],[56,46,5],[36,68,-17]
+ ];
+ const ordered=[
+  [34,43,0],[47,43,0],[60,43,0],[66,59,0],[53,59,0],[40,59,0]
+ ];
+
+ function lerpPath(progress){
+   p1.style.opacity=String(1-m(progress,.66,.9,0,1));
+   orderLine.style.opacity=String(m(progress,.68,.9,0,1));
+   p2.style.opacity=String(.30*(1-m(progress,.58,.8,0,1)));
+ }
+
+ function update(){
+   const r=story.getBoundingClientRect(), max=story.offsetHeight-innerHeight, s=clamp(-r.top/max);
+
+   heroCopy.style.opacity=String(1-m(s,.06,.22,0,1));
+   heroCopy.style.transform=`translateY(${m(s,.06,.22,0,-55)}px)`;
+   figure.style.transform=`translate(${m(s,.10,.36,0,11)}vw,${m(s,.10,.36,0,4)}vh) scale(${m(s,.1,.42,1,.76)})`;
+   figure.style.opacity=String(1-m(s,.34,.55,0,.78));
+
+   const draw=m(s,.12,.48,0,1);
+   p1.style.strokeDashoffset=String(length*(1-draw));
+   p2.style.strokeDashoffset=String(length*(1-draw));
+   lerpPath(s);
+
+   objs.forEach((el,i)=>{
+     const vis=m(s,.27+i*.025,.36+i*.025,0,1);
+     const t=s<.61?0:smooth(m(s,.61,.88,0,1));
+     const c=chaotic[i],o=ordered[i];
+     const x=c[0]+(o[0]-c[0])*t, y=c[1]+(o[1]-c[1])*t, rot=c[2]+(o[2]-c[2])*t;
+     el.style.left=x+'%'; el.style.top=y+'%'; el.style.opacity=String(vis);
+     el.style.transform=`translate(-50%,-50%) rotate(${rot}deg) scale(${.78+.22*vis})`;
+   });
+
+   const ci=m(s,.34,.43,0,1)*(1-m(s,.52,.61,0,1));
+   chaos.style.opacity=String(ci);
+   chaos.style.transform=`translate(-50%,calc(-50% + ${m(s,.34,.61,26,-20)}px))`;
+
+   const ti=m(s,.61,.72,0,1)*(1-m(s,.86,.96,0,1));
+   turn.style.opacity=String(ti);
+   turn.style.transform=`translate(-50%,calc(-50% + ${m(s,.61,.96,24,-18)}px))`;
+
+   grid.style.opacity=String(m(s,.73,.91,0,1));
+   pill.style.opacity=String(m(s,.82,.94,0,1));
+ }
+ addEventListener('scroll',update,{passive:true}); addEventListener('resize',update); update();
+})();
+</script>
+</body>
+</html>
