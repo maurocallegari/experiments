@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Stealth progetta strumenti digitali attorno al modo in cui lavora davvero un'azienda.">
+  <title>Stealth — Mettiamo ordine nel tuo lavoro</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    :root { --ink:#20201e; --paper:#f4f1ea; --muted:#77736c; --line:#d9d4cb; --orange:#e85c2a; --cream:#fbfaf7; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Manrope,system-ui,sans-serif; font-size:16px; line-height:1.45; }
+    a { color:inherit; text-decoration:none; }
+    .site-header { position:fixed; z-index:20; inset:0 0 auto; display:flex; align-items:center; justify-content:space-between; padding:22px 4.2vw; mix-blend-mode:multiply; }
+    .brand { font-weight:800; letter-spacing:-.06em; font-size:1.25rem; }
+    .brand span { color:var(--orange); }
+    .nav { display:flex; gap:28px; font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; }
+    .nav a:last-child { color:var(--orange); }
+    .hero { min-height:100svh; display:grid; align-items:center; grid-template-columns:1fr 1fr; gap:4vw; padding:10vw 8vw 7vw; }
+    .eyebrow, .section-kicker { font:500 .67rem/1.2 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.16em; color:var(--orange); }
+    h1 { margin:20px 0 26px; max-width:650px; font-size:clamp(3.2rem,6.3vw,7rem); line-height:.96; letter-spacing:-.085em; font-weight:700; }
+    .hero-copy p { max-width:420px; margin:0; color:#55524b; font-size:clamp(1rem,1.3vw,1.2rem); }
+    .hero-link { display:inline-flex; align-items:center; gap:16px; margin-top:45px; font-size:.72rem; text-transform:uppercase; letter-spacing:.14em; }
+    .hero-link i { display:grid; place-items:center; width:38px; height:38px; border:1px solid var(--ink); border-radius:50%; font-style:normal; transition:.25s; }
+    .hero-link:hover i { background:var(--ink); color:var(--paper); transform:translateX(4px); }
+    .nexo-hero { width:min(100%,560px); justify-self:end; }
+    .hero-note { margin-top:10px; font:400 .65rem 'DM Mono',monospace; color:var(--muted); }
+
+    .story { position:relative; height:480vh; background:var(--cream); }
+    .story-pin { position:sticky; top:0; height:100svh; overflow:hidden; display:grid; place-items:center; }
+    .story-meta { position:absolute; z-index:3; top:12%; left:5vw; display:flex; gap:14px; align-items:center; font:400 .64rem 'DM Mono',monospace; color:var(--muted); }
+    .story-meta b { color:var(--orange); font-weight:500; }
+    .story-caption { position:absolute; z-index:4; left:8vw; bottom:11%; max-width:370px; pointer-events:none; }
+    .story-caption p { margin:12px 0 0; font-size:clamp(1.2rem,2vw,2rem); line-height:1.1; letter-spacing:-.05em; }
+    .chaos-message { position:absolute; z-index:5; top:50%; left:50%; width:min(670px,80vw); padding:28px 34px; transform:translate(-50%,-50%) scale(.96); opacity:0; background:rgba(255,255,255,.94); text-align:center; transition:opacity .2s; pointer-events:none; }
+    .chaos-message p { margin:0; font-size:clamp(1.3rem,2.4vw,2.3rem); line-height:1.07; letter-spacing:-.06em; }
+    #story-svg { width:min(100%,1400px); height:100%; overflow:visible; }
+    .wire { fill:none; stroke:var(--orange); stroke-width:4; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
+    .wire-shadow { fill:none; stroke:#e6dfd5; stroke-width:14; stroke-linecap:round; opacity:.8; vector-effect:non-scaling-stroke; }
+    .ordered-wire { fill:none; stroke:var(--orange); stroke-width:3; stroke-linecap:round; opacity:0; vector-effect:non-scaling-stroke; }
+    .node { opacity:0; transform-box:fill-box; transform-origin:center; }
+    .node rect { fill:#fffdfa; stroke:#b9b2a8; stroke-width:1.3; }
+    .node text { fill:#4f4a43; font:500 12px 'DM Mono',monospace; }
+    .node .node-dot { fill:var(--orange); stroke:none; }
+    .nexo-scene { transform-origin:50% 65%; }
+
+    .process { padding:15vw 8vw 17vw; background:var(--paper); }
+    .process-head { display:flex; justify-content:space-between; align-items:flex-end; gap:30px; padding-bottom:70px; border-bottom:1px solid var(--line); }
+    .process h2, .build h2, .closing h2 { max-width:650px; margin:16px 0 0; font-size:clamp(2.5rem,5.4vw,6rem); line-height:.95; letter-spacing:-.08em; }
+    .process-intro { max-width:280px; color:var(--muted); font-size:.92rem; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+    .step { padding:38px 35px 20px 0; border-bottom:1px solid var(--line); }
+    .step + .step { padding-left:35px; border-left:1px solid var(--line); }
+    .step-num { font:500 .68rem 'DM Mono',monospace; color:var(--orange); }
+    .step h3 { margin:52px 0 12px; font-size:1.5rem; letter-spacing:-.05em; }
+    .step p { max-width:250px; margin:0; color:var(--muted); font-size:.9rem; }
+
+    .build { padding:10vw 8vw 15vw; background:var(--ink); color:var(--paper); }
+    .build .section-kicker { color:#f38a63; }
+    .build h2 { max-width:750px; }
+    .domains { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:100px; border-top:1px solid #4d4b46; }
+    .domain { padding:23px 0 60px; border-bottom:1px solid #4d4b46; font-size:1.1rem; }
+    .domain:nth-child(3n+2), .domain:nth-child(3n+3) { padding-left:28px; border-left:1px solid #4d4b46; }
+    .domain small { display:block; margin-top:12px; color:#a4a099; font:400 .64rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.1em; }
+    .projects { padding:13vw 8vw; }
+    .project-row { display:grid; grid-template-columns:1fr 1.4fr auto; gap:30px; align-items:center; padding:26px 0; border-bottom:1px solid var(--line); }
+    .project-row span { font:400 .64rem 'DM Mono',monospace; color:var(--orange); }
+    .project-row h3 { margin:0; font-size:clamp(1.4rem,2.2vw,2.4rem); letter-spacing:-.06em; }
+    .project-row p { margin:0; color:var(--muted); font-size:.85rem; }
+    .closing { padding:15vw 8vw 8vw; background:var(--orange); color:var(--ink); min-height:70vh; display:flex; flex-direction:column; justify-content:space-between; }
+    .closing h2 { max-width:800px; }
+    .closing-bottom { display:flex; justify-content:space-between; align-items:flex-end; gap:20px; font-size:.8rem; }
+    .closing-bottom a { border-bottom:1px solid var(--ink); padding-bottom:5px; }
+    footer { display:flex; justify-content:space-between; padding:22px 8vw; background:var(--ink); color:#aaa69d; font:400 .64rem 'DM Mono',monospace; }
+
+    @media (max-width:760px) {
+      .site-header { padding:18px 6vw; } .nav { gap:12px; font-size:.59rem; } .nav a:not(:last-child) { display:none; }
+      .hero { min-height:auto; grid-template-columns:1fr; padding:27vw 7vw 12vw; gap:40px; } h1 { font-size:clamp(3.1rem,16vw,5rem); } .nexo-hero { width:95%; justify-self:center; }
+      .story { height:390vh; } .story-meta { top:10%; left:7vw; } .story-caption { left:7vw; right:7vw; bottom:8%; } .story-caption p { font-size:1.35rem; }
+      #story-svg { width:150%; transform:translateX(-25%); } .chaos-message { width:84vw; padding:23px 20px; }
+      .process, .build, .projects, .closing { padding-left:7vw; padding-right:7vw; } .process-head { display:block; padding-bottom:42px; } .process-intro { margin-top:28px; }
+      .steps { grid-template-columns:1fr; } .step, .step + .step { padding:28px 0; border-left:0; } .step h3 { margin-top:28px; }
+      .domains { grid-template-columns:1fr 1fr; margin-top:65px; } .domain { padding:18px 0 36px; } .domain:nth-child(3n+2), .domain:nth-child(3n+3) { padding-left:14px; border-left:1px solid #4d4b46; }
+      .domain:nth-child(2n+1) { padding-left:0; border-left:0; } .project-row { grid-template-columns:35px 1fr; gap:10px; } .project-row p { grid-column:2; } .project-row strong { display:none; }
+      .closing { min-height:75vh; } .closing-bottom { display:block; } .closing-bottom a { display:inline-block; margin-top:28px; } footer { padding:18px 7vw; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="#top">stealth<span>·</span></a><nav class="nav"><a href="#approccio">Approccio</a><a href="#costruiamo">Cosa costruiamo</a><a href="#contatti">Parliamone ↗</a></nav></header>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy"><div class="eyebrow">Studio digitale indipendente · 01—06</div><h1>Mettiamo ordine nel tuo lavoro.</h1><p>Progettiamo strumenti digitali attorno al modo in cui lavora davvero un’azienda.</p><a class="hero-link" href="#story">Scopri come lavoriamo <i>↓</i></a></div>
+      <div class="nexo-hero"><svg viewBox="0 0 560 590" role="img" aria-label="Nexo, custode del filo e dei processi"><defs><filter id="grain"><feTurbulence baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0.2 0 0 0 0 0.2 0 0 0 0 0.18 0 0 0 .05 0"/></filter></defs><ellipse cx="286" cy="550" rx="148" ry="18" fill="#ded8cf"/><g transform="translate(140 42)"><path d="M102 400 75 495q73 31 147 0l-20-95" fill="#e7e2d7" stroke="#272724" stroke-width="4"/><path d="M89 490q-13 21-31 38M208 490q13 21 31 38" stroke="#272724" stroke-width="13" stroke-linecap="round"/><path d="M66 528h-24M236 528h24" stroke="#272724" stroke-width="7" stroke-linecap="round"/><path d="M76 190q-36 50-7 112l25 48h111l26-48q28-61-9-112" fill="#f1ede4" stroke="#272724" stroke-width="4"/><path d="M97 220q-11 80 10 103h93q21-23 10-103l-12-62q-67-39-110 0Z" fill="#292926" stroke="#272724" stroke-width="4"/><path d="M114 200q-15 30 2 57M193 200q15 30-2 57" stroke="#e85c2a" stroke-width="7" stroke-linecap="round"/><circle cx="136" cy="226" r="5" fill="#f4f1ea"/><circle cx="174" cy="226" r="5" fill="#f4f1ea"/><path d="M138 254q17 10 34 0" stroke="#f4f1ea" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M57 298q-55 3-39 35 22 44 75 33M224 298q55 3 39 35-22 44-75 33" fill="#e7e2d7" stroke="#272724" stroke-width="4"/><path d="M17 329q15 8 27-2" stroke="#e85c2a" stroke-width="5" stroke-linecap="round"/><path d="M104 356q-8 31 8 51h79q16-20 7-51" fill="#ded8cc" stroke="#272724" stroke-width="4"/><path d="M94 407h103" stroke="#e85c2a" stroke-width="5"/><path d="M87 154q38-51 105 0" fill="none" stroke="#e85c2a" stroke-width="7" stroke-linecap="round"/><path d="M141 118v-37" stroke="#272724" stroke-width="5"/><circle cx="141" cy="71" r="8" fill="#e85c2a"/></g><path d="M192 360c-75 32-79 126 9 137 76 9 82-76 26-95-45-15-45 40-2 45" fill="none" stroke="#e85c2a" stroke-width="4" stroke-linecap="round"/><rect x="0" y="0" width="560" height="590" filter="url(#grain)" opacity=".12"/></svg><div class="hero-note">NEXO / custodisce il filo</div></div>
+    </section>
+    <section class="story" id="story"><div class="story-pin"><div class="story-meta"><b>02—06</b><span>Dal groviglio al sistema</span></div><div class="story-caption"><div class="eyebrow">Il modo in cui lavoriamo</div><p class="caption-copy">Ogni azienda ha un filo. Noi lo seguiamo.</p></div><div class="chaos-message"><p>Quando tutto è collegato,<br>niente dovrebbe essere complicato.</p></div><svg id="story-svg" viewBox="0 0 1200 760" aria-hidden="true"><path class="wire-shadow" id="wire-shadow" d="M110 470 C240 410 140 190 300 285 S490 610 580 360 S770 150 810 375 S970 640 1090 275"/><path class="wire" id="wire" d="M110 470 C240 410 140 190 300 285 S490 610 580 360 S770 150 810 375 S970 640 1090 275"/><g id="ordered"><path class="ordered-wire" d="M160 510 C350 510 390 270 560 270 S770 510 1040 510"/><path class="ordered-wire" d="M160 510 C350 510 390 610 560 610 S770 510 1040 510"/><path class="ordered-wire" d="M560 270V610"/></g><g id="nodes"><g class="node" data-x="320" data-y="300"><rect x="275" y="268" width="90" height="54" rx="5"/><circle class="node-dot" cx="294" cy="289" r="5"/><text x="306" y="294">EXCEL</text><text x="289" y="312">numeri</text></g><g class="node" data-x="520" data-y="315"><rect x="475" y="283" width="90" height="54" rx="5"/><circle class="node-dot" cx="494" cy="304" r="5"/><text x="506" y="309">EMAIL</text><text x="489" y="327">scambi</text></g><g class="node" data-x="710" data-y="280"><rect x="665" y="248" width="90" height="54" rx="5"/><circle class="node-dot" cx="684" cy="269" r="5"/><text x="696" y="274">PDF</text><text x="679" y="292">documenti</text></g><g class="node" data-x="400" data-y="460"><rect x="355" y="428" width="90" height="54" rx="5"/><circle class="node-dot" cx="374" cy="449" r="5"/><text x="386" y="454">CRM</text><text x="369" y="472">persone</text></g><g class="node" data-x="615" data-y="470"><rect x="570" y="438" width="90" height="54" rx="5"/><circle class="node-dot" cx="589" cy="459" r="5"/><text x="601" y="464">CHAT</text><text x="584" y="482">processi</text></g><g class="node" data-x="810" data-y="450"><rect x="765" y="418" width="90" height="54" rx="5"/><circle class="node-dot" cx="784" cy="439" r="5"/><text x="796" y="444">DATI</text><text x="779" y="462">scadenze</text></g></g><g class="nexo-scene" transform="translate(855 88)"><path d="M60 250 44 335q50 22 100 0l-14-85" fill="#e7e2d7" stroke="#272724" stroke-width="3"/><path d="M48 332q-9 16-22 27M140 332q9 16 22 27" stroke="#272724" stroke-width="9" stroke-linecap="round"/><path d="M40 150q-24 35-5 73l16 31h65l17-31q19-38-6-73" fill="#f1ede4" stroke="#272724" stroke-width="3"/><path d="M52 168q-6 51 9 67h52q15-16 9-67l-8-39q-39-23-64 0Z" fill="#292926" stroke="#272724" stroke-width="3"/><circle cx="72" cy="173" r="3" fill="#f4f1ea"/><circle cx="101" cy="173" r="3" fill="#f4f1ea"/><path d="M74 194q12 7 24 0" stroke="#f4f1ea" stroke-width="2" fill="none"/><path d="M35 218q-41 2-30 25 14 27 52 21M133 218q41 2 30 25-14 27-52 21" fill="#e7e2d7" stroke="#272724" stroke-width="3"/><path d="M64 120q27-35 58 0" fill="none" stroke="#e85c2a" stroke-width="5" stroke-linecap="round"/></g></svg></div></section>
+    <section class="process" id="approccio"><div class="process-head"><div><div class="section-kicker">03—06 · Approccio</div><h2>Mettiamo ordine.<br>Poi costruiamo.</h2></div><p class="process-intro">Capire prima di costruire. Collegare strumenti, persone e dati. Trasformare la complessità in sistemi semplici.</p></div><div class="steps"><article class="step"><div class="step-num">01 — CAPIAMO</div><h3>Partiamo dalla realtà.</h3><p>Processi, persone, strumenti e problemi reali. Ascoltiamo quello che succede ogni giorno.</p></article><article class="step"><div class="step-num">02 — PROGETTIAMO</div><h3>Diamo una forma al lavoro.</h3><p>Un sistema costruito attorno al modo in cui lavori, non il contrario.</p></article><article class="step"><div class="step-num">03 — SVILUPPIAMO</div><h3>Facciamo spazio al futuro.</h3><p>Software, automazioni e integrazioni che diventano parte dell’azienda.</p></article></div></section>
+    <section class="build" id="costruiamo"><div class="section-kicker">04—06 · Cosa costruiamo</div><h2>Strumenti che tengono insieme il lavoro.</h2><div class="domains"><div class="domain">Gestionali<small>il centro delle operazioni</small></div><div class="domain">Portali<small>accesso semplice alla complessità</small></div><div class="domain">Applicazioni web<small>esperienze su misura</small></div><div class="domain">Automazioni<small>meno attrito, più attenzione</small></div><div class="domain">Integrazioni<small>strumenti che parlano tra loro</small></div><div class="domain">AI<small>intelligenza dentro il flusso</small></div></div></section>
+    <section class="projects"><div class="section-kicker">05—06 · Progetti</div><div class="project-row"><span>01</span><h3>Un sistema per crescere</h3><p>Gestione e visione per un’azienda in movimento.</p><strong>↗</strong></div><div class="project-row"><span>02</span><h3>Il lavoro, senza passaggi inutili</h3><p>Processi connessi dalla prima richiesta alla consegna.</p><strong>↗</strong></div><div class="project-row"><span>03</span><h3>Dati che diventano decisioni</h3><p>Una lettura condivisa per orientare il prossimo passo.</p><strong>↗</strong></div></section>
+    <section class="closing" id="contatti"><div><div class="section-kicker">06—06 · Contatti</div><h2>Hai un groviglio da sciogliere?</h2></div><div class="closing-bottom"><span>Raccontaci dove si inceppa il lavoro.<br>Iniziamo da lì.</span><a href="mailto:ciao@stealth.studio">ciao@stealth.studio&nbsp; ↗</a></div></section>
+  </main><footer><span>stealth· studio digitale</span><span>© 2024—2025</span></footer>
+  <script>
+    (() => {
+      const story = document.querySelector('.story'); const wire = document.querySelector('#wire'); const shadow = document.querySelector('#wire-shadow'); const ordered = [...document.querySelectorAll('.ordered-wire')]; const nodes = [...document.querySelectorAll('.node')]; const nexo = document.querySelector('.nexo-scene'); const caption = document.querySelector('.caption-copy'); const message = document.querySelector('.chaos-message');
+      const ease = t => t < .5 ? 2*t*t : 1-Math.pow(-2*t+2,2)/2;
+      function draw() { const r = story.getBoundingClientRect(); const p = Math.min(1, Math.max(0, -r.top / (story.offsetHeight - innerHeight))); const chaos = ease(Math.min(1, p/.55)); const resolve = ease(Math.max(0, (p-.56)/.44)); const length = wire.getTotalLength(); wire.style.strokeDasharray = length; wire.style.strokeDashoffset = length * (1 - Math.min(1, chaos*1.15)); shadow.style.strokeDasharray = length; shadow.style.strokeDashoffset = length * (1 - Math.min(1, chaos*1.15)); wire.style.opacity = String(1 - resolve*.82); shadow.style.opacity = String(.8 - resolve*.8); ordered.forEach((path,i) => { path.style.opacity = String(resolve * (i === 2 ? .75 : 1)); path.style.strokeDasharray = path.getTotalLength(); path.style.strokeDashoffset = path.getTotalLength() * (1-resolve); }); nodes.forEach((node,i) => { const n = Math.min(1, Math.max(0, (p - (.26 + i*.018))/.22)); node.style.opacity = String(ease(n) * (1-resolve)); node.style.transform = `translate(${Math.sin(i*2.3)*chaos*15}px,${Math.cos(i*1.7)*chaos*12}px) rotate(${(i%2?1:-1)*chaos*7}deg) scale(${.8+ease(n)*.2})`; }); nexo.style.transform = `translate(${resolve*72}px,${-resolve*42}px) rotate(${resolve*7}deg)`; message.style.opacity = String(Math.max(0, Math.min(1, (p-.48)/.08, (p-.65)/-.08))); message.style.transform = `translate(-50%,-50%) scale(${.96+Math.min(1,Math.max(0,(p-.48)/.12))*.04})`; caption.textContent = p < .28 ? 'Ogni azienda ha un filo. Noi lo seguiamo.' : p < .62 ? 'Quando tutto si intreccia, il lavoro perde la sua forma.' : 'Un sistema chiaro lascia spazio alle cose che contano.'; }
+      let ticking = false; const onScroll = () => { if (!ticking) { requestAnimationFrame(() => { draw(); ticking=false; }); ticking=true; } }; addEventListener('scroll', onScroll, {passive:true}); addEventListener('resize', draw); draw();
+    })();
+  </script>
+</body>
+</html>
