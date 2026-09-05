@@ -128,11 +128,11 @@
 
     casePanels.forEach((panel, i) => {
       const d = i - q;
-      const x = d * 62;
+      const x = d * 86;
       const ad = Math.abs(d);
-      const opacity = ad < .92 ? lerp(1, .22, ad / .92) : .08;
+      const opacity = ad < .78 ? lerp(1, .22, ad / .78) : .035;
       const scale = lerp(1, .965, Math.min(1, ad));
-      const blur = lerp(0, 3.2, Math.min(1, ad));
+      const blur = lerp(0, 4.5, Math.min(1, ad));
       panel.style.transform = `translate(calc(-50% + ${x}vw), -50%) scale(${scale})`;
       panel.style.opacity = String(opacity);
       panel.style.filter = `blur(${blur}px)`;
