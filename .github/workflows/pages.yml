@@ -1,10 +1,10 @@
-name: Deploy Stealth v3 Pages
+name: Deploy Stealth v6 Pages
 
 on:
   push:
     branches: [main]
     paths:
-      - 'sito-stealth-v3/**'
+      - 'sito-stealth-v6/**'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -33,7 +33,7 @@ jobs:
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: sito-stealth-v3
+          path: sito-stealth-v6
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
