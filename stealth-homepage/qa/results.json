@@ -1,0 +1,50 @@
+[
+  {
+    "name": "desktop",
+    "motion": true,
+    "overflow": false,
+    "missing": 0,
+    "errors": [],
+    "target": "https://www.stealthsoftware.it/contatti/"
+  },
+  {
+    "name": "mobile",
+    "motion": true,
+    "overflow": false,
+    "missing": 0,
+    "errors": [],
+    "target": "https://www.stealthsoftware.it/contatti/"
+  },
+  {
+    "name": "small",
+    "motion": false,
+    "overflow": false,
+    "missing": 0,
+    "errors": [],
+    "target": "https://www.stealthsoftware.it/contatti/"
+  },
+  {
+    "name": "tablet",
+    "motion": true,
+    "overflow": false,
+    "missing": 0,
+    "errors": [],
+    "target": "https://www.stealthsoftware.it/contatti/"
+  },
+  {
+    "name": "reduced",
+    "motion": false,
+    "overflow": false,
+    "missing": 0,
+    "errors": [],
+    "target": "https://www.stealthsoftware.it/contatti/"
+  },
+  {
+    "name": "nojs",
+    "motion": false,
+    "overflow": false,
+    "missing": 0,
+    "errors": [],
+    "target": "https://www.stealthsoftware.it/contatti/"
+  }
+]

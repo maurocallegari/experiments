@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="440" viewBox="0 0 720 440" fill="none">
+<metadata>Original Stealth wireframe spreadsheet component; synthetic example data, authored vector geometry, 2026-09-05.</metadata>
+<path d="M20 30H700V410H20Z" fill="white"/><text x="46" y="68" font-family="Arial,sans-serif" font-size="17" fill="#4c727a">clienti.xlsx</text><path d="M20 93H700" stroke="#b7d0d6"/>
+<path d="M20 114H700V156H20Z" fill="#f0f6f7"/><path d="M20 114H700M20 156H700M20 208H700M20 260H700M20 312H700M20 364H700M20 410H700M20 114V410M80 114V410M330 114V410M560 114V410M700 114V410" stroke="#ccdee2"/>
+<g font-family="Arial,sans-serif" font-size="13" fill="#60838b"><text x="46" y="141">A</text><text x="107" y="141">Cliente</text><text x="350" y="141">Indirizzo</text><text x="580" y="141">Stato</text></g>
+<g font-family="Arial,sans-serif" font-size="15" fill="#365b64"><text x="107" y="188">Cliente Rossi</text><text x="350" y="188">Via Roma, 12</text><text x="580" y="188">Da inserire</text></g>
+<path d="M104 233H270M351 233H518M580 233H660M104 285H239M351 285H485M580 285H638M104 337H284M351 337H531M580 337H662M104 389H253M351 389H501" stroke="#dbe7e9" stroke-width="4"/>
+<path d="M80 156H560V208H80Z" stroke="#86b4bf" stroke-width="2"/><rect x="556" y="204" width="7" height="7" fill="#86b4bf"/>
+</svg>

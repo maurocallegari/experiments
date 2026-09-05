@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="620" viewBox="0 0 480 620" fill="none">
+<metadata>Original Stealth wireframe document component; illustrative quote, authored vector geometry, 2026-09-05.</metadata>
+<path d="M25 20H388L455 87V600H25Z" fill="white" stroke="#b9d1d6"/><path d="M388 20V87H455" stroke="#b9d1d6"/>
+<path d="M58 61H115" stroke="#a0cdd2" stroke-width="3"/><text x="58" y="133" font-family="Arial,sans-serif" font-size="30" fill="#385b63">Preventivo</text><text x="58" y="163" font-family="Arial,sans-serif" font-size="13" fill="#78949b">Proposta commerciale</text>
+<path d="M58 205H302M58 224H365M58 243H249" stroke="#d8e5e8" stroke-width="5"/>
+<path d="M58 292H420M58 340H420M58 388H420M58 436H420" stroke="#d5e3e6"/><text x="58" y="279" font-family="Arial,sans-serif" font-size="12" fill="#78949b">Descrizione</text><text x="363" y="279" font-family="Arial,sans-serif" font-size="12" fill="#78949b">Importo</text>
+<path d="M58 316H228M58 364H265M58 412H210M363 316H419M363 364H419M363 412H419" stroke="#c6dbe0" stroke-width="4"/>
+<text x="58" y="486" font-family="Arial,sans-serif" font-size="15" fill="#385b63">Totale da verificare</text><path d="M323 478H420" stroke="#a0cdd2" stroke-width="4"/>
+<path d="M58 554H188" stroke="#d5e3e6"/><text x="58" y="575" font-family="Arial,sans-serif" font-size="11" fill="#78949b">Versione da confermare</text>
+</svg>

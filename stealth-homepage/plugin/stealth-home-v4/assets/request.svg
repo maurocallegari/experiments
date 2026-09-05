@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" fill="none">
+<metadata>Original Stealth wireframe component, authored as vector geometry; illustrative request, 2026-09-05.</metadata>
+<path d="M22 34H618V322H22Z" fill="white"/><path d="M22 34H618M22 88H618M22 322H618" stroke="#c0d4d8"/>
+<path d="M48 57H65M48 63H59" stroke="#789ba2" stroke-width="1.5"/><text x="81" y="67" font-family="Arial,sans-serif" font-size="14" fill="#65868e">Posta in arrivo</text><circle cx="588" cy="61" r="5" stroke="#97bac2"/>
+<text x="48" y="132" font-family="Arial,sans-serif" font-size="13" fill="#6d888e">Da: Cliente</text><text x="48" y="171" font-family="Arial,sans-serif" font-size="23" fill="#37575e">Ci serve un preventivo.</text>
+<path d="M48 205H470M48 220H529M48 235H370" stroke="#d6e3e5" stroke-width="5"/>
+<path d="M49 276L57 267L66 276V293H49Z" stroke="#8babB2"/><text x="80" y="287" font-family="Arial,sans-serif" font-size="13" fill="#6d888e">richiesta.pdf</text><path d="M530 278H584M576 270L584 278L576 286" stroke="#a0cdd2" stroke-width="1.5"/>
+</svg>
