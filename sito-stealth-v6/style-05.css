@@ -1,0 +1,98 @@
+@media (max-width: 560px) {
+  .artifact-excel { width: 230px; height: 156px; }
+  .artifact-mail { width: 210px; }
+  .artifact-word { width: 185px; height: 162px; }
+  .artifact-paper { width: 178px; height: 166px; }
+  .artifact-phone { width: 112px; height: 220px; }
+  .hero-flow-label { font-size: .68rem; }
+  .process-line { grid-template-columns: 1fr; gap: 6px; }
+  .ai-diagram { min-height: 500px; margin-inline: -5px; }
+  .ai-input { width: 112px; min-height: 86px; padding: 12px; }
+  .ai-input:nth-of-type(1) { top: 55px; }
+  .ai-input:nth-of-type(2) { top: 195px; left: 10px; }
+  .ai-input:nth-of-type(3) { top: 333px; }
+  .ai-core { width: 104px; height: 104px; font-size: 1.8rem; }
+  .ai-output { top: 90px; width: 174px; padding: 13px; }
+  .ai-check { bottom: 20px; width: 174px; padding: 13px; }
+  .ai-output-row { padding: 9px 0; font-size: .65rem; }
+  .case-visual { height: 430px; }
+  .quote-doc { padding: 16px; }
+  .quote-doc h4 { font-size: .92rem; }
+  .quote-doc .value { font-size: 1rem; }
+  .field-paper { padding: 16px; }
+  .field-phone { width: 104px; height: 220px; }
+  .office-window { top: 28%; width: 29%; }
+  .dup-token { padding: 9px 10px; font-size: .59rem; }
+  .route-row { gap: 4px; }
+  .route-node { padding: 10px 5px; font-size: .52rem; }
+  .practice-body { grid-template-columns: 82px 1fr; }
+  .practice-side { padding-inline: 10px; }
+  .practice-main { padding: 20px 12px; }
+  .practice-field { grid-template-columns: 1fr; gap: 5px; padding: 13px 0; }
+}
+
+/* No-JS: all messages remain readable; decorative motion objects are removed. */
+.no-js .hero-scroll { height: auto; }
+.no-js .hero-pin {
+  position: relative;
+  height: auto;
+  min-height: 100svh;
+  padding: 110px 0 80px;
+  display: grid;
+  align-content: center;
+  gap: 46px;
+}
+.no-js .hero-copy {
+  position: relative;
+  inset: auto;
+  width: var(--page);
+  transform: none;
+  text-align: left;
+}
+.no-js .hero-copy-secondary { opacity: 1; transform: none; }
+.no-js .hero-workbench, .no-js .hero-wipe, .no-js .hero-rail, .no-js .hero-flow-label, .no-js .hero-scroll-hint { display: none; }
+
+/* Reduced motion: complete static story, no pinned scrub experiences. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .hero-scroll { height: auto; }
+  .hero-pin {
+    position: relative;
+    height: auto;
+    min-height: 100svh;
+    padding: 110px 0 80px;
+    display: grid;
+    align-content: center;
+    gap: 46px;
+  }
+  .hero-copy {
+    position: relative;
+    inset: auto;
+    width: var(--page);
+    opacity: 1 !important;
+    transform: none !important;
+    text-align: left;
+  }
+  .hero-copy-secondary { display: block; opacity: 1; }
+  .hero-workbench, .hero-wipe, .hero-rail, .hero-flow-label, .hero-scroll-hint { display: none; }
+  .js .ai-scroll, .js .cases-stage { height: auto; }
+  .js .ai-pin, .js .cases-pin { position: relative; top: auto; height: auto; overflow: visible; }
+  .case-viewport { height: auto; }
+  .js .case-panel {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+  .case-panel + .case-panel { border-top: 1px solid var(--line); }
+  .case-progress { display: none; }
+  .js .reveal, .method-step { opacity: 1; transform: none; }
+}
