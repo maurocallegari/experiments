@@ -33,19 +33,26 @@ flowchart TD
 
 ## Conclusione attuale
 
-Non vedo più valore nel costruire ADS come un grande framework di orchestrazione AI.
+La ricerca più recente rende la scelta più concreta: **prima di sviluppare altro ADS generico, testare un repository harness già pronto**.
 
-La direzione più promettente è:
+Il candidato operativo principale è `hoangnb24/repository-harness`; la guida Adobe sui Repository Harnesses è la reference con cui giudicarne la qualità; HAR entra solo se il pilot dimostra un problema specifico di isolamento/runtime evidence.
+
+La direzione è quindi:
 
 ```text
-ECOSISTEMA MATURO
-Codex / skill / GitHub / eventuale workflow engine
+REPO STANDARD GIÀ ESISTENTE
+repository-harness
+
++
+
+AGENTE
+Codex / Claude
 
 +
 
 STEALTH-SPECIFIC
-local bootstrap
-project/domain knowledge
+runtime config
+business/project knowledge
 project verifier
 safe deploy / rollback / smoke
 ```
@@ -72,51 +79,42 @@ repository come memoria
 + CI come autorità
 ```
 
-Il quarto documento rende questa analisi più rigorosa: distingue ciò che è **confermato** da ciò che è soltanto **inferito** e soprattutto ricostruisce quali strumenti emergono realmente dalle tracce pubbliche. Il formato `Developer AI Workflow Profile v1` è pensato per essere riutilizzato identico sui prossimi sviluppatori che analizzeremo.
-
-Il quinto documento chiude il buco operativo: non propone di ricostruire il metodo in ADS, ma identifica strumenti già esistenti che implementano gli stessi principi. La raccomandazione corrente è testare **`repository-harness` come unica nuova variabile** su Assitec; usare la guida Adobe come reference/audit; introdurre HAR, Trailhead/GSD o Symphony solo se il pilot dimostra un gap specifico di runtime, workflow o orchestrazione.
+Il quarto documento distingue ciò che è **confermato** da ciò che è soltanto **inferito** e ricostruisce quali strumenti emergono realmente dalle tracce pubbliche. Il quinto chiude il buco operativo: identifica strumenti pubblici che implementano già molti degli stessi principi e propone un test A/B reale invece di costruire altro framework custom.
 
 ---
 
-## Cosa farei dopo questa lettura
+## Prossimo esperimento consigliato
 
 ### Step 1 — nessun altro sviluppo ADS generico
 
-Congelare temporaneamente l'espansione della state machine/orchestrator ADS.
+Congelare temporaneamente state machine/orchestrator custom.
 
-### Step 2 — pilot su Assitec con un repo harness già pronto
+### Step 2 — pilot Assitec con una sola variabile nuova
 
-Prima scelta da testare: `hoangnb24/repository-harness`.
+Installare **solo** `repository-harness` su una branch pilot di Assitec ed eseguire l'onboarding brownfield.
 
-- installazione su branch pilot;
-- onboarding brownfield read-only;
-- mantenere soltanto le regole realmente specifiche di Assitec;
-- non installare contemporaneamente GSD, Trailhead, HAR o OpenSpec.
+Non aggiungere contemporaneamente GSD, Trailhead, HAR, OpenSpec o altri layer.
 
-### Step 3 — una feature reale
-
-Usare `IS_DDL` come test:
+### Step 3 — feature reale invariata
 
 ```text
 "Aggiungi un flag IS_DDL persistente ai dipendenti
  e nella scheda azienda mostra l'elenco dei DDL."
 ```
 
-Il test non è “Codex scrive il codice?”. È:
+Misurare soprattutto:
 
-> quanto devo intervenire io prima di avere una PR con outcome realmente verificato?
+> quanto deve intervenire Mauro prima di ottenere una PR con outcome realmente verificato?
 
 ### Step 4 — aggiungere un tool solo sul gap osservato
 
 ```text
-repo/context      → Adobe harness-setup come alternativa/audit
-runtime/evidence  → HAR
-issue orchestration → Trailhead
-execution discipline → GSD
-molti task paralleli → Symphony-style orchestration
+repo/context debole      → Adobe harness-setup come alternativa/audit
+runtime/evidence debole  → HAR
+issue orchestration      → Trailhead
+execute/verify discipline→ GSD
+molti task paralleli     → Symphony-style orchestration
 ```
-
-Non installare più sovrastrutture contemporaneamente: **uno possiede il problema, gli altri restano fuori finché non servono**.
 
 ---
 
