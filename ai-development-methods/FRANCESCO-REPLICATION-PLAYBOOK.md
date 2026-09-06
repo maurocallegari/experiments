@@ -9,9 +9,12 @@ La ricerca aggiuntiva cambia la raccomandazione operativa.
 
 Non serve partire da un nuovo workflow engine Stealth. Esistono già strumenti che coprono il pezzo più importante che sembrava “fatto a mano”:
 
-1. **`repository-harness`** — oggi è il candidato più vicino al bootstrap di una repo agent-ready: installa un piccolo protocollo repository-owned, `AGENTS.md`, workflow/documentazione strutturata, piani durevoli solo quando servono, decisioni, onboarding brownfield e validazione meccanica. Supporta esplicitamente Codex, Claude Code e Cursor.
-2. **Adobe `harness-setup`** — una skill pubblica che crea o migra lo stesso tipo di repository harness usando standard aperti (`AGENTS.md`, `INVARIANTS.md`, `.agents/skills/`, docs, Makefile, validation). È una reference molto forte; **non va installata insieme a `repository-harness` come secondo sistema**, ma usata come checklist/reference oppure come alternativa.
-3. **HAR (`@osfactory/har`)** — copre il pezzo successivo: worktree isolati per agente, porte/database separati, verify deterministico, artifacts/evidence, tree hash validato, commit gate e Mission Control. È da aggiungere solo se il problema reale diventa ambiente concorrente/evidence, non come prerequisito universale.
+1. **`repository-harness`** — oggi è il candidato più vicino al bootstrap di una repo agent-ready: installa un piccolo protocollo repository-owned, `AGENTS.md`, workflow/documentazione strutturata, piani durevoli solo quando servono, decisioni, onboarding brownfield e validazione meccanica. Supporta esplicitamente Codex, Claude Code e Cursor.  
+   Fonte: https://github.com/hoangnb24/repository-harness
+2. **Adobe `harness-setup`** — una skill pubblica che crea o migra lo stesso tipo di repository harness usando standard aperti (`AGENTS.md`, `INVARIANTS.md`, `.agents/skills/`, docs, Makefile, validation). È una reference molto forte; **non va installata insieme a `repository-harness` come secondo sistema**, ma usata come checklist/reference oppure come alternativa.  
+   Fonte: https://github.com/adobe/ai-repo-harness-guide
+3. **HAR (`@osfactory/har`)** — copre il pezzo successivo: worktree isolati per agente, porte/database separati, verify deterministico, artifacts/evidence, tree hash validato, commit gate e Mission Control. È da aggiungere solo se il problema reale diventa ambiente concorrente/evidence, non come prerequisito universale.  
+   Fonte: https://github.com/os-factory/har
 
 Quindi la sequenza raccomandata non è “replichiamo tutto in ADS”, ma:
 
@@ -46,6 +49,9 @@ Scaffold: Vite + React + TS + Tailwind v4 base for OpenGrokBot
 Co-Authored-By: Claude Fable 5
 ```
 
+Commit:  
+https://github.com/metaforismo/Cumea/commit/43a40803c21e799c47a22736fb5bb3a9931f7bb0
+
 Il commit crea l'app base, package manifest, TypeScript/Vite e struttura iniziale.
 
 Questo non dimostra che Francesco usi un prodotto di bootstrap segreto. Dimostra però qualcosa di più utile:
@@ -57,6 +63,9 @@ Questo non dimostra che Francesco usi un prodotto di bootstrap segreto. Dimostra
 - feature intere in Atlas Loop arrivano da branch `metaforismo/codex/...`;
 - lavori complessi DVNS espongono vere sessioni Claude Code;
 - test, CI, documentazione e tooling vengono evoluti nello stesso ciclo del prodotto.
+
+Un esempio Atlas Loop è la PR/merge `codex/network-capture`:  
+https://github.com/metaforismo/atlas-loop/commit/b860ab004686030461882767b385010ebb466df5
 
 Quindi non bisogna immaginare:
 
@@ -76,7 +85,8 @@ repo iniziale minimale
 → la repo diventa progressivamente più leggibile agli agenti
 ```
 
-Questa è esattamente la dinamica descritta anche da OpenAI nel proprio esperimento di Harness Engineering: partire da una repo vuota, far generare a Codex scaffold, CI e `AGENTS.md`, poi fare compounding sui feedback loop.
+Questa è esattamente la dinamica descritta anche da OpenAI nel proprio esperimento di Harness Engineering: partire da una repo vuota, far generare a Codex scaffold, CI e `AGENTS.md`, poi fare compounding sui feedback loop.  
+Fonte primaria: https://openai.com/index/harness-engineering/
 
 ---
 
@@ -130,6 +140,8 @@ script Python QA
 validazione Xcode/runtime
 ```
 
+Fonte: https://github.com/metaforismo/app-icon-design-skill
+
 ## 2.4 Gli agenti fanno PR-sized work
 
 Le branch `codex/...` di Atlas Loop e Bite mostrano lavori autonomi sufficientemente grandi da diventare PR indipendenti, non autocomplete di poche righe.
@@ -169,7 +181,7 @@ Questa seconda riga è il compounding.
 
 Repository:
 
-`hoangnb24/repository-harness`
+https://github.com/hoangnb24/repository-harness
 
 ## Perché è importante
 
@@ -277,6 +289,10 @@ harness-setup
 harness-inspect
 ```
 
+Guide/repo:  
+https://opensource.adobe.com/ai-repo-harness-guide/  
+https://github.com/adobe/ai-repo-harness-guide
+
 `harness-setup` rileva automaticamente se la repo:
 
 - non ha harness;
@@ -333,7 +349,8 @@ Se `repository-harness` non convince durante il pilot, Adobe `harness-setup` div
 
 Repository/progetto:
 
-`os-factory/har` · `@osfactory/har`
+https://github.com/os-factory/har  
+https://harproject.dev/
 
 HAR non risolve principalmente la documentazione della repo. Risolve l'altro problema:
 
