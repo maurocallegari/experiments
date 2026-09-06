@@ -15,6 +15,51 @@
   const heroLabel = document.querySelector('.hero-flow-label');
   const heroWipe = document.querySelector('.hero-wipe');
   const wipeWord = document.querySelector('.wipe-word');
+  const heroWorkbench = document.querySelector('.hero-workbench');
+
+  /* Add more real-work fragments to make the opening read as a crowded desk,
+     not as a neat process diagram. They remain decorative and are generated
+     here so the HTML stays compact. */
+  if (heroWorkbench) {
+    const extras = [
+      {
+        cls: 'chaos-postit', x: -45, y: -18, r: -9, scale: .94,
+        html: '<span>richiamare<br>cliente</span><b>entro oggi</b>'
+      },
+      {
+        cls: 'chaos-call', x: 43, y: 21, r: 7, scale: .92,
+        html: '<small>chiamata</small><strong>Marco tecnico</strong><span>3 min 42 sec</span>'
+      },
+      {
+        cls: 'chaos-photo', x: 42, y: -17, r: 5, scale: .9,
+        html: '<small>foto_1287.jpg</small><div class="chaos-photo-frame">rapportino</div>'
+      },
+      {
+        cls: 'chaos-attachment', x: -42, y: 22, r: -4, scale: .96,
+        html: '<small>allegati</small><span>ordine.pdf</span><span>firma.jpg</span><span>note.docx</span>'
+      },
+      {
+        cls: 'chaos-calendar', x: 29, y: 28, r: -5, scale: .9,
+        html: '<small>scadenza</small><strong>12 SET</strong><span>consegna pratica</span>'
+      },
+      {
+        cls: 'chaos-note', x: -28, y: 30, r: 8, scale: .92,
+        html: '<small>appunto</small><span>“manca ancora<br>la firma?”</span>'
+      }
+    ];
+
+    extras.forEach(item => {
+      const el = document.createElement('aside');
+      el.className = `artifact chaos-extra ${item.cls}`;
+      el.dataset.x = item.x;
+      el.dataset.y = item.y;
+      el.dataset.r = item.r;
+      el.dataset.scale = item.scale;
+      el.innerHTML = item.html;
+      heroWorkbench.appendChild(el);
+    });
+  }
+
   const heroArtifacts = [...document.querySelectorAll('.hero-workbench .artifact')];
 
   const thesis = document.querySelector('.thesis');
@@ -53,57 +98,66 @@
     return clamp(-rect.top / travel);
   };
 
-  function heroTransform(el, p) {
+  /* Final positions deliberately remain slightly irregular. The story is not
+     “everything becomes a tidy row”; it is “all that scattered work converges
+     into one place”. */
+  const cluster = [
+    [-5, 2, -7, .72], [4, -2, 5, .69], [-2, -5, -3, .68], [2, 5, 7, .66],
+    [0, 0, -1, .67], [6, 2, 4, .64], [-6, -1, -5, .66], [3, -6, 6, .66],
+    [-4, 6, -4, .68], [1, 3, 3, .65], [-1, -3, -6, .66], [5, -4, 5, .65],
+    [-5, 5, 2, .64], [3, 4, -2, .66]
+  ];
+
+  function heroTransform(el, p, index) {
     const ds = el.dataset;
     const mobile = mobileQuery.matches;
-    const x0 = Number(ds.x);
-    const y0 = Number(ds.y);
-    const r0 = Number(ds.r);
-    const s0 = Number(ds.scale);
-    const x1 = Number(ds.finalX);
-    const y1 = Number(ds.finalY);
-    const r1 = Number(ds.finalR);
-    const s1 = Number(ds.finalScale);
-    const t = ease(range(p, .08, .58));
-    const x = lerp(x0, x1, t) * vw / 100;
-    const yScale = mobile ? .72 : 1;
-    const y = lerp(y0, y1, t) * vh / 100 * yScale;
-    const r = lerp(r0, r1, t);
-    const s = lerp(s0, s1, t) * (mobile ? .78 : 1);
-    const fade = 1 - .72 * range(p, .64, .82);
-    const blur = lerp(0, 1.5, range(p, .65, .82));
-    el.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) rotate(${r}deg) scale(${s})`;
+    const x0 = Number(ds.x || 0);
+    const y0 = Number(ds.y || 0);
+    const r0 = Number(ds.r || 0);
+    const s0 = Number(ds.scale || 1);
+    const target = cluster[index % cluster.length];
+    const t = ease(range(p, .08, .60));
+
+    const mobileSpread = mobile ? .82 : 1;
+    const x = lerp(x0 * mobileSpread, target[0], t) * vw / 100;
+    const y = lerp(y0 * (mobile ? .6 : 1), target[1], t) * vh / 100;
+    const r = lerp(r0, target[2], t);
+    const finalScale = target[3] * (mobile ? .78 : 1);
+    const s = lerp(s0 * (mobile ? .78 : 1), finalScale, t);
+
+    /* As the pile becomes dense, slightly darken depth without making it neat. */
+    const fade = 1 - .82 * range(p, .66, .84);
+    const blur = lerp(0, 2.2, range(p, .69, .84));
+    const depth = lerp(1, .94 + (index % 4) * .012, range(p, .42, .64));
+
+    el.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) rotate(${r}deg) scale(${s * depth})`;
     el.style.opacity = String(fade);
     el.style.filter = `blur(${blur}px)`;
+    el.style.zIndex = String(8 + (index % 7));
   }
 
   function updateHero() {
     if (!hero || reducedMotion) return;
     const p = scrollProgress(hero);
-    heroArtifacts.forEach(el => heroTransform(el, p));
+    heroArtifacts.forEach((el, i) => heroTransform(el, p, i));
 
-    const primaryOut = range(p, .32, .49);
+    const primaryOut = range(p, .25, .43);
     heroPrimary.style.opacity = String(1 - primaryOut);
-    heroPrimary.style.transform = `translateX(-50%) translateY(${-26 * primaryOut}px)`;
+    heroPrimary.style.transform = `translateX(-50%) translateY(${-22 * primaryOut}px)`;
 
-    const secondaryIn = ease(range(p, .46, .62));
-    const secondaryOut = range(p, .73, .84);
+    /* The second statement appears only once the chaotic desk has visibly
+       collapsed toward the middle. */
+    const secondaryIn = ease(range(p, .52, .68));
+    const secondaryOut = range(p, .76, .86);
     heroSecondary.style.opacity = String(secondaryIn * (1 - secondaryOut));
-    heroSecondary.style.transform = `translate(-50%, ${lerp(28, 0, secondaryIn) - 18 * secondaryOut}px)`;
+    heroSecondary.style.transform = `translate(-50%, ${lerp(24, 0, secondaryIn) - 16 * secondaryOut}px)`;
 
-    const railIn = ease(range(p, .43, .64));
-    const railOut = range(p, .72, .82);
-    heroRail.style.opacity = String(railIn * (1 - railOut));
-    heroRail.style.transform = `translateX(-50%) scaleX(${lerp(.05, 1, railIn)})`;
+    if (heroRail) heroRail.style.opacity = '0';
+    if (heroLabel) heroLabel.style.opacity = '0';
 
-    const labelIn = ease(range(p, .54, .67));
-    const labelOut = range(p, .73, .83);
-    heroLabel.style.opacity = String(labelIn * (1 - labelOut));
-    heroLabel.style.transform = `translate(-50%, ${lerp(14, 0, labelIn)}px)`;
-
-    const wipe = ease(range(p, .78, .93));
+    const wipe = ease(range(p, .80, .94));
     heroWipe.style.transform = `translateY(${(1 - wipe) * 100}%)`;
-    const wordIn = ease(range(p, .86, .97));
+    const wordIn = ease(range(p, .87, .97));
     wipeWord.style.opacity = String(wordIn);
     wipeWord.style.transform = `translateY(${lerp(24, 0, wordIn)}px)`;
   }
