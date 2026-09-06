@@ -1,6 +1,6 @@
 # AI Development Methods — 2026-09-06
 
-Quattro note operative per decidere come evolvere ADS senza reinventare ciò che l'ecosistema sta già risolvendo.
+Cinque note operative per decidere come evolvere ADS senza reinventare ciò che l'ecosistema sta già risolvendo.
 
 ## Leggile in questo ordine
 
@@ -8,6 +8,7 @@ Quattro note operative per decidere come evolvere ADS senza reinventare ciò che
 2. **[OpenAI Symphony](SYMPHONY.md)** — il cambio di scala: issue tracker come control plane, workspace isolati, retry/reconciliation, *manage work not sessions*.
 3. **[Reverse engineering del metodo pubblico di Francesco Giannicola](FRANCESCO-GIANNICOLA-METHOD.md)** — cosa emerge realmente da DVNS e dal suo ecosistema di progetti.
 4. **[Developer AI Workflow Profile v1 — Francesco Giannicola](DEVELOPER-AI-WORKFLOW-PROFILE-FRANCESCO-GIANNICOLA.md)** — ricostruzione della workstation/toolchain reale con livelli di confidenza, fonti, diagramma, tool matrix e uno schema standard riutilizzabile per confrontare altri sviluppatori.
+5. **[Replication Playbook](FRANCESCO-REPLICATION-PLAYBOOK.md)** — la risposta pratica a “come lo replico senza costruirmelo in ADS?”: evidenza sul bootstrap agent-generated, confronto degli strumenti già pronti e pilot Stealth a una sola variabile.
 
 ---
 
@@ -73,6 +74,8 @@ repository come memoria
 
 Il quarto documento rende questa analisi più rigorosa: distingue ciò che è **confermato** da ciò che è soltanto **inferito** e soprattutto ricostruisce quali strumenti emergono realmente dalle tracce pubbliche. Il formato `Developer AI Workflow Profile v1` è pensato per essere riutilizzato identico sui prossimi sviluppatori che analizzeremo.
 
+Il quinto documento chiude il buco operativo: non propone di ricostruire il metodo in ADS, ma identifica strumenti già esistenti che implementano gli stessi principi. La raccomandazione corrente è testare **`repository-harness` come unica nuova variabile** su Assitec; usare la guida Adobe come reference/audit; introdurre HAR, Trailhead/GSD o Symphony solo se il pilot dimostra un gap specifico di runtime, workflow o orchestrazione.
+
 ---
 
 ## Cosa farei dopo questa lettura
@@ -81,16 +84,14 @@ Il quarto documento rende questa analisi più rigorosa: distingue ciò che è **
 
 Congelare temporaneamente l'espansione della state machine/orchestrator ADS.
 
-### Step 2 — pilot su Assitec
+### Step 2 — pilot su Assitec con un repo harness già pronto
 
-Preparare Assitec come repo realmente agent-ready:
+Prima scelta da testare: `hoangnb24/repository-harness`.
 
-- `AGENTS.md` minimo;
-- `PROJECT.md` utile;
-- skill Stealth davvero necessarie;
-- `dev/verify-local.sh` serio;
-- almeno un verifier che dimostri un comportamento reale, non soltanto syntax/HTTP 200;
-- issue → PR → CI/evidence.
+- installazione su branch pilot;
+- onboarding brownfield read-only;
+- mantenere soltanto le regole realmente specifiche di Assitec;
+- non installare contemporaneamente GSD, Trailhead, HAR o OpenSpec.
 
 ### Step 3 — una feature reale
 
@@ -105,15 +106,17 @@ Il test non è “Codex scrive il codice?”. È:
 
 > quanto devo intervenire io prima di avere una PR con outcome realmente verificato?
 
-### Step 4 — solo dopo scegliere il workflow engine
+### Step 4 — aggiungere un tool solo sul gap osservato
 
-Confrontare su quella stessa richiesta:
+```text
+repo/context      → Adobe harness-setup come alternativa/audit
+runtime/evidence  → HAR
+issue orchestration → Trailhead
+execution discipline → GSD
+molti task paralleli → Symphony-style orchestration
+```
 
-- Codex repo-native;
-- GSD;
-- Trailhead, se continua a maturare.
-
-Non installare più sovrastrutture contemporaneamente: **uno possiede il workflow, gli altri al massimo forniscono skill/verifier specifici**.
+Non installare più sovrastrutture contemporaneamente: **uno possiede il problema, gli altri restano fuori finché non servono**.
 
 ---
 
