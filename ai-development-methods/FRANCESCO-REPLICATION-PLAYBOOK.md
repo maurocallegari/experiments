@@ -634,3 +634,20 @@ Supporta invece questa:
 **Primo add-on solo se emerge il bisogno di runtime/evidence isolation: HAR.**
 
 Questa è oggi la strada più vicina a replicare il risultato osservato senza ricostruire da zero la stessa infrastruttura.
+
+---
+
+## Decisione operativa per il prossimo test
+
+**Non considero più `Codex + Trailhead` la scelta di default prima di aver testato il repository layer.** Trailhead resta candidato per il problema *issue/work orchestration*, ma sarebbe prematuro usarlo per correggere un problema di context/repo harness.
+
+Il prossimo esperimento corretto è quindi uno solo:
+
+```text
+Assitec
++ repository-harness
++ Codex
++ verifier Assitec
+```
+
+Se questo migliora già drasticamente il lavoro, abbiamo eliminato una grossa parte di ADS senza introdurre un orchestratore. Se non basta, il fallimento ci dirà **quale** layer aggiungere dopo.
