@@ -1,12 +1,13 @@
 # AI Development Methods — 2026-09-06
 
-Tre note operative per decidere come evolvere ADS senza reinventare ciò che l'ecosistema sta già risolvendo.
+Quattro note operative per decidere come evolvere ADS senza reinventare ciò che l'ecosistema sta già risolvendo.
 
 ## Leggile in questo ordine
 
 1. **[GSD Core](GSD.md)** — il metodo: discuss → plan → execute → verify → ship, fresh-context execution e stato durevole.
 2. **[OpenAI Symphony](SYMPHONY.md)** — il cambio di scala: issue tracker come control plane, workspace isolati, retry/reconciliation, *manage work not sessions*.
 3. **[Reverse engineering del metodo pubblico di Francesco Giannicola](FRANCESCO-GIANNICOLA-METHOD.md)** — cosa emerge realmente da DVNS e dal suo ecosistema di progetti.
+4. **[Developer AI Workflow Profile v1 — Francesco Giannicola](DEVELOPER-AI-WORKFLOW-PROFILE-FRANCESCO-GIANNICOLA.md)** — ricostruzione della workstation/toolchain reale con livelli di confidenza, fonti, diagramma, tool matrix e uno schema standard riutilizzabile per confrontare altri sviluppatori.
 
 ---
 
@@ -69,6 +70,8 @@ repository come memoria
 + PR trasparenti
 + CI come autorità
 ```
+
+Il quarto documento rende questa analisi più rigorosa: distingue ciò che è **confermato** da ciò che è soltanto **inferito** e soprattutto ricostruisce quali strumenti emergono realmente dalle tracce pubbliche. Il formato `Developer AI Workflow Profile v1` è pensato per essere riutilizzato identico sui prossimi sviluppatori che analizzeremo.
 
 ---
 
