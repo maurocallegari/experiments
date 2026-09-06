@@ -3,12 +3,10 @@
    and is replaced by the following scene. No forced horizontal gesture. */
 
 @media (max-width: 900px) and (prefers-reduced-motion: no-preference) {
-  /* Keep the chapter intro in normal document flow. */
   .cases-intro {
     padding: 88px 0 30px;
   }
 
-  /* The chapter itself is a vertical stack of full-viewport sticky scenes. */
   .cases-stage,
   .js .cases-stage {
     height: auto !important;
@@ -68,7 +66,6 @@
   .case-panel:nth-child(3) { z-index: 13; }
   .case-panel:nth-child(4) { z-index: 14; }
 
-  /* Give every scene a clear narrative hierarchy without introducing a new typographic system. */
   .case-copy {
     width: 100%;
     max-width: 620px;
@@ -103,22 +100,9 @@
     background: #f8f8f8;
   }
 
-  /* Numeric progress is functional here, not an eyebrow. */
-  .case-progress {
-    position: fixed;
-    z-index: 30;
-    left: 23px !important;
-    right: 23px !important;
-    bottom: 17px !important;
-    display: flex !important;
-    justify-content: center;
-    transform: none !important;
-    pointer-events: none;
-  }
+  /* Desktop progress is intentionally removed here: the stacked scene itself is the progress cue. */
+  .case-progress { display: none !important; }
 
-  .case-progress span { display: none; }
-
-  /* Let the next section cover the final sticky scene cleanly. */
   .method {
     position: relative;
     z-index: 20;
