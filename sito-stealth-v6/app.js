@@ -170,7 +170,7 @@
     const p = scrollProgress(casesStage);
     const maxTranslate = Math.max(0, caseViewport.scrollWidth - vw);
     const x = maxTranslate * p;
-    caseViewport.style.transform = `translate3d(${-x}px,0,0)`;
+    caseViewport.style.setProperty('transform', `translate3d(${-x}px,0,0)`, 'important');
 
     const q = p * (casePanels.length - 1);
     const active = Math.min(casePanels.length - 1, Math.max(0, Math.round(q)));
