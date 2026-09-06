@@ -6,7 +6,7 @@
   const clamp = (n, a = 0, b = 1) => Math.min(b, Math.max(a, n));
   const lerp = (a, b, t) => a + (b - a) * t;
   const ease = t => 1 - Math.pow(1 - clamp(t), 3);
-  const range = (p, a, b) => clamp((p - a) / (b - a));
+  const range = (p, a, b) => clamp((p - a) / Math.max(.0001, b - a));
 
   const hero = document.querySelector('.hero-scroll');
   const heroPrimary = document.querySelector('.hero-copy-primary');
@@ -17,6 +17,9 @@
   const wipeWord = document.querySelector('.wipe-word');
   const heroArtifacts = [...document.querySelectorAll('.hero-workbench .artifact')];
 
+  const thesis = document.querySelector('.thesis');
+  const processLines = [...document.querySelectorAll('.process-line')];
+
   const aiScroll = document.querySelector('.ai-scroll');
   const aiInputs = [...document.querySelectorAll('.ai-input')];
   const aiCore = document.querySelector('.ai-core');
@@ -25,8 +28,16 @@
   const aiLines = [...document.querySelectorAll('.ai-line')];
 
   const casesStage = document.querySelector('.cases-stage');
+  const caseViewport = document.querySelector('.case-viewport');
   const casePanels = [...document.querySelectorAll('.case-panel')];
   const progressBars = [...document.querySelectorAll('.case-progress i')];
+
+  const method = document.querySelector('.method');
+  const methodSteps = [...document.querySelectorAll('.method-step')];
+
+  const result = document.querySelector('.result');
+  const practiceUI = document.querySelector('.practice-ui');
+  const resultPoints = [...document.querySelectorAll('.result-points div')];
 
   const header = document.querySelector('.site-header');
   const partner = document.querySelector('.partner');
@@ -34,6 +45,13 @@
   let ticking = false;
   let vw = window.innerWidth;
   let vh = window.innerHeight;
+
+  const scrollProgress = section => {
+    if (!section) return 0;
+    const rect = section.getBoundingClientRect();
+    const travel = Math.max(1, section.offsetHeight - vh);
+    return clamp(-rect.top / travel);
+  };
 
   function heroTransform(el, p) {
     const ds = el.dataset;
@@ -61,9 +79,7 @@
 
   function updateHero() {
     if (!hero || reducedMotion) return;
-    const rect = hero.getBoundingClientRect();
-    const travel = hero.offsetHeight - vh;
-    const p = clamp(-rect.top / Math.max(1, travel));
+    const p = scrollProgress(hero);
     heroArtifacts.forEach(el => heroTransform(el, p));
 
     const primaryOut = range(p, .32, .49);
@@ -92,54 +108,125 @@
     wipeWord.style.transform = `translateY(${lerp(24, 0, wordIn)}px)`;
   }
 
+  function updateThesis() {
+    if (!thesis || !processLines.length || reducedMotion) return;
+    if (mobileQuery.matches) {
+      processLines.forEach(line => {
+        line.style.opacity = '';
+        line.style.transform = '';
+        line.classList.remove('story-active');
+      });
+      return;
+    }
+
+    const p = scrollProgress(thesis);
+    processLines.forEach((line, i) => {
+      const start = .06 + i * .18;
+      const t = ease(range(p, start, start + .19));
+      line.style.opacity = String(lerp(.22, 1, t));
+      line.style.transform = `translateX(${lerp(24, 0, t)}px)`;
+      line.classList.toggle('story-active', t > .55);
+    });
+  }
+
   function updateAI() {
-    if (!aiScroll || reducedMotion || mobileQuery.matches) return;
-    const rect = aiScroll.getBoundingClientRect();
-    const travel = aiScroll.offsetHeight - vh;
-    const p = clamp(-rect.top / Math.max(1, travel));
-    const inputsT = ease(range(p, .03, .42));
+    if (!aiScroll || reducedMotion) return;
+    if (mobileQuery.matches) {
+      aiInputs.forEach(el => { el.style.transform = ''; el.style.opacity = ''; });
+      aiLines.forEach(el => { el.style.transform = ''; el.style.opacity = ''; });
+      if (aiCore) aiCore.style.transform = '';
+      if (aiOutput) { aiOutput.style.transform = ''; aiOutput.style.opacity = ''; }
+      if (aiCheck) { aiCheck.style.transform = ''; aiCheck.style.opacity = ''; }
+      return;
+    }
+
+    const p = scrollProgress(aiScroll);
+    const inputsT = ease(range(p, .03, .38));
     const coreT = ease(range(p, .22, .52));
-    const outT = ease(range(p, .45, .78));
+    const outT = ease(range(p, .46, .80));
 
     aiInputs.forEach((el, i) => {
       const offset = (1 - inputsT) * (-28 - i * 5);
       el.style.transform = `translateX(${offset}px) rotate(${[-4,3,-2][i]}deg)`;
-      el.style.opacity = String(.48 + inputsT * .52);
+      el.style.opacity = String(.42 + inputsT * .58);
     });
     aiLines.forEach((line, i) => {
       const t = i === 0 ? inputsT : outT;
       line.style.transform = `scaleX(${Math.max(.04, t)})`;
-      line.style.opacity = String(.22 + .45 * t);
+      line.style.opacity = String(.18 + .48 * t);
     });
     aiCore.style.transform = `translate(-50%, -50%) scale(${lerp(.88, 1, coreT)})`;
-    aiOutput.style.transform = `translateX(${lerp(34, 0, outT)}px)`;
-    aiOutput.style.opacity = String(.35 + .65 * outT);
-    aiCheck.style.transform = `translateY(${lerp(26, 0, outT)}px)`;
-    aiCheck.style.opacity = String(.28 + .72 * outT);
+    aiOutput.style.transform = `translateX(${lerp(42, 0, outT)}px)`;
+    aiOutput.style.opacity = String(.2 + .8 * outT);
+    aiCheck.style.transform = `translateY(${lerp(30, 0, outT)}px)`;
+    aiCheck.style.opacity = String(.18 + .82 * outT);
   }
 
   function updateCases() {
-    if (!casesStage || reducedMotion || mobileQuery.matches) return;
-    const rect = casesStage.getBoundingClientRect();
-    const travel = casesStage.offsetHeight - vh;
-    const p = clamp(-rect.top / Math.max(1, travel));
-    const q = p * (casePanels.length - 1);
-    const active = Math.min(casePanels.length - 1, Math.max(0, Math.round(q)));
+    if (!casesStage || !caseViewport || !casePanels.length || reducedMotion) return;
+    if (mobileQuery.matches) {
+      caseViewport.style.transform = '';
+      casePanels.forEach(panel => {
+        panel.removeAttribute('data-visual-state');
+        panel.removeAttribute('aria-hidden');
+      });
+      return;
+    }
 
+    const p = scrollProgress(casesStage);
+    const maxTranslate = Math.max(0, caseViewport.scrollWidth - vw);
+    const x = maxTranslate * p;
+    caseViewport.style.transform = `translate3d(${-x}px,0,0)`;
+
+    const q = p * (casePanels.length - 1);
+    const active = Math.round(q);
     casePanels.forEach((panel, i) => {
-      const d = i - q;
-      const x = d * 86;
-      const ad = Math.abs(d);
-      const opacity = ad < .78 ? lerp(1, .22, ad / .78) : .035;
-      const scale = lerp(1, .965, Math.min(1, ad));
-      const blur = lerp(0, 4.5, Math.min(1, ad));
-      panel.style.transform = `translate(calc(-50% + ${x}vw), -50%) scale(${scale})`;
-      panel.style.opacity = String(opacity);
-      panel.style.filter = `blur(${blur}px)`;
-      panel.style.pointerEvents = ad < .46 ? 'auto' : 'none';
-      panel.setAttribute('aria-hidden', ad < .75 ? 'false' : 'true');
+      const distance = Math.abs(i - q);
+      const state = distance < .55 ? 'active' : distance < 1.45 ? 'near' : 'far';
+      panel.dataset.visualState = state;
+      panel.setAttribute('aria-hidden', state === 'far' ? 'true' : 'false');
     });
     progressBars.forEach((bar, i) => bar.classList.toggle('active', i === active));
+  }
+
+  function updateMethod() {
+    if (!method || !methodSteps.length || reducedMotion) return;
+    if (mobileQuery.matches) {
+      methodSteps.forEach(step => step.classList.remove('story-active'));
+      return;
+    }
+
+    const p = scrollProgress(method);
+    const q = p * (methodSteps.length - 1);
+    const active = Math.round(q);
+    methodSteps.forEach((step, i) => {
+      const distance = Math.abs(i - q);
+      const strength = clamp(1 - distance * .78);
+      step.style.opacity = String(lerp(.24, 1, strength));
+      step.style.transform = `translateY(${lerp(14, 0, strength)}px)`;
+      step.classList.toggle('story-active', i === active);
+    });
+  }
+
+  function updateResult() {
+    if (!result || !practiceUI || reducedMotion) return;
+    if (mobileQuery.matches) {
+      practiceUI.style.transform = '';
+      practiceUI.style.opacity = '';
+      resultPoints.forEach(point => { point.style.opacity = ''; point.style.transform = ''; });
+      return;
+    }
+
+    const p = scrollProgress(result);
+    const uiT = ease(range(p, .04, .54));
+    practiceUI.style.opacity = String(lerp(.42, 1, uiT));
+    practiceUI.style.transform = `translate3d(${lerp(48, 0, uiT)}px, ${lerp(18, 0, uiT)}px, 0) scale(${lerp(.97, 1, uiT)})`;
+
+    resultPoints.forEach((point, i) => {
+      const t = ease(range(p, .18 + i * .11, .39 + i * .11));
+      point.style.opacity = String(lerp(.28, 1, t));
+      point.style.transform = `translateX(${lerp(18, 0, t)}px)`;
+    });
   }
 
   function updateHeaderTone() {
@@ -151,8 +238,11 @@
   function updateAll() {
     ticking = false;
     updateHero();
+    updateThesis();
     updateAI();
     updateCases();
+    updateMethod();
+    updateResult();
     updateHeaderTone();
   }
 
@@ -168,10 +258,10 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('in-view');
       });
-    }, { threshold: .18, rootMargin: '0px 0px -8% 0px' });
-    document.querySelectorAll('.reveal, .method-step').forEach(el => revealObserver.observe(el));
+    }, { threshold: .16, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   } else {
-    document.querySelectorAll('.reveal, .method-step').forEach(el => el.classList.add('in-view'));
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
   }
 
   window.addEventListener('scroll', requestTick, { passive: true });
@@ -181,5 +271,6 @@
     requestTick();
   }, { passive: true });
   mobileQuery.addEventListener?.('change', requestTick);
+
   updateAll();
 })();
