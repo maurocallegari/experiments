@@ -162,16 +162,10 @@
     aiCheck.style.opacity = String(.18 + .82 * outT);
   }
 
+  /* Desktop and mobile use the same core interaction:
+     vertical page scroll scrubs one pinned horizontal case track. */
   function updateCases() {
     if (!casesStage || !caseViewport || !casePanels.length || reducedMotion) return;
-    if (mobileQuery.matches) {
-      caseViewport.style.transform = '';
-      casePanels.forEach(panel => {
-        panel.removeAttribute('data-visual-state');
-        panel.removeAttribute('aria-hidden');
-      });
-      return;
-    }
 
     const p = scrollProgress(casesStage);
     const maxTranslate = Math.max(0, caseViewport.scrollWidth - vw);
@@ -179,13 +173,17 @@
     caseViewport.style.transform = `translate3d(${-x}px,0,0)`;
 
     const q = p * (casePanels.length - 1);
-    const active = Math.round(q);
+    const active = Math.min(casePanels.length - 1, Math.max(0, Math.round(q)));
+
     casePanels.forEach((panel, i) => {
       const distance = Math.abs(i - q);
-      const state = distance < .55 ? 'active' : distance < 1.45 ? 'near' : 'far';
+      const activeLimit = mobileQuery.matches ? .62 : .55;
+      const nearLimit = mobileQuery.matches ? 1.3 : 1.45;
+      const state = distance < activeLimit ? 'active' : distance < nearLimit ? 'near' : 'far';
       panel.dataset.visualState = state;
       panel.setAttribute('aria-hidden', state === 'far' ? 'true' : 'false');
     });
+
     progressBars.forEach((bar, i) => bar.classList.toggle('active', i === active));
   }
 
