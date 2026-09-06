@@ -1,0 +1,230 @@
+/* V10 — hero as a crowded work desk collapsing toward one center. */
+.hero-workbench {
+  inset: 0 !important;
+  overflow: hidden;
+}
+
+.hero-workbench .artifact {
+  top: 62% !important;
+}
+
+/* The opening must feel crowded and operational, not like a tidy diagram. */
+.hero-workbench::before,
+.hero-workbench::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  border: 1px solid #dddddd;
+  background: #ffffff;
+  box-shadow: 0 18px 48px rgba(0,0,0,.05);
+}
+
+.hero-workbench::before {
+  width: 180px;
+  height: 110px;
+  left: -46px;
+  top: 48%;
+  transform: rotate(7deg);
+}
+
+.hero-workbench::after {
+  width: 150px;
+  height: 190px;
+  right: -35px;
+  top: 55%;
+  transform: rotate(-6deg);
+}
+
+/* Remove the old 'everything becomes a neat line' visual language. */
+.hero-rail,
+.hero-flow-label {
+  display: none !important;
+}
+
+.chaos-extra {
+  position: absolute;
+  left: 50%;
+  top: 62%;
+  background: #fff;
+  border: 1px solid #dddddd;
+  box-shadow: 0 18px 48px rgba(0,0,0,.08);
+  color: #000;
+  font-family: var(--sans);
+  will-change: transform, opacity, filter;
+}
+
+.chaos-extra small,
+.chaos-extra b,
+.chaos-extra strong,
+.chaos-extra span {
+  display: block;
+}
+
+.chaos-extra small {
+  margin-bottom: 8px;
+  color: #919191;
+  font-size: .62rem;
+  font-weight: 500;
+}
+
+.chaos-extra strong,
+.chaos-extra b {
+  font-size: .76rem;
+  font-weight: 600;
+}
+
+.chaos-extra span {
+  color: #222;
+  font-size: .67rem;
+  line-height: 1.42;
+}
+
+.chaos-postit {
+  width: 150px;
+  min-height: 130px;
+  padding: 18px;
+  background: #f8f8f8;
+}
+
+.chaos-postit span {
+  font-size: .9rem;
+  line-height: 1.2;
+}
+
+.chaos-postit b {
+  margin-top: 18px;
+  color: #919191;
+  font-size: .64rem;
+}
+
+.chaos-call {
+  width: 178px;
+  padding: 17px 18px;
+  border-radius: 17px;
+}
+
+.chaos-call::before {
+  content: "☎";
+  width: 32px;
+  height: 32px;
+  margin-bottom: 12px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  font-size: .8rem;
+}
+
+.chaos-call span { margin-top: 5px; color: #919191; }
+
+.chaos-photo {
+  width: 166px;
+  padding: 12px;
+}
+
+.chaos-photo-frame {
+  height: 104px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #dddddd;
+  background: #f8f8f8;
+  color: #919191;
+  font-size: .64rem;
+}
+
+.chaos-attachment {
+  width: 195px;
+  padding: 15px;
+}
+
+.chaos-attachment span {
+  padding: 7px 0;
+  border-top: 1px solid #f2f2f2;
+}
+
+.chaos-calendar {
+  width: 148px;
+  min-height: 142px;
+  padding: 17px;
+  text-align: center;
+}
+
+.chaos-calendar strong {
+  margin: 18px 0 8px;
+  font-size: 1.25rem;
+  letter-spacing: -.04em;
+}
+
+.chaos-note {
+  width: 158px;
+  min-height: 126px;
+  padding: 18px;
+  background: #f8f8f8;
+}
+
+.chaos-note span {
+  margin-top: 18px;
+  font-size: .88rem;
+  line-height: 1.25;
+}
+
+/* Keep the original objects visually busy and slightly more tactile. */
+.hero-workbench .paper-object,
+.hero-workbench .artifact-chat,
+.hero-workbench .artifact-phone,
+.hero-workbench .chaos-extra {
+  box-shadow: 0 20px 55px rgba(0,0,0,.075);
+}
+
+.hero-workbench .artifact-note {
+  background: #f8f8f8 !important;
+  border: 1px solid #dddddd;
+}
+
+@media (max-width: 900px) {
+  .hero-workbench .artifact,
+  .chaos-extra {
+    top: 64% !important;
+  }
+
+  .chaos-postit { width: 128px; min-height: 112px; padding: 14px; }
+  .chaos-call { width: 150px; padding: 14px; }
+  .chaos-photo { width: 142px; }
+  .chaos-photo-frame { height: 86px; }
+  .chaos-attachment { width: 160px; padding: 12px; }
+  .chaos-calendar { width: 126px; min-height: 122px; padding: 14px; }
+  .chaos-note { width: 132px; min-height: 110px; padding: 14px; }
+
+  .hero-workbench::before {
+    width: 135px;
+    height: 92px;
+    left: -55px;
+    top: 49%;
+  }
+
+  .hero-workbench::after {
+    width: 116px;
+    height: 160px;
+    right: -44px;
+    top: 58%;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-copy { z-index: 30; }
+  .hero-workbench { z-index: 8; }
+  .hero-workbench .artifact,
+  .chaos-extra { top: 66% !important; }
+
+  .chaos-postit { width: 112px; }
+  .chaos-call { width: 132px; }
+  .chaos-photo { width: 124px; }
+  .chaos-attachment { width: 146px; }
+  .chaos-calendar { width: 112px; }
+  .chaos-note { width: 118px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chaos-extra { display: none; }
+}
