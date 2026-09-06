@@ -1,0 +1,168 @@
+/* V9 — mobile horizontal scroll story.
+   Same interaction model as the requested Kortix-like chapter:
+   native vertical scroll, one pinned viewport, horizontal scrub through four cases. */
+
+@media (max-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .cases-intro {
+    min-height: auto;
+    padding: 88px 23px 34px;
+  }
+
+  /* Vertical distance available to scrub the complete horizontal track. */
+  .cases-stage,
+  .js .cases-stage {
+    position: relative !important;
+    height: 430svh !important;
+    overflow: visible !important;
+  }
+
+  /* One viewport remains pinned for the whole chapter. */
+  .cases-pin,
+  .js .cases-pin {
+    position: sticky !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: 100svh !important;
+    min-height: 560px !important;
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    background: #fff !important;
+  }
+
+  /* Real horizontal track. Padding centres first and last slides in viewport. */
+  .case-viewport {
+    --mobile-case-width: 86vw;
+    --mobile-case-edge: calc((100vw - var(--mobile-case-width)) / 2);
+    position: relative !important;
+    width: max-content !important;
+    height: 82svh !important;
+    min-height: 500px;
+    display: flex !important;
+    align-items: stretch !important;
+    gap: 18px !important;
+    padding: 0 var(--mobile-case-edge) !important;
+    overflow: visible !important;
+    will-change: transform;
+  }
+
+  .case-panel,
+  .js .case-panel {
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important;
+    left: auto !important;
+    flex: 0 0 var(--mobile-case-width) !important;
+    width: var(--mobile-case-width) !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 54px 0 28px !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto minmax(0, 1fr) !important;
+    align-content: stretch !important;
+    align-items: stretch !important;
+    gap: 18px !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    background: #fff !important;
+    transition: none !important;
+    will-change: opacity, filter, transform;
+  }
+
+  .case-copy {
+    width: 100%;
+    max-width: none;
+    padding: 0 2px !important;
+  }
+
+  .case-copy h3 {
+    max-width: none !important;
+    font-size: clamp(2.15rem, 9.5vw, 3.05rem) !important;
+    line-height: 1.01 !important;
+    letter-spacing: -.043em !important;
+  }
+
+  .case-copy p {
+    max-width: none !important;
+    margin-top: 12px !important;
+    font-size: .96rem !important;
+    line-height: 1.52 !important;
+  }
+
+  .case-visual {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    align-self: stretch !important;
+    overflow: hidden !important;
+    border-top: 1px solid #ddd !important;
+    border-bottom: 1px solid #ddd !important;
+    background: #f8f8f8 !important;
+  }
+
+  /* Active scene is crisp; neighbours are readable only as spatial context. */
+  .js .case-panel[data-visual-state="active"] {
+    opacity: 1 !important;
+    filter: blur(0) !important;
+    transform: scale(1) !important;
+  }
+
+  .js .case-panel[data-visual-state="near"] {
+    opacity: .42 !important;
+    filter: blur(1.4px) !important;
+    transform: scale(.985) !important;
+  }
+
+  .js .case-panel[data-visual-state="far"] {
+    opacity: .08 !important;
+    filter: blur(4px) !important;
+    transform: scale(.97) !important;
+  }
+
+  /* Existing progress element travels with the track, so hide it on mobile.
+     The visible neighbouring slide already communicates horizontal direction. */
+  .case-progress {
+    display: none !important;
+  }
+
+  /* Compact visual tuning for the narrower slide width. */
+  .quote-doc { padding: 15px !important; }
+  .quote-doc h4 { font-size: .9rem !important; }
+  .quote-doc .value { font-size: .95rem !important; }
+  .field-paper { padding: 14px !important; }
+  .field-phone { width: 92px !important; height: 202px !important; }
+  .office-window { width: 30% !important; }
+  .dup-token { padding: 8px 9px !important; font-size: .55rem !important; }
+  .route-wrap { inset: 8% 2% !important; }
+  .route-row { gap: 3px !important; }
+  .route-node { min-width: 0 !important; padding: 9px 4px !important; font-size: .48rem !important; }
+
+  /* Following chapter covers the pinned story cleanly once the scrub completes. */
+  .method {
+    position: relative;
+    z-index: 20;
+  }
+}
+
+@media (max-width: 430px) and (prefers-reduced-motion: no-preference) {
+  .case-viewport {
+    --mobile-case-width: 88vw;
+    height: 84svh !important;
+  }
+
+  .case-panel,
+  .js .case-panel {
+    padding-top: 50px !important;
+  }
+
+  .case-copy h3 {
+    font-size: clamp(2rem, 9.2vw, 2.72rem) !important;
+  }
+
+  .case-copy p {
+    font-size: .92rem !important;
+  }
+}
