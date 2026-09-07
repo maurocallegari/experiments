@@ -19,44 +19,22 @@
     padding-top:88px!important;
     padding-bottom:28px!important;
   }
-  .ref-scene .display{
-    order:1!important;
-    text-align:center!important;
-    margin-left:auto!important;
-    margin-right:auto!important;
-  }
-  .ref-scene .sub{
-    order:2!important;
-    text-align:center!important;
-    margin-left:auto!important;
-    margin-right:auto!important;
-  }
-  #ai .ai-stage,
-  #metodo .mx,
-  #risultato .rcaps,
-  #risultato .dash,
-  #supporto .eg-win,
-  #supporto .sup-points{position:relative!important;z-index:2!important}
+  .ref-scene .display{order:1!important;text-align:center!important;margin-left:auto!important;margin-right:auto!important}
+  .ref-scene .sub{order:2!important;text-align:center!important;margin-left:auto!important;margin-right:auto!important}
 
-  #ai .ai-stage{order:3!important;margin-top:22px!important;width:100%!important}
-  #metodo .mx{order:3!important;margin-top:22px!important;width:100%!important}
-  #risultato .rcaps{order:3!important;margin-top:16px!important}
-  #risultato .dash{order:4!important;margin-top:20px!important;width:100%!important}
-  #supporto .eg-win{order:3!important;margin-top:22px!important;width:100%!important}
-  #supporto .sup-points{order:4!important;width:100%!important}
+  #ai .ai-stage{order:3!important;margin-top:22px!important;width:100%!important;position:relative!important;z-index:2!important}
+  #metodo .mx{order:3!important;margin-top:22px!important;width:100%!important;position:relative!important;z-index:2!important}
+  #risultato .rcaps{order:3!important;margin-top:16px!important;position:relative!important;z-index:2!important}
+  #risultato .dash{order:4!important;margin-top:20px!important;width:100%!important;position:relative!important;z-index:2!important}
+  #supporto .eg-win{order:3!important;margin-top:22px!important;width:100%!important;position:relative!important;z-index:2!important}
+  #supporto .sup-points{order:4!important;width:100%!important;position:relative!important;z-index:2!important}
 
-  /* No reference graphic may enter the text band. */
-  #ai .ai-stage,
-  #metodo .mx,
-  #risultato .dash,
-  #supporto .eg-win{transform-origin:50% 0!important}
-
-  /* Original reference mobile behavior: AI cards stop being absolutely scattered. */
+  /* Exact stealth-new mobile behavior for the AI stage. */
   #ai .ai-noise{position:relative!important;display:flex!important;flex-wrap:wrap!important;gap:.8rem!important;justify-content:center!important;height:auto!important}
-  #ai .nz{position:static!important;inset:auto!important;width:auto!important;max-width:46%!important;opacity:1!important;transform:rotate(var(--r,0deg))!important}
+  #ai .nz{position:static!important;inset:auto!important;width:auto!important;height:auto!important;opacity:1!important;transform:rotate(var(--r,0deg))!important}
   #ai .ai-core-wrap{position:static!important;transform:none!important;margin:.4rem auto!important}
-  #ai .ai-core{opacity:1!important;transform:none!important}
-  #ai .ai-out{position:static!important;transform:none!important;width:min(300px,100%)!important;margin:0 auto!important;opacity:1!important}
+  #ai .ai-core{transform:none!important;opacity:1!important}
+  #ai .ai-out{position:static!important;width:min(300px,100%)!important;margin:0 auto!important}
   #ai .doc.out,#ai .doc.out2{opacity:1!important;transform:none!important}
 
   #metodo .mx-track{max-width:100%!important}
