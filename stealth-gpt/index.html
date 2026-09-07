@@ -9,15 +9,29 @@
 <title>Stealth — il tuo lavoro dovrebbe essere più semplice</title>
 <meta name="description" content="Stealth parte da come lavori davvero e costruisce software, automazioni e AI per togliere lavoro inutile.">
 <link rel="preload" href="../stealth-new/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=20260907-2256">
+<link rel="stylesheet" href="style.css?v=20260907-2309">
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.5a3.5 3.5 0 0 1 0 6.5M15.5 14.5a5.5 5.5 0 0 1 5 5.5"/></symbol>
+<symbol id="i-activity" viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 4 12L16 12h5"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.3L19.5 10l-5.6 1.7L12 17l-1.9-5.3L4.5 10l5.6-1.7z"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a7.5 7.5 0 0 1-7.5 7.5c-1.3 0-2.6-.3-3.7-.9L4 20l1.9-5.8A7.5 7.5 0 1 1 21 11.5z"/></symbol>
+<symbol id="i-cycle" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 3v4h-4"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.8 2.8L16 9.5"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 18a4 4 0 0 0 .5-8 6 6 0 0 0-11.6 1.6A3.7 3.7 0 0 0 7 18z"/></symbol>
+<symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 3 20 7.5v9L12 21 4 16.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></symbol>
+<symbol id="i-nodes" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="8" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.2 6.8 15.6 8M7 8.3l3.9 7.5M16.8 10.2 13 16"/></symbol>
+</defs></svg>
 <div class="loader" aria-hidden="true"><b>STEALTH<span>•</span></b><i><em></em></i><small>0%</small></div>
 <div class="progress" aria-hidden="true"><i></i></div>
 <header class="head">
   <a class="brand" href="#hero">STEALTH<span>•</span><small>digital innovation</small></a>
-  <nav><a href="#attriti">Il problema</a><a href="#ai">L'AI</a><a href="#stealth">Come lavoriamo</a><a href="#costruiamo">Cosa costruiamo</a></nav>
+  <nav><a href="#attriti">Il problema</a><a href="#ai">L'AI</a><a href="#metodo">Come lavoriamo</a><a href="#risultato">Cosa costruiamo</a></nav>
   <a class="head-cta" href="#contatto">Parliamone</a>
 </header>
 <main>
@@ -90,53 +104,78 @@
  </div>
 </section>
 
-<section class="chapter ai-chapter" id="ai" data-chapter="ai">
- <div class="pin ai-pin">
-  <div class="ai-copy"><span>AI, quando serve davvero</span><h2>E alcune cose oggi può leggerle <em>anche l'AI.</em></h2><p>Una mail, un PDF, una foto, una richiesta scritta male: può estrarre le informazioni utili, collegarle e preparare il passo successivo. Tu controlli quello che conta davvero.</p></div>
-  <div class="ai-stage2" aria-hidden="true">
-   <div class="ai-chaos">
-    <div class="ai-noise-card ain1"><b>EMAIL · 09:42</b><span>richiesta preventivo + 2 allegati</span></div>
-    <div class="ai-noise-card ain2"><b>PDF</b><span>scheda_tecnica.pdf · 12 pagine</span></div>
-    <div class="ai-noise-card ain3"><b>WHATSAPP</b><p>“Il rapporto 347 è già stato inserito?”</p></div>
-    <div class="ai-noise-card ain4"><b>POST-IT</b><span>ricontrollare prezzi</span></div>
-    <div class="ai-noise-card ain5"><b>TELEFONO · 00:38</b><span>Marco · tecnico</span></div>
-    <div class="ai-noise-card ain6"><b>preventivo_v3_FINALE(2).docx</b><span>quella giusta?</span></div>
+<section class="scene ref-scene ai" id="ai" data-beats="4">
+ <div class="scene-view center ai-view">
+  <h2 class="display">E alcune cose oggi<br>può leggerle <em>anche l'AI.</em></h2>
+  <p class="sub">Una mail, un PDF, una foto, una richiesta scritta male: può estrarre le informazioni utili e proporti il passo successivo.<br>Tu controlli quello che conta davvero.</p>
+  <div class="ai-stage" id="aiStage">
+   <div class="ai-noise">
+    <div class="doc mail nz" style="--x:4%;--y:6%;--r:-6deg;--d:0"><p class="mail-subj">Richiesta preventivo</p><p class="mail-prev">marta@cliente.it · 09:42</p></div>
+    <div class="doc foglio nz" style="--x:0%;--y:58%;--r:5deg;--d:1"><i></i><i></i><i class="h"></i></div>
+    <div class="doc wa nz" style="--x:28%;--y:-2%;--r:3deg;--d:2"><p>"Il rapporto 347 è già stato inserito?"</p><span class="wa-d">✓✓</span></div>
+    <div class="doc tel nz" style="--x:24%;--y:66%;--r:-4deg;--d:3"><span class="tel-l">TELEFONO</span><b>Marco · tecnico</b><span class="mut">00:38 · richiamare entro le 16</span></div>
+    <div class="doc scad nz" style="--x:54%;--y:0%;--r:6deg;--d:4"><small>DA FARE</small><b>ricopiare dati<br>nel gestionale</b></div>
+    <div class="doc prev nz" style="--x:50%;--y:60%;--r:-3deg;--d:5"><div class="doc-trow"><b>Preventivo</b><span class="rev">firma ✓</span></div><div class="kv"><span>Cliente</span><b>Rossi Srl</b></div><div class="ptotal"><span>Totale</span><b>€ 5.600</b></div></div>
+    <div class="doc foto nz" style="--x:80%;--y:26%;--r:4deg;--d:6"><svg viewBox="0 0 80 54"><rect width="80" height="54" rx="6" fill="#EDF4F6"/><circle cx="22" cy="17" r="6" fill="#D3E4E7"/><path d="M8 46 30 26l14 14 14-12 14 18" fill="none" stroke="#AFC9CE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="doc word nz" style="--x:74%;--y:-4%;--r:-8deg;--d:7"><b>preventivo_v3_FINALE(2).docx</b><span class="mut">quella giusta? bo</span></div>
+    <div class="doc wa nz" style="--x:88%;--y:52%;--r:5deg;--d:8"><p>Mandami tutto su whatsapp così lo stampo</p><span class="wa-d">✓✓</span></div>
+    <div class="doc q nz" style="--x:36%;--y:40%;--r:2deg;--d:9">"questo preventivo l'avevamo già fatto?"</div>
+    <div class="doc foglio nz" style="--x:66%;--y:70%;--r:-9deg;--d:10"><span class="perso">perso nel bagagliaio</span><i></i><i></i><i class="h"></i></div>
+    <div class="doc tel nz" style="--x:12%;--y:32%;--r:7deg;--d:11"><span class="tel-l">NOTA VOCALE</span><b>02:10</b><span class="mut">"aspetta che ti spiego a voce…"</span></div>
+    <div class="doc tel nz" style="--x:44%;--y:70%;--r:-6deg;--d:12"><span class="tel-l">MAIL · 23:14</span><b>scusi l'ora…</b><span class="mut">3 allegati, nessun oggetto</span></div>
+    <div class="doc wa nz" style="--x:60%;--y:34%;--r:-5deg;--d:13"><p>foto(1).jpg — è quella definitiva?</p><span class="wa-d">✓✓</span></div>
+    <div class="doc word nz" style="--x:8%;--y:66%;--r:6deg;--d:14"><b>clienti.xlsx</b><span class="mut">l'ennesimo file clienti</span></div>
+    <div class="doc foglio nz" style="--x:86%;--y:8%;--r:8deg;--d:15"><span class="perso">scontrino?</span><i></i><i class="h"></i></div>
+    <div class="doc q nz" style="--x:22%;--y:8%;--r:-7deg;--d:16">"da rifare?"</div>
+    <div class="doc tel nz" style="--x:70%;--y:52%;--r:3deg;--d:17"><span class="tel-l">POST-IT</span><b class="hand">ricontrollare i prezzi!</b></div>
    </div>
-   <div class="ai-orbit-core"><span>AI</span><small>legge · estrae · propone</small></div>
-   <div class="ai-result">
-    <div class="ai-result-card"><small>PRATICA PREPARATA</small><span class="ai-ready">Pronta ✓</span><dl><dt>Cliente</dt><dd>Rossi Srl</dd><dt>Tipo</dt><dd>Intervento</dd><dt>Allegati</dt><dd>2 ricevuti</dd><dt>Scadenza</dt><dd>12/09</dd></dl><div class="ai-checks"><span>cliente ✓</span><span>allegati ✓</span><span class="warn">1 campo da te</span></div><div class="ai-actions"><span class="go">Approva</span><span>Modifica</span></div></div>
-    <div class="ai-outputs"><span>PDF pronto</span><span>Attività assegnata</span></div>
+   <div class="ai-core-wrap"><div class="ai-core"><span>AI</span></div></div>
+   <div class="ai-out" id="aiOut">
+    <div class="doc out"><b class="doc-title">PRATICA PREPARATA</b><div class="kv"><span>Cliente</span><b>Rossi Srl</b></div><div class="kv"><span>Tipo</span><b>Intervento</b></div><div class="kv"><span>Allegati</span><b>2 ricevuti</b></div><div class="kv spot"><span>Da controllare</span><b>1 campo</b></div><div class="out-chips"><span class="out-chip ok">cliente ✓</span><span class="out-chip ok">allegati ✓</span><span class="out-chip warn">1 campo da te</span></div><div class="o-acts"><span class="o-act go" id="oApprove">Approva</span><span class="o-act">Modifica</span></div><span class="out-badge">Pronta ✓</span></div>
+    <div class="doc out2"><span class="o2-l">OUTPUT</span><b>PDF pronto</b><i></i></div>
+    <div class="doc out2 o3"><span class="o2-l">TASK</span><b>assegnata a Marco</b><i></i></div>
    </div>
   </div>
  </div>
 </section>
 
-<section class="chapter pivot" id="stealth" data-chapter="pivot">
- <div class="pin pivot-pin">
-  <div class="pivot-copy"><h2>Prima ci sediamo accanto a te.</h2><p>Guardiamo come lavori davvero, capiamo cosa ti rallenta e scegliamo assieme <strong>cosa deve diventare più semplice.</strong> Non arriviamo con una soluzione già decisa.</p></div>
-  <div class="selection" aria-hidden="true"><span class="sel s-mail">mail</span><span class="sel s-word">Word</span><span class="sel s-paper">carta</span><span class="sel s-photo">foto</span><span class="sel s-excel">Excel</span><span class="sel s-sign">firma</span><div class="sel-core"><small>quello che serve</small><b>resta</b></div></div>
+<section class="scene ref-scene metodo" id="metodo" data-beats="3">
+ <div class="scene-view met-view">
+  <h2 class="display">Prima ci sediamo <em>accanto a te.</em></h2>
+  <p class="sub">Guardiamo come lavori davvero, capiamo cosa ti rallenta e scegliamo assieme cosa deve diventare più semplice. Non arriviamo con una soluzione già decisa.</p>
+  <div class="mx" id="mx"><div class="mx-track" id="mxTrack">
+   <div class="mx-inner"><div class="mx-top"><span class="mx-label">Osserviamo</span><span class="mx-num">01</span></div><h3 class="mx-title">La mappa del lavoro vero.</h3><p class="mx-desc">Seguiamo il processo reale: chi fa cosa, dove entra il dato, dove si ferma.</p><div class="mx-file"><b>processo-reale</b><span>MAPPA</span></div><table class="mx-table"><tr><th>Passaggio</th><th>Dove finisce</th><th>Attrito</th></tr><tr><td>Preventivo</td><td>Word, chissà quale</td><td class="down">alto</td></tr><tr><td>Intervento</td><td>carta + foto sparse</td><td class="down">alto</td></tr><tr><td>Dato cliente</td><td>copiato 2 volte</td><td class="mid">medio</td></tr></table><p class="mx-foot">12 passaggi mappati · 5 da togliere</p></div>
+   <div class="mx-inner"><div class="mx-top"><span class="mx-label">Semplifichiamo</span><span class="mx-num">02</span></div><h3 class="mx-title">Meno passaggi, meno copie.</h3><p class="mx-desc">Togliamo passaggi, copie e controlli che non aggiungono valore.</p><div class="mx-file"><b>meno-attrito</b><span>PIANO</span></div><table class="mx-table"><tr><th>Cosa</th><th>Prima</th><th>Dopo</th></tr><tr><td>Modello preventivo</td><td>7 file</td><td class="up">1 solo ✓</td></tr><tr><td>Copie a mano</td><td>ogni giorno</td><td class="up">zero ✓</td></tr><tr><td>Firme</td><td>5 giri</td><td class="up">dal telefono ✓</td></tr></table><p class="mx-foot">5 passaggi tolti · 0 dati ricopiati</p></div>
+   <div class="mx-inner"><div class="mx-top"><span class="mx-label">Costruiamo con te</span><span class="mx-num">03</span></div><h3 class="mx-title">Lo strumento attorno al lavoro.</h3><p class="mx-desc">Nasce attorno al lavoro vero e può evolvere quando cambia.</p><div class="mx-file"><b>il-tuo-sistema</b><span>VIVO</span></div><table class="mx-table"><tr><th>Lavoro</th><th>Come</th><th>Chi</th></tr><tr><td>Preventivo PDF</td><td>in 40 secondi</td><td class="up">da solo</td></tr><tr><td>Attività</td><td>nascono da sole</td><td class="up">da sole</td></tr><tr><td>Controllo</td><td>1 campo</td><td class="me">tu</td></tr></table><p class="mx-foot">Si evolve quando cambi, senza ripartire da zero</p></div>
+  </div><span class="mx-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
  </div>
 </section>
 
-<section class="chapter build" id="costruiamo" data-chapter="build">
- <div class="pin build-pin">
-  <div class="build-copy"><h2>Poi lo costruiamo.</h2><p>A volte significa <strong>creare</strong> qualcosa di nuovo. A volte <strong>collegare</strong> meglio quello che hai già. A volte <strong>automatizzare</strong> una parte che oggi fai a mano.</p><p class="closing">La soluzione cambia. L'obiettivo no: <strong>farti lavorare in modo più semplice.</strong></p></div>
-  <div class="build-art" aria-hidden="true">
-   <div class="input in-mail"><b>EMAIL</b><small>richiesta cliente</small></div><div class="input in-photo"><b>FOTO</b><small>intervento</small></div><div class="input in-sign"><b>FIRMA</b><small>cliente</small></div>
-   <div class="product"><div class="product-top"><span>STEALTH / PRATICHE</span><i></i><i></i></div><div class="product-side"><b>Pratiche</b><span>Clienti</span><span>Interventi</span><span>Documenti</span></div><div class="product-main"><div class="product-title"><small>PRATICA #347</small><b>Intervento Rossi Srl</b><span>In lavorazione</span></div><div class="product-grid"><div><small>Cliente</small><b>Rossi Srl</b></div><div><small>Scadenza</small><b>12 settembre</b></div><div><small>Tecnico</small><b>Marco T.</b></div><div><small>Stato</small><b>Da verificare</b></div></div><div class="files"><b>Allegati</b><span>ordine_firmato.pdf</span><span>foto_intervento.jpg</span></div></div></div>
-   <div class="output"><small>PDF</small><b>Rapporto intervento</b><i></i><i></i><span>generato dai dati già presenti</span></div>
+<section class="scene ref-scene risultato" id="risultato" data-beats="3">
+ <div class="scene-view center">
+  <h2 class="display">Poi lo <em>costruiamo.</em></h2>
+  <p class="sub">A volte significa creare qualcosa di nuovo. A volte collegare meglio quello che hai già. A volte automatizzare una parte che oggi fai a mano.</p>
+  <div class="rcaps"><p class="rcap">Un solo posto per preventivi, interventi e clienti: niente ricerche tra file, email e chat.</p><p class="rcap">Le richieste diventano attività da sole, con scadenza e responsabile.</p><p class="rcap">L'AI prepara il lavoro: tu controlli un campo, non ricopi cento.</p></div>
+  <div class="dash" id="dash">
+   <aside class="dash-side"><div class="side-brand">STEALTH<span>•</span></div><nav class="snav-list" aria-label="Moduli"><div class="snav snav-file on"><svg class="ic"><use href="#i-file"/></svg><span>Preventivi</span></div><div class="snav"><svg class="ic"><use href="#i-users"/></svg><span>Clienti</span></div><div class="snav snav-act"><svg class="ic"><use href="#i-activity"/></svg><span>Attività</span></div><div class="snav"><svg class="ic"><use href="#i-cal"/></svg><span>Agenda</span></div><div class="snav snav-ia"><svg class="ic"><use href="#i-spark"/></svg><span>IA</span></div></nav></aside>
+   <div class="dash-main"><div class="chips"><div class="chip"><span class="a-ic"><svg class="ic"><use href="#i-file"/></svg></span><div><b data-count="12">12</b><span>Preventivi in corso</span></div></div><div class="chip"><span class="a-ic"><svg class="ic"><use href="#i-activity"/></svg></span><div><b data-count="4">4</b><span>Interventi attivi</span></div></div><div class="chip"><span class="a-ic"><svg class="ic"><use href="#i-users"/></svg></span><div><b data-count="8">8</b><span>Clienti recenti</span></div></div><div class="chip"><span class="a-ic"><svg class="ic"><use href="#i-clock"/></svg></span><div><b data-count="3">3</b><span>Task da completare</span></div></div></div><div class="dash-cols"><div class="dash-card dc-act"><b class="dc-title">Attività recenti</b><div class="act"><span class="act-ic"><svg class="ic"><use href="#i-file"/></svg></span><p>Preventivo inviato – Rossi Srl</p><span class="mut">11:24</span></div><div class="act"><span class="act-ic c-slate"><svg class="ic"><use href="#i-chat"/></svg></span><p>Nuovo messaggio – Studio Verdi</p><span class="mut">10:41</span></div><div class="act"><span class="act-ic c-amber"><svg class="ic"><use href="#i-cycle"/></svg></span><p>Dati sincronizzati – ordine #4582</p><span class="mut">09:17</span></div><div class="act"><span class="act-ic c-green"><svg class="ic"><use href="#i-check"/></svg></span><p>Task completato – intervento</p><span class="mut">08:50</span></div><div class="act ai-row"><span class="act-ic"><svg class="ic"><use href="#i-spark"/></svg></span><p>Preventivo generato in automatico</p><span class="mut">ora</span></div></div><div class="dash-card dc-agenda"><b class="dc-title">Prossimi impegni</b><p class="dc-sub mut small">Oggi, 12 set</p><div class="ev"><span class="ev-ic"><svg class="ic"><use href="#i-cal"/></svg></span><b>10:00</b><p>Riunione cliente Rossi</p></div><div class="ev"><span class="ev-ic"><svg class="ic"><use href="#i-nodes"/></svg></span><b>14:30</b><p>Intervento in sede</p></div><div class="ev"><span class="ev-ic"><svg class="ic"><use href="#i-file"/></svg></span><b>16:00</b><p>Revisione preventivi</p></div></div></div></div>
   </div>
  </div>
 </section>
 
-<section class="evolve" data-chapter="evolve">
- <div class="evolve-copy"><h2>E lo facciamo evolvere con te.</h2><p>Perché tra un anno potresti lavorare diversamente. Quello che costruiamo deve adattarsi alla tua azienda, non diventare il prossimo problema da aggirare.</p></div>
- <div class="evolve-art" aria-hidden="true"><div class="ev-app"><div><b>Pratica #347</b><span>operativa</span></div><dl><dt>Cliente</dt><dd>Rossi Srl</dd><dt>Intervento</dt><dd>Completato</dd><dt class="new">Nuova esigenza</dt><dd class="new">Foto geolocalizzate</dd></dl></div><div class="need"><small>NUOVA ESIGENZA</small><b>Foto geolocalizzate</b><span>entra nel sistema, non crea un processo parallelo</span></div></div>
+<section class="scene ref-scene supporto" id="supporto" data-beats="4">
+ <div class="scene-view center sup-view">
+  <h2 class="display">E lo facciamo<br><em>evolvere</em> con te.</h2>
+  <p class="sub sup-sub">Perché tra un anno potresti lavorare diversamente. Quello che costruiamo deve adattarsi alla tua azienda, non diventare il prossimo problema da aggirare.</p>
+  <div class="eg-win"><div class="eg-side"><div class="eg-brand">STEALTH<span>•</span></div><div class="eg-nav"><div class="eg-nav-item on"><span class="eg-dot"></span>Preventivi</div><div class="eg-nav-item"><span class="eg-dot"></span>Interventi</div><div class="eg-nav-item"><span class="eg-dot"></span>Clienti</div><div class="eg-nav-item eg-nav-new"><span class="eg-dot"></span>AI Assist</div></div></div><div class="eg-main"><div class="eg-tiles"><div class="eg-tile eg-t1"><b>Preventivi</b><span>12 attivi</span></div><div class="eg-tile eg-t2"><b>Interventi</b><span>oggi: 5</span></div><div class="eg-tile eg-t3"><b>Clienti</b><span>156</span></div><div class="eg-tile eg-tile-new eg-t4"><b>AI</b><span>nuovo modulo</span></div></div><div class="eg-chip-row"><span class="eg-chip">PDF auto</span><span class="eg-chip">Firma digitale</span><span class="eg-chip eg-chip-new">Email → Attività</span></div></div></div>
+  <div class="sup-points"><div class="sup-p"><svg class="ic"><use href="#i-cloud"/></svg><div><b>Rapporto diretto</b><span>persone, non help desk</span></div></div><div class="sup-p"><svg class="ic"><use href="#i-cube"/></svg><div><b>Tecnologia concreta</b><span>scelta per il problema</span></div></div><div class="sup-p"><svg class="ic"><use href="#i-cycle"/></svg><div><b>Evoluzione continua</b><span>senza ripartire da zero</span></div></div></div>
+ </div>
 </section>
 
 <section class="cta" id="contatto"><div><h2>Raccontaci <em>come lavori.</em></h2><p>Hai un problema preciso oppure semplicemente una domanda: “Noi oggi facciamo così. Si può fare meglio?”</p><a href="mailto:info@stealthsoftware.it">Parliamone <span>↗</span></a></div></section>
 </main>
 <footer><b>STEALTH<span>•</span></b><p>Stealth S.r.l. · Villorba (TV) · info@stealthsoftware.it · 800 86 45 09</p></footer>
 <script src="../stealth-new/vendor/lenis.min.js"></script>
-<script src="script.js?v=20260907-2256"></script>
+<script src="script.js?v=20260907-2309"></script>
+<script src="reference-port.js?v=20260907-2309"></script>
 </body></html>
