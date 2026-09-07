@@ -29,7 +29,7 @@ const cases=$('.cases'), track=$('#caseTrack'), caseEls=$$('[data-case]'), caseF
 const ai=$('.ai-chapter'), aiNoise=$$('.ai-noise-card'), aiCore=$('.ai-orbit-core'), aiResult=$('.ai-result');
 const pivot=$('.pivot'), sels=$$('.sel'), selCore=$('.sel-core');
 const build=$('.build'), inputs=$$('.input'), product=$('.product'), output=$('.output');
-const evolve=$('.evolve'), newEls=$$('.ev-app .new'), need=$('.need');
+const evolve=$('.evolve'), evApp=$('.ev-app'), newEls=$$('.ev-app .new'), need=$('.need');
 
 const heroDesktop=[{x:-15,y:8,r:-4,s:.74},{x:14,y:-1,r:3,s:.72},{x:-5,y:-8,r:-2,s:.74},{x:13,y:2,r:5,s:.70},{x:-10,y:-6,r:-3,s:.68},{x:10,y:4,r:3,s:.74},{x:-4,y:11,r:-2,s:.72},{x:8,y:-8,r:2,s:.70},{x:-9,y:4,r:-4,s:.72}];
 const heroMobile=[{x:-8,y:-2,r:-3,s:.82},{x:8,y:-2,r:3,s:.80},{x:-6,y:2,r:-2,s:.82},{x:7,y:-1,r:4,s:.80},{x:-6,y:2,r:-2,s:.78},{x:6,y:-2,r:2,s:.82},{x:-5,y:2,r:-2,s:.80},{x:5,y:-2,r:2,s:.79},{x:-4,y:1,r:-3,s:.80}];
@@ -70,8 +70,7 @@ function heroMotion(){
   }
 }
 
-/* Pinned horizontal storytelling: panels do NOT travel as a carousel.
-   They share one stage and crossfade/morph as scroll moves between beats. */
+/* Pinned storytelling: the panels share one viewport and transition into each other. */
 function casesMotion(){
   if(!cases||!track||!caseEls.length)return;
   const p=prog(cases),m=isMobile(),n=caseEls.length;
@@ -151,19 +150,65 @@ function pivotMotion(){
 }
 
 function buildMotion(){
-  if(!build||reduced)return;
-  const p=prog(build),ingest=ease(range(p,.09,.55)),settle=ease(range(p,.39,.70)),out=ease(range(p,.63,.88)),m=isMobile();
-  const vec=m?[[17,5],[17,-1],[14,-7]]:[[31,11],[29,-8],[24,-24]];
-  inputs.forEach((el,i)=>{const[x,y]=vec[i];el.style.transform=`translate3d(${x*ingest}vw,${y*ingest}vh,0) scale(${mix(1,m?.72:.65,ingest)})`;el.style.opacity=String(1-ingest*.94);el.style.filter=`blur(${ingest*(m?1.2:2)}px)`});
-  if(product)product.style.transform=`translateY(-50%) scale(${mix(.96,1,settle)})`;
-  if(output){output.style.opacity=String(out);output.style.transform=`translate3d(0,${mix(m?18:28,0,out)}px,0) rotate(${mix(m?2.5:4,0,out)}deg)`}
+  if(!build)return;
+  const p=prog(build),m=isMobile();
+  if(reduced){
+    inputs.forEach(el=>{el.style.opacity='0'});
+    if(product){product.style.opacity='1';product.style.filter='none';product.style.transform='translateY(-50%) scale(1)'}
+    if(output){output.style.opacity='1';output.style.transform='none'}
+    return;
+  }
+  const ingest=ease(range(p,.08,.48));
+  const settle=ease(range(p,.24,.62));
+  const out=ease(range(p,.58,.84));
+  const vec=m?[[20,14],[20,0],[17,-13]]:[[34,18],[32,-5],[27,-27]];
+  const rots=[-5,4,-2];
+  inputs.forEach((el,i)=>{
+    const[x,y]=vec[i];
+    el.style.transform=`translate3d(${x*ingest}vw,${y*ingest}vh,0) rotate(${mix(rots[i],0,ingest)}deg) scale(${mix(1,m?.70:.64,ingest)})`;
+    el.style.opacity=String(1-ingest*.97);
+    el.style.filter=`blur(${ingest*(m?1.8:3)}px)`;
+  });
+  if(product){
+    product.style.opacity=String(mix(.86,1,settle));
+    product.style.filter=`blur(${mix(m?1.4:2.5,0,settle)}px)`;
+    product.style.transform=`translateY(-50%) translateX(${mix(m?18:28,0,settle)}px) scale(${mix(.94,1,settle)})`;
+  }
+  if(output){
+    output.style.opacity=String(out);
+    output.style.filter=`blur(${mix(m?2:3.5,0,out)}px)`;
+    output.style.transform=`translate3d(${mix(m?12:20,0,out)}px,${mix(m?24:34,0,out)}px,0) rotate(${mix(m?4:6,0,out)}deg) scale(${mix(.94,1,out)})`;
+  }
 }
 
 function evolveMotion(){
-  if(!evolve||reduced)return;
-  const r=evolve.getBoundingClientRect(),p=clamp((innerHeight-r.top)/(innerHeight+r.height*.45)),t=ease(range(p,.32,.66));
-  newEls.forEach(el=>{el.style.opacity=String(t);el.style.transform=`translateY(${mix(10,0,t)}px)`});
-  if(need){const n=ease(range(p,.46,.74));need.style.opacity=String(n);need.style.transform=`translateY(${mix(20,0,n)}px)`}
+  if(!evolve)return;
+  const m=isMobile(),r=evolve.getBoundingClientRect();
+  const p=clamp((innerHeight*.88-r.top)/Math.max(1,innerHeight+r.height*.55));
+  if(reduced){
+    if(evApp){evApp.style.opacity='1';evApp.style.filter='none';evApp.style.transform='translateY(-50%) scale(1)'}
+    newEls.forEach(el=>{el.style.opacity='1';el.style.transform='none'});
+    if(need){need.style.opacity='1';need.style.transform='none'}
+    return;
+  }
+  const appIn=ease(range(p,.04,.30));
+  const newIn=ease(range(p,.30,.58));
+  const needIn=ease(range(p,.50,.78));
+  if(evApp){
+    evApp.style.opacity=String(mix(.72,1,appIn));
+    evApp.style.filter=`blur(${mix(m?2:4,0,appIn)}px)`;
+    evApp.style.transform=`translateY(-50%) translateX(${mix(m?-14:-28,0,appIn)}px) scale(${mix(.96,1,appIn)})`;
+  }
+  newEls.forEach((el,i)=>{
+    const t=ease(range(p,.30+i*.035,.58+i*.035));
+    el.style.opacity=String(t);
+    el.style.transform=`translate3d(${mix(m?10:18,0,t)}px,${mix(10,0,t)}px,0)`;
+  });
+  if(need){
+    need.style.opacity=String(needIn);
+    need.style.filter=`blur(${mix(m?2:4,0,needIn)}px)`;
+    need.style.transform=`translate3d(${mix(m?20:34,0,needIn)}px,${mix(22,0,needIn)}px,0) rotate(${mix(4,0,needIn)}deg) scale(${mix(.95,1,needIn)})`;
+  }
 }
 
 function globalUI(){
