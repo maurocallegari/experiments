@@ -1,6 +1,5 @@
-/* Fix: remove hero dead tail and make the horizontal chapter a pinned transition stage, not a translating carousel. */
+/* Cases are a pinned transition stage, not a translating carousel. */
 
-/* Desktop cases: panels occupy the same stage and are animated by JS. */
 .cases{height:500vh!important;position:relative!important}
 .cases-pin{position:sticky!important;top:0!important;height:100svh!important;overflow:hidden!important}
 #caseTrack{
@@ -35,9 +34,6 @@
 .case-progress{z-index:50!important}
 
 @media (max-width:900px){
-  /* The blank area visible in the screenshot came from 360svh of hero while the content had already faded out. */
-  .hero{height:250svh!important}
-
   .cases{height:410svh!important}
   .cases-pin{position:sticky!important;top:0!important;height:100svh!important;overflow:hidden!important}
   #caseTrack{inset:0!important;width:100%!important;height:100%!important;display:block!important;transform:none!important}
@@ -77,7 +73,6 @@
 }
 
 @media (max-width:390px){
-  .hero{height:245svh!important}
   .case-art{top:18svh!important;height:35svh!important}
   .case-copy{top:57svh!important}
 }
