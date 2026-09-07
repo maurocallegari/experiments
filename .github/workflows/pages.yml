@@ -26,6 +26,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Build production artifact
+        run: |
+          rm -rf _site
+          cp -R sito-stealth-prod _site
+          cat _site/styles-00.css _site/styles-01.css _site/styles-02.css _site/styles-03.css _site/styles-04.css _site/styles-05.css _site/styles-06.css _site/styles-07.css > _site/styles.css
+          rm _site/styles-00.css _site/styles-01.css _site/styles-02.css _site/styles-03.css _site/styles-04.css _site/styles-05.css _site/styles-06.css _site/styles-07.css
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
@@ -33,7 +39,7 @@ jobs:
       - name: Upload site
         uses: actions/upload-pages-artifact@v4
         with:
-          path: sito-stealth-prod
+          path: _site
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
