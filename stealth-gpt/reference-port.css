@@ -1,6 +1,16 @@
 /* Only adaptation layer for the exact stealth-new sections. */
 .ref-scene .m-count{display:none!important}
 
+/* GPT hero uses generic .mail/.word selectors. Inside the ported AI scene,
+   restore the original stealth-new document geometry and typography. */
+#ai .nz{position:absolute!important;left:var(--x)!important;top:var(--y)!important;right:auto!important;bottom:auto!important;height:auto!important;min-height:0!important;max-height:none!important;will-change:transform,opacity!important}
+#ai .doc.mail,#ai .doc.word{width:auto!important;right:auto!important;bottom:auto!important;height:auto!important;min-height:0!important;overflow:visible!important;padding:.9rem 1rem!important;border-radius:var(--r)!important;background:#fff!important}
+#ai .doc.mail>p{margin-left:0!important;margin-right:0!important;margin-top:0!important;text-align:left!important}
+#ai .doc.mail>.mail-subj{font-weight:700!important;font-size:.74rem!important;margin-bottom:.2rem!important;color:var(--ink)!important}
+#ai .doc.mail>.mail-prev{font-size:.66rem!important;color:var(--mut)!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+#ai .doc.word>b{display:block!important;font-size:.72rem!important;margin:0!important;text-align:left!important}
+#ai .doc.word>.mut{display:inline!important;font-size:.62rem!important;margin:0!important;color:var(--mut)!important}
+
 @media(max-width:899px){
   /* Mandatory mobile order: text/hero first, graphic second. */
   .ref-scene .scene-view{
@@ -30,8 +40,8 @@
 
   #ai .ai-stage{order:3!important;margin-top:22px!important;width:100%!important}
   #metodo .mx{order:3!important;margin-top:22px!important;width:100%!important}
-  #risultato .rcaps{order:2!important;margin-top:16px!important}
-  #risultato .dash{order:3!important;margin-top:20px!important;width:100%!important}
+  #risultato .rcaps{order:3!important;margin-top:16px!important}
+  #risultato .dash{order:4!important;margin-top:20px!important;width:100%!important}
   #supporto .eg-win{order:3!important;margin-top:22px!important;width:100%!important}
   #supporto .sup-points{order:4!important;width:100%!important}
 
@@ -41,7 +51,13 @@
   #risultato .dash,
   #supporto .eg-win{transform-origin:50% 0!important}
 
-  /* Reference mobile already makes these static/stacked; enforce it against older GPT overrides. */
-  #ai .ai-noise{position:relative!important}
+  /* Original reference mobile behavior: AI cards stop being absolutely scattered. */
+  #ai .ai-noise{position:relative!important;display:flex!important;flex-wrap:wrap!important;gap:.8rem!important;justify-content:center!important;height:auto!important}
+  #ai .nz{position:static!important;inset:auto!important;width:auto!important;max-width:46%!important;opacity:1!important;transform:rotate(var(--r,0deg))!important}
+  #ai .ai-core-wrap{position:static!important;transform:none!important;margin:.4rem auto!important}
+  #ai .ai-core{opacity:1!important;transform:none!important}
+  #ai .ai-out{position:static!important;transform:none!important;width:min(300px,100%)!important;margin:0 auto!important;opacity:1!important}
+  #ai .doc.out,#ai .doc.out2{opacity:1!important;transform:none!important}
+
   #metodo .mx-track{max-width:100%!important}
 }
