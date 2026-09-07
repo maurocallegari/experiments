@@ -1,0 +1,47 @@
+/* Only adaptation layer for the exact stealth-new sections. */
+.ref-scene .m-count{display:none!important}
+
+@media(max-width:899px){
+  /* Mandatory mobile order: text/hero first, graphic second. */
+  .ref-scene .scene-view{
+    justify-content:flex-start!important;
+    overflow:hidden!important;
+    padding-top:88px!important;
+    padding-bottom:28px!important;
+  }
+  .ref-scene .display{
+    order:1!important;
+    text-align:center!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  .ref-scene .sub{
+    order:2!important;
+    text-align:center!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  #ai .ai-stage,
+  #metodo .mx,
+  #risultato .rcaps,
+  #risultato .dash,
+  #supporto .eg-win,
+  #supporto .sup-points{position:relative!important;z-index:2!important}
+
+  #ai .ai-stage{order:3!important;margin-top:22px!important;width:100%!important}
+  #metodo .mx{order:3!important;margin-top:22px!important;width:100%!important}
+  #risultato .rcaps{order:2!important;margin-top:16px!important}
+  #risultato .dash{order:3!important;margin-top:20px!important;width:100%!important}
+  #supporto .eg-win{order:3!important;margin-top:22px!important;width:100%!important}
+  #supporto .sup-points{order:4!important;width:100%!important}
+
+  /* No reference graphic may enter the text band. */
+  #ai .ai-stage,
+  #metodo .mx,
+  #risultato .dash,
+  #supporto .eg-win{transform-origin:50% 0!important}
+
+  /* Reference mobile already makes these static/stacked; enforce it against older GPT overrides. */
+  #ai .ai-noise{position:relative!important}
+  #metodo .mx-track{max-width:100%!important}
+}
