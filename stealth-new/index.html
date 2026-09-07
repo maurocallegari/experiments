@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="it" class="no-js is-loading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stealth Software · Digital Innovation — meno lavoro inutile, più tempo per il tuo business</title>
+<meta name="description" content="Stealth S.r.l. costruisce software, automazioni e AI partendo da come lavori davvero. Più di 150 aziende hanno scelto le nostre soluzioni cloud first.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111111'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23a0cdd2'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 6 8-6"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+    <symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.8 2.8L16 9.5"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a7.5 7.5 0 0 1-7.5 7.5c-1.3 0-2.6-.3-3.7-.9L4 20l1.9-5.8A7.5 7.5 0 1 1 21 11.5z"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.3L19.5 10l-5.6 1.7L12 17l-1.9-5.3L4.5 10l5.6-1.7z"/></symbol>
+    <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="m5 17 4.5-4 3.5 3 3-2.5 4 3.5"/></symbol>
+    <symbol id="i-arr" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+    <symbol id="i-cycle" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 3v4h-4"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 4 12L16 12h5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.5a3.5 3.5 0 0 1 0 6.5M15.5 14.5a5.5 5.5 0 0 1 5 5.5"/></symbol>
+    <symbol id="i-nodes" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="8" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.2 6.8 15.6 8M7 8.3l3.9 7.5M16.8 10.2 13 16"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 3 20 7.5v9L12 21 4 16.5v-9z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 18a4 4 0 0 0 .5-8 6 6 0 0 0-11.6 1.6A3.7 3.7 0 0 0 7 18z"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+  </defs>
+</svg>
+
+<div class="pbar" aria-hidden="true"><i id="pbarI"></i></div>
+
+<div class="loader" aria-hidden="true">
+  <div class="loader-brand">STEALTH<span>•</span></div>
+  <div class="loader-bar"><i></i></div>
+  <div class="loader-pct">0%</div>
+</div>
+
+<nav class="dots" id="dots" aria-label="Sezioni"></nav>
+
+<header class="site-head">
+  <a class="brand" href="#hero">STEALTH<span>•</span><small>digital innovation</small></a>
+  <nav class="site-nav" aria-label="Principale">
+    <a href="#problema" data-nav>Il problema</a>
+    <a href="#casi" data-nav>Casi reali</a>
+    <a href="#ai" data-nav>L'AI</a>
+    <a href="#metodo" data-nav>Come lavoriamo</a>
+    <a href="#risultato" data-nav>Il risultato</a>
+  </nav>
+  <a class="btn-ghost" href="https://www.stealthsoftware.it/valutazione-ai" target="_blank" rel="noopener">Richiedi una valutazione con l'AI</a>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="scene hero" id="hero" data-beats="1" data-fade="out">
+    <div class="scene-view hero-view">
+      <div class="hero-inner">
+        <h1 class="display">Il tuo lavoro dovrebbe<br>essere <em>più semplice.</em></h1>
+        <p class="sub">Noi partiamo da come lavori davvero e costruiamo ciò che ti fa perdere meno tempo.</p>
+        <a class="btn magnetic" href="#problema">Vedi come cambia la tua giornata <svg class="ic"><use href="#i-arr"/></svg></a>
+      </div>
+      <div class="collage" id="collage">
+        <div class="fc fc-mail" data-depth=".4" style="--rot:-2deg;--ei:.1s;--fd:7.5s">
+          <div class="fc-enter"><div class="fc-in">
+            <div class="doc mail">
+              <div class="mail-top"><span class="gmark">MB</span><span class="mut">09:42</span></div>
+              <p class="mail-from"><b>marta@cliente.it</b></p>
+              <p class="mail-subj">Richiesta preventivo — urgente</p>
+              <p class="mail-prev">Ciao, come da telefonata ti mando la richiesta e la planimetria.</p>
+              <div class="attach"><span class="att-ic pdf">PDF</span><span><b>planimetria.pdf</b><small class="mut">2,4 MB</small></span></div>
+            </div>
+          </div></div>
+        </div>
+        <div class="fc fc-sticky1" data-depth=".6" style="--rot:4deg;--ei:.25s;--fd:6.4s">
+          <div class="fc-enter"><div class="fc-in"><div class="sticky s1 hand">Richiamare cliente<br>prima delle 16</div></div></div>
+        </div>
+        <div class="fc fc-phone" data-depth=".26" style="--rot:2deg;--ei:.4s;--fd:8.2s">
+          <div class="fc-enter"><div class="fc-in">
+            <div class="phone dark">
+              <span class="ph-lbl">TELEFONO</span>
+              <b class="ph-name">Marco · tecnico</b>
+              <span class="ph-time">00:38</span>
+              <div class="ph-btns"><span></span><span class="ph-main">M</span><span></span></div>
+            </div>
+          </div></div>
+        </div>
+        <div class="fc fc-prev" data-depth=".5" style="--rot:-1.5deg;--ei:.5s;--fd:7s">
+          <div class="fc-enter"><div class="fc-in">
+            <div class="doc prev">
+              <div class="doc-trow"><b>Preventivo</b><span class="rev">rev_05</span></div>
+              <div class="kv"><span>Cliente</span><b>Rossi Srl</b></div>
+              <div class="kv"><span>Data</span><b>07/09/2026</b></div>
+              <div class="ptable">
+                <div class="ptr"><span>Intervento</span><span></span><span>€ 2.400</span></div>
+                <div class="ptr"><span>Materiali</span><span></span><span>€ 3.200</span></div>
+              </div>
+              <div class="ptotal"><span>Totale</span><b>€ 5.600</b></div>
+            </div>
+          </div></div>
+        </div>
+        <div class="fc fc-wa" data-depth=".62" style="--rot:-3deg;--ei:.62s;--fd:6.6s">
+          <div class="fc-enter"><div class="fc-in">
+            <div class="doc wa">
+              <div class="wa-top"><b>Marta</b><span class="mut">11:07</span></div>
+              <p>"Il rapporto 347 è già stato inserito o devo rifarlo?"</p>
+              <span class="wa-d">✓✓</span>
+            </div>
+          </div></div>
+        </div>
+        <div class="fc fc-rapp" data-depth=".55" style="--rot:2.5deg;--ei:.74s;--fd:7.7s">
+          <div class="fc-enter"><div class="fc-in">
+            <div class="doc rapp">
+              <b class="doc-title">RAPPORTO INTERVENTO</b>
+              <div class="ckl"><span class="cbx on">✓</span>Verifica eseguita</div>
+              <div class="ckl"><span class="cbx on">✓</span>Materiale utilizzato</div>
+              <div class="ckl"><span class="cbx on">✓</span>Foto allegate</div>
+              <p class="hand note">"Controllare valvola piano 2"</p>
+              <div class="sig"><span class="sig-l">firma</span><svg viewBox="0 0 90 10" class="sig-u" aria-hidden="true"><path d="M2 6 q10 -6 20 0 t20 0 t20 0 t20 0" fill="none"/></svg></div>
+            </div>
+          </div></div>
+        </div>
+      <div class="fc fc-scad" data-depth=".72" style="--rot:-6deg;--ei:.9s;--fd:7.2s">
+        <div class="fc-enter"><div class="fc-in">
+          <div class="doc scad"><small>SCADENZA</small><b>12 SET</b><span class="mut">consegna pratica</span></div>
+        </div></div>
+      </div>
+      <div class="fc fc-word" data-depth=".48" style="--rot:-7deg;--ei:.55s;--fd:6.2s">
+        <div class="fc-enter"><div class="fc-in">
+          <div class="doc word"><b>preventivo_v1.docx</b><span class="mut">una delle 7 versioni</span><span class="flag-q">è questa la buona?</span></div>
+        </div></div>
+      </div>
+      <div class="fc fc-q" data-depth=".68" style="--rot:3deg;--ei:.68s;--fd:6.9s">
+        <div class="fc-enter"><div class="fc-in">
+          <div class="doc q">"L'ultimo confermato era questo?"</div>
+        </div></div>
+      </div>
+      <div class="fc fc-copy" data-depth=".58" style="--rot:-4deg;--ei:.78s;--fd:7.4s">
+        <div class="fc-enter"><div class="fc-in">
+          <div class="doc copyhand"><span class="hand">devo ricopiare a mano<br>una cosa già fatta…</span><i class="copy-line"></i></div>
+        </div></div>
+      </div>
+      <div class="fc fc-marco" data-depth=".66" style="--rot:6deg;--ei:.88s;--fd:6s">
+        <div class="fc-enter"><div class="fc-in">
+          <div class="sticky s1 hand">Marco è assente,<br>lo sa solo lui.</div>
+        </div></div>
+      </div>
+      <div class="fc fc-foglio" data-depth=".5" style="--rot:12deg;--ei:1s;--fd:8s">
+        <div class="fc-enter"><div class="fc-in">
+          <div class="doc foglio foglio-perso"><span class="perso">perso nel bagagliaio</span><i></i><i></i><i class="h"></i></div>
+        </div></div>
+      </div>
+      <div class="fc fc-sticky2" data-depth=".6" style="--rot:-5deg;--ei:1.05s;--fd:6.8s">
+        <div class="fc-enter"><div class="fc-in"><div class="sticky s1 hand">Elena: chiedere<br>sconto fornitore?</div></div></div>
+      </div>
+      <div class="fc fc-foto2" data-depth=".52" style="--rot:-4deg;--ei:1.15s;--fd:7.9s">
+        <div class="fc-enter"><div class="fc-in">
+          <div class="doc foto"><svg viewBox="0 0 80 54"><rect width="80" height="54" rx="6" fill="#EDF4F6"/><circle cx="22" cy="17" r="6" fill="#D3E4E7"/><path d="M8 46 30 26l14 14 14-12 14 18" fill="none" stroke="#AFC9CE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="mut">47 foto da scaricare</span></div>
+        </div></div>
+      </div>
+      <div class="fc fc-word2" data-depth=".44" style="--rot:5deg;--ei:1.25s;--fd:7.1s">
+        <div class="fc-enter"><div class="fc-in">
+          <div class="doc word"><b>offerta_Bianchi_v1.docx</b><span class="mut">versione 1 di 9</span><span class="rev red">quale vale?</span></div>
+        </div></div>
+      </div>
+      <div class="fc fc-urg" data-depth=".7" style="--rot:-8deg;--ei:1.35s;--fd:5.8s">
+        <div class="fc-enter"><div class="fc-in"><div class="doc urg">URGENTE<span>richiamare oggi</span></div></div></div>
+      </div>
+      <div class="fc fc-scontr" data-depth=".64" style="--rot:7deg;--ei:1.45s;--fd:6.1s">
+        <div class="fc-enter"><div class="fc-in">
+          <div class="doc scontr"><b>Fattura 118</b><span class="mut">da registrare</span><span class="perso">scade domani</span></div>
+        </div></div>
+      </div>
+      <div class="fc fc-mail2" data-depth=".56" style="--rot:3deg;--ei:1.55s;--fd:6.3s">
+        <div class="fc-enter"><div class="fc-in">
+          <div class="doc mail"><p class="mail-subj">Re: Re: preventivo??</p><p class="mail-prev">stampata… e poi dove l'ho messa?</p></div>
+        </div></div>
+      </div>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">scroll</div>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEMA ============ -->
+  <section class="scene problema" id="problema" data-beats="6">
+    <div class="scene-view center">
+      <h2 class="display">Quanto tempo perdi in cose inutili,<br>invece di concentrarti <em>sul tuo lavoro?</em></h2>
+      <div class="mx px" id="px">
+        <article class="mx-side left" aria-hidden="true"><div class="ms-bar"></div><i></i><i></i><i></i><i class="h"></i></article>
+        <article class="mx-side right" aria-hidden="true"><div class="ms-bar"></div><i></i><i></i><i></i><i class="h"></i></article>
+        <div class="mx-card">
+          <div class="mx-inner">
+            <div class="mx-top"><span class="mx-label">Caccia al file</span><span class="mx-num">01</span></div>
+            <h3 class="mx-title">Dov'era l'ultimo confermato?</h3>
+            <p class="mx-desc">Mail, chat, Word, gestionale: lo cerchi in quattro posti diversi.</p>
+            <div class="mx-file"><b>ultimo-confermato</b><span>CERCO</span></div>
+            <table class="mx-table">
+              <tr><th>Dove</th><th>Esito</th><th></th></tr>
+              <tr><td>Mail</td><td class="down">non c'è</td><td></td></tr>
+              <tr><td>Chat</td><td class="mid">forse</td><td></td></tr>
+              <tr><td>Word, chissà quale</td><td class="down">quale?</td><td></td></tr>
+            </table>
+            <p class="mx-foot">20 minuti a caccia, ogni singola volta</p>
+          </div>
+          <div class="mx-inner">
+            <div class="mx-top"><span class="mx-label">Versioni</span><span class="mx-num">02</span></div>
+            <h3 class="mx-title">preventivo_v7_FINALE(2).docx</h3>
+            <p class="mx-desc">Sette versioni, tre "finali". E nessuna è quella giusta.</p>
+            <div class="mx-file"><b>versioni</b><span>7 FILE</span></div>
+            <table class="mx-table">
+              <tr><th>File</th><th>Stato</th><th></th></tr>
+              <tr><td>preventivo_v3</td><td class="mid">vecchio</td><td></td></tr>
+              <tr><td>FINALE(2)</td><td class="mid">firmato?</td><td></td></tr>
+              <tr><td>v7 di ieri</td><td class="down">da rifare</td><td></td></tr>
+            </table>
+            <p class="mx-foot">E domani esce la v8</p>
+          </div>
+          <div class="mx-inner">
+            <div class="mx-top"><span class="mx-label">Ricopiature</span><span class="mx-num">03</span></div>
+            <h3 class="mx-title">Devo ricopiare a mano una cosa già fatta.</h3>
+            <p class="mx-desc">Il dato esiste già. Ma tocca a te spostarlo a mano.</p>
+            <div class="mx-file"><b>copia-incolla</b><span>MANUALE</span></div>
+            <table class="mx-table">
+              <tr><th>Da</th><th>A</th><th></th></tr>
+              <tr><td>Excel clienti</td><td>gestionale</td><td class="down">a mano</td></tr>
+              <tr><td>Mail</td><td>Word</td><td class="down">a mano</td></tr>
+              <tr><td>Foglio volante</td><td>Excel</td><td class="mid">forse</td></tr>
+            </table>
+            <p class="mx-foot">Ore di copia-incolla ogni settimana</p>
+          </div>
+          <div class="mx-inner">
+            <div class="mx-top"><span class="mx-label">Rincorse</span><span class="mx-num">04</span></div>
+            <h3 class="mx-title">Marco è assente, lo sa solo lui.</h3>
+            <p class="mx-desc">Le informazioni stanno nella testa di chi in questo momento non c'è.</p>
+            <div class="mx-file"><b>chi-lo-sa</b><span>ASSENTE</span></div>
+            <table class="mx-table">
+              <tr><th>Chi</th><th>Cosa sa</th><th>Dove</th></tr>
+              <tr><td>Marco</td><td>i prezzi veri</td><td class="down">assente</td></tr>
+              <tr><td>Elena</td><td>lo sconto</td><td class="mid">domani</td></tr>
+              <tr><td>Tecnico</td><td>il foglio</td><td class="down">perso</td></tr>
+            </table>
+            <p class="mx-foot">Tutto fermo finché non torna qualcuno</p>
+          </div>
+          <div class="mx-inner">
+            <div class="mx-top"><span class="mx-label">Carta persa</span><span class="mx-num">05</span></div>
+            <h3 class="mx-title">Il foglio è rimasto nel bagagliaio.</h3>
+            <p class="mx-desc">Carta compilata fuori sede, dati mai rientrati in ufficio.</p>
+            <div class="mx-file"><b>rapporto-347</b><span>PERSO</span></div>
+            <table class="mx-table">
+              <tr><th>Cosa</th><th>Stato</th><th></th></tr>
+              <tr><td>Rapporto 347</td><td class="down">da rifare</td><td></td></tr>
+              <tr><td>47 foto</td><td class="mid">da scaricare</td><td></td></tr>
+              <tr><td>Firma cliente</td><td class="down">illeggibile</td><td></td></tr>
+            </table>
+            <p class="mx-foot">In ufficio si ricomincia da capo</p>
+          </div>
+          <div class="mx-inner">
+            <div class="mx-top"><span class="mx-label">Firme</span><span class="mx-num">06</span></div>
+            <h3 class="mx-title">5 giri per una firma.</h3>
+            <p class="mx-desc">Mail, telefono, carta, ufficio, gestionale. Tutto per un sì.</p>
+            <div class="mx-file"><b>firma</b><span>5 GIRI</span></div>
+            <table class="mx-table">
+              <tr><th>Giro</th><th>Stato</th><th></th></tr>
+              <tr><td>Mail + 2 solleciti</td><td class="mid">fatti</td><td></td></tr>
+              <tr><td>Carta in sede</td><td class="down">da firmare</td><td></td></tr>
+              <tr><td>Gestionale</td><td class="down">in attesa</td><td></td></tr>
+            </table>
+            <p class="mx-foot">Una firma, una settimana di giri</p>
+          </div>
+        </div>
+        <span class="mx-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      </div>
+      <div class="m-count"><b id="pxIdx">01</b>&thinsp;/&thinsp;06</div>
+    </div>
+  </section>
+
+  <!-- ============ CASI (orizzontale) ============ -->
+  <section class="scene casi" id="casi" data-beats="4" data-fade="none">
+    <div class="casi-pin">
+      <div class="case-count"><b id="caseIdx">01</b>&thinsp;/&thinsp;04</div>
+      <div class="case-claim">Dove si perde tempo, davvero.</div>
+      <div class="case-ghost" id="caseGhost" aria-hidden="true">01</div>
+
+      <div class="case-track" id="caseTrack">
+
+        <article class="case-panel">
+          <div class="case-visual">
+            <div class="doc d-sheet v1" data-depth=".6" style="--rot:-8deg"><i></i><i></i><i></i><i class="h"></i></div>
+            <div class="doc d-sheet v2" data-depth=".4" style="--rot:6deg"><i></i><i></i><i></i><i class="h"></i></div>
+            <div class="doc d-prev" data-depth=".15">
+              <div class="doc-trow"><b>Preventivo Rossi</b><span class="rev">rev_01</span></div>
+              <div class="ptable">
+                <div class="ptr"><span>Intervento</span><span></span><span>€ 41.200</span></div>
+                <div class="ptr"><span>Materiali</span><span></span><span>€ 6.900</span></div>
+              </div>
+              <div class="ptotal big"><span>€ 48.100</span></div>
+            </div>
+            <div class="doc d-prev2" data-depth=".3">
+              <div class="doc-trow"><b>Preventivo Rossi</b><span class="rev">rev_03</span></div>
+              <div class="ptotal big"><span>€ 48.650</span></div>
+            </div>
+            <div class="doc d-finale" data-depth=".55"><b>FINALE?</b><span>Qual è quello giusto?</span></div>
+            <div class="doc d-stamp" data-depth=".75" style="--rot:-8deg;top:52%;right:2%">7 versioni</div>
+            <div class="sticky d-sticky" data-depth=".65" style="--rot:5deg;bottom:14%;left:8%"><span class="hand">ha firmato il v2… o il v3?</span></div>
+            <div class="doc d-q1" data-depth=".7" style="--rot:-3deg">"L'ultimo confermato era il v2?"</div>
+            <div class="doc d-sheet v3" data-depth=".5" style="--rot:14deg"><span class="perso">bozza scartata?</span><i></i><i></i><i class="h"></i></div>
+          </div>
+          <div class="case-copy">
+            <h3>Ogni preventivo parte da un Word diverso.</h3>
+            <p>Qualcuno deve ricordarsi ogni volta quale file usare, cosa aggiornare e dove controllare.
+              Possiamo farlo partire dai dati giusti e produrlo già come deve essere.</p>
+          </div>
+        </article>
+
+        <article class="case-panel">
+          <div class="case-visual">
+            <div class="doc d-photo p1" data-depth=".55" style="--rot:7deg"><svg viewBox="0 0 80 54"><rect width="80" height="54" rx="6" fill="#EDF4F6"/><circle cx="22" cy="17" r="6" fill="#D3E4E7"/><path d="M8 46 30 26l14 14 14-12 14 18" fill="none" stroke="#AFC9CE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="doc d-rapp" data-depth=".2">
+              <b class="doc-title">RAPPORTO INTERVENTO</b>
+              <div class="ckl"><span class="cbx on">✓</span>Verifica eseguita</div>
+              <div class="ckl"><span class="cbx on">✓</span>Materiale usato</div>
+              <p class="hand note">Note cliente</p>
+              <div class="sig"><span class="sig-l">firma</span><svg viewBox="0 0 90 10" class="sig-u" aria-hidden="true"><path d="M2 6 q10 -6 20 0 t20 0 t20 0 t20 0" fill="none"/></svg></div>
+            </div>
+            <div class="doc d-tel" data-depth=".5" style="--rot:5deg"><span class="tel-l">16:28</span><b>rapportino</b><span class="mut">foto + firma dal telefono</span></div>
+            <div class="doc d-lost" data-depth=".65" style="--rot:-5deg"><b>rimasto in macchina</b><span>ufficio: ricopiare tutto</span></div>
+            <div class="doc d-rounds" data-depth=".7" style="--rot:2deg"><b>5 giri per una firma</b><span>mail · telefono · carta · ufficio · gestionale</span></div>
+            <div class="doc d-chip" data-depth=".72" style="--rot:-4deg;top:2%;right:6%">14 foto su whatsapp</div>
+            <div class="sticky d-sticky" data-depth=".6" style="--rot:6deg;bottom:0;left:30%"><span class="hand">ricordarsi di fatturare!</span></div>
+          </div>
+          <div class="case-copy">
+            <h3>La carta funziona. Finché non si perde.</h3>
+            <p>Un foglio compilato fuori sede, una firma, due foto. Poi deve arrivare in ufficio,
+              dove qualcuno rimette tutto nel sistema.</p>
+          </div>
+        </article>
+
+        <article class="case-panel">
+          <div class="case-visual">
+            <div class="doc d-excel" data-depth=".5" style="--rot:-5deg">
+              <b class="doc-title">EXCEL · clienti.xlsx</b>
+              <div class="kv"><span>Cliente</span><b>Rossi Srl</b></div>
+              <div class="kv"><span>Ordine</span><b>#4582</b></div>
+              <div class="kv"><span>Scadenza</span><b>12/09</b></div>
+              <div class="kv"><span>Note</span><b>richiamare!</b></div>
+            </div>
+            <div class="doc d-gest" data-depth=".2">
+              <b class="doc-title dark">GESTIONALE</b>
+              <div class="kv"><span>Cliente</span><b>Rossi Srl</b></div>
+              <div class="kv"><span>Ordine</span><b>#4582</b></div>
+              <div class="kv"><span>Scadenza</span><b>12/09</b></div>
+              <div class="kv"><span>Stato</span><b>da aggiornare</b></div>
+            </div>
+            <div class="doc d-copyq" data-depth=".6" style="--rot:4deg"><b>stesso dato, due volte</b><span>chi lo ricopia a mano?</span></div>
+            <div class="doc d-dup" data-depth=".7" style="--rot:-2deg"><span>ancora in Word, un'altra versione</span></div>
+            <div class="doc d-stamp" data-depth=".72" style="--rot:6deg;top:44%;right:0">doppio!</div>
+            <div class="sticky d-sticky" data-depth=".62" style="--rot:-5deg;bottom:0;left:2%"><span class="hand">chi aggiorna l'altro?</span></div>
+          </div>
+          <div class="case-copy">
+            <h3>Il dato esiste già. Perché copiarlo ancora?</h3>
+            <p>Excel, mail, gestionale, Word. Se un'informazione è già da qualche parte,
+              non dovrebbe servire una persona per spostarla a mano.</p>
+          </div>
+        </article>
+
+        <article class="case-panel">
+          <div class="case-visual">
+            <div class="doc d-mail" data-depth=".45" style="--rot:-4deg">
+              <div class="mail-top"><span class="gmark">MB</span><span class="mut">09:42</span></div>
+              <p class="mail-subj">Richiesta preventivo impianto</p>
+              <p class="mail-prev">Ciao, potresti inviarmi il preventivo…</p>
+            </div>
+            <div class="doc d-pdf" data-depth=".6" style="--rot:3deg"><span class="att-ic pdf">PDF</span><b>scheda_tecnica.pdf</b><small class="mut">12 pagine</small></div>
+            <div class="doc d-out" data-depth=".2">
+              <b class="doc-title">PRATICA PREPARATA</b>
+              <div class="kv"><span>Cliente</span><b>Rossi Srl</b></div>
+              <div class="kv"><span>Tipo</span><b>Intervento</b></div>
+              <div class="kv"><span>Allegati</span><b>2 ricevuti</b></div>
+              <div class="kv spot"><span>Da controllare</span><b>1 campo</b></div>
+              <span class="out-badge">Pronta ✓</span>
+            </div>
+            <div class="doc d-ai" data-depth=".35"><span>AI</span><b>legge, estrae, prepara</b></div>
+            <div class="doc d-chip teal" data-depth=".3" style="--rot:-3deg;bottom:0;left:30%">5 giri → 1 solo posto</div>
+          </div>
+          <div class="case-copy">
+            <h3>Una richiesta non dovrebbe fare cinque giri.</h3>
+            <p>Preventivi, interventi e documenti nella stessa cronologia: chi risponde non cerca.
+              Il team vede lo stato di ogni pratica in tempo reale.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="case-progress"><div id="caseBar"><i></i></div></div>
+    </div>
+  </section>
+
+  <!-- ============ AI: caos → ordine ============ -->
+  <section class="scene ai" id="ai" data-beats="4">
+    <div class="scene-view center ai-view">
+      <h2 class="display">E alcune cose oggi<br>può leggerle <em>anche l'AI.</em></h2>
+      <p class="sub">Una mail, un PDF, una foto, una richiesta scritta male:
+        può estrarre le informazioni utili e proporti il passo successivo.<br>Tu controlli quello che conta davvero.</p>
+
+      <div class="ai-stage" id="aiStage">
+        <div class="ai-noise">
+          <div class="doc mail nz" style="--x:4%;--y:6%;--r:-6deg;--d:0">
+            <p class="mail-subj">Richiesta preventivo</p>
+            <p class="mail-prev">marta@cliente.it · 09:42</p>
+          </div>
+          <div class="doc foglio nz" style="--x:0%;--y:58%;--r:5deg;--d:1"><i></i><i></i><i class="h"></i></div>
+          <div class="doc wa nz" style="--x:28%;--y:-2%;--r:3deg;--d:2">
+            <p>"Il rapporto 347 è già stato inserito?"</p><span class="wa-d">✓✓</span>
+          </div>
+          <div class="doc tel nz" style="--x:24%;--y:66%;--r:-4deg;--d:3">
+            <span class="tel-l">TELEFONO</span><b>Marco · tecnico</b><span class="mut">00:38 · richiamare entro le 16</span>
+          </div>
+          <div class="doc scad nz" style="--x:54%;--y:0%;--r:6deg;--d:4"><small>DA FARE</small><b>ricopiare dati<br>nel gestionale</b></div>
+          <div class="doc prev nz" style="--x:50%;--y:60%;--r:-3deg;--d:5">
+            <div class="doc-trow"><b>Preventivo</b><span class="rev">firma ✓</span></div>
+            <div class="kv"><span>Cliente</span><b>Rossi Srl</b></div>
+            <div class="ptotal"><span>Totale</span><b>€ 5.600</b></div>
+          </div>
+          <div class="doc foto nz" style="--x:80%;--y:26%;--r:4deg;--d:6"><svg viewBox="0 0 80 54"><rect width="80" height="54" rx="6" fill="#EDF4F6"/><circle cx="22" cy="17" r="6" fill="#D3E4E7"/><path d="M8 46 30 26l14 14 14-12 14 18" fill="none" stroke="#AFC9CE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="doc word nz" style="--x:74%;--y:-4%;--r:-8deg;--d:7"><b>preventivo_v3_FINALE(2).docx</b><span class="mut">quella giusta? bo</span></div>
+          <div class="doc wa nz" style="--x:88%;--y:52%;--r:5deg;--d:8">
+            <p>Mandami tutto su whatsapp così lostampo</p><span class="wa-d">✓✓</span>
+          </div>
+          <div class="doc q nz" style="--x:36%;--y:40%;--r:2deg;--d:9">"questo preventivo l'avevamo già fatto?"</div>
+          <div class="doc foglio nz" style="--x:66%;--y:70%;--r:-9deg;--d:10"><span class="perso">perso nel bagagliaio</span><i></i><i></i><i class="h"></i></div>
+          <div class="doc tel nz" style="--x:12%;--y:32%;--r:7deg;--d:11">
+            <span class="tel-l">NOTE VOCALE</span><b>02:10</b><span class="mut">"aspetta che ti spiego a voce…"</span>
+          </div>
+          <div class="doc tel nz" style="--x:44%;--y:70%;--r:-6deg;--d:12">
+            <span class="tel-l">MAIL · 23:14</span><b>scusi l'ora…</b><span class="mut">3 allegati, nessun oggetto</span>
+          </div>
+          <div class="doc wa nz" style="--x:60%;--y:34%;--r:-5deg;--d:13">
+            <p>foto(1).jpg — è quella definitiva?</p><span class="wa-d">✓✓</span>
+          </div>
+          <div class="doc word nz" style="--x:8%;--y:66%;--r:6deg;--d:14"><b>clienti.xlsx</b><span class="mut">l'ennesimo file clienti</span></div>
+          <div class="doc foglio nz" style="--x:86%;--y:8%;--r:8deg;--d:15"><span class="perso">scontrino?</span><i></i><i class="h"></i></div>
+          <div class="doc q nz" style="--x:22%;--y:8%;--r:-7deg;--d:16">"da rifare?"</div>
+          <div class="doc tel nz" style="--x:70%;--y:52%;--r:3deg;--d:17">
+            <span class="tel-l">POST-IT</span><b class="hand">ricontrollare i prezzi!</b>
+          </div>
+        </div>
+
+        <div class="ai-core-wrap">
+          <div class="ai-core"><span>AI</span></div>
+        </div>
+
+        <div class="ai-out" id="aiOut">
+          <div class="doc out">
+            <b class="doc-title">PRATICA PREPARATA</b>
+            <div class="kv"><span>Cliente</span><b>Rossi Srl</b></div>
+            <div class="kv"><span>Tipo</span><b>Intervento</b></div>
+            <div class="kv"><span>Allegati</span><b>2 ricevuti</b></div>
+            <div class="kv spot"><span>Da controllare</span><b>1 campo</b></div>
+            <div class="out-chips"><span class="out-chip ok">cliente ✓</span><span class="out-chip ok">allegati ✓</span><span class="out-chip warn">1 campo da te</span></div>
+            <div class="o-acts"><span class="o-act go" id="oApprove">Approva</span><span class="o-act">Modifica</span></div>
+            <span class="out-badge">Pronta ✓</span>
+          </div>
+          <div class="doc out2"><span class="o2-l">OUTPUT</span><b>PDF pronto</b><i></i></div>
+          <div class="doc out2 o3"><span class="o2-l">TASK</span><b>assegnata a Marco</b><i></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ METODO ============ -->
+  <section class="scene metodo" id="metodo" data-beats="3">
+    <div class="scene-view met-view">
+      <h2 class="display">Prima di costruire, <em>capiamo.</em></h2>
+      <p class="sub">Ci sediamo accanto a chi quel lavoro lo fa ogni giorno.
+        Non arriviamo con una soluzione già decisa: partiamo dai passaggi che vale la pena togliere,
+        collegare o rendere più semplici.</p>
+      <div class="mx" id="mx">
+        <div class="mx-track" id="mxTrack">
+          <div class="mx-inner">
+            <div class="mx-top"><span class="mx-label">Osserviamo</span><span class="mx-num">01</span></div>
+            <h3 class="mx-title">La mappa del lavoro vero.</h3>
+            <p class="mx-desc">Seguiamo il processo reale: chi fa cosa, dove entra il dato, dove si ferma.</p>
+            <div class="mx-file"><b>processo-reale</b><span>MAPPA</span></div>
+            <table class="mx-table">
+              <tr><th>Passaggio</th><th>Dove finisce</th><th>Attrito</th></tr>
+              <tr><td>Preventivo</td><td>Word, chissà quale</td><td class="down">alto</td></tr>
+              <tr><td>Intervento</td><td>carta + foto sparse</td><td class="down">alto</td></tr>
+              <tr><td>Dato cliente</td><td>copiato 2 volte</td><td class="mid">medio</td></tr>
+            </table>
+            <p class="mx-foot">12 passaggi mappati · 5 da togliere</p>
+          </div>
+          <div class="mx-inner">
+            <div class="mx-top"><span class="mx-label">Semplifichiamo</span><span class="mx-num">02</span></div>
+            <h3 class="mx-title">Meno passaggi, meno copie.</h3>
+            <p class="mx-desc">Togliamo passaggi, copie e controlli che non aggiungono valore.</p>
+            <div class="mx-file"><b>meno-attrito</b><span>PIANO</span></div>
+            <table class="mx-table">
+              <tr><th>Cosa</th><th>Prima</th><th>Dopo</th></tr>
+              <tr><td>Modello preventivo</td><td>7 file</td><td class="up">1 solo ✓</td></tr>
+              <tr><td>Copie a mano</td><td>ogni giorno</td><td class="up">zero ✓</td></tr>
+              <tr><td>Firme</td><td>5 giri</td><td class="up">dal telefono ✓</td></tr>
+            </table>
+            <p class="mx-foot">5 passaggi tolti · 0 dati ricopiati</p>
+          </div>
+          <div class="mx-inner">
+            <div class="mx-top"><span class="mx-label">Costruiamo con te</span><span class="mx-num">03</span></div>
+            <h3 class="mx-title">Lo strumento attorno al lavoro.</h3>
+            <p class="mx-desc">Nasce attorno al lavoro vero e può evolvere quando cambia.</p>
+            <div class="mx-file"><b>il-tuo-sistema</b><span>VIVO</span></div>
+            <table class="mx-table">
+              <tr><th>Lavoro</th><th>Come</th><th>Chi</th></tr>
+              <tr><td>Preventivo PDF</td><td>in 40 secondi</td><td class="up">da solo</td></tr>
+              <tr><td>Attività</td><td>nascono da sole</td><td class="up">da sole</td></tr>
+              <tr><td>Controllo</td><td>1 campo</td><td class="me">tu</td></tr>
+            </table>
+            <p class="mx-foot">Si evolve quando cambi, senza ripartire da zero</p>
+          </div>
+        </div>
+        <span class="mx-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      </div>
+      <div class="m-count"><b id="mIdx">01</b>&thinsp;/&thinsp;03</div>
+    </div>
+  </section>
+
+  <!-- ============ RISULTATO ============ -->
+  <section class="scene risultato" id="risultato" data-beats="3">
+    <div class="scene-view center">
+      <h2 class="display">Il risultato non è "un software".<br>È <em>meno attrito.</em></h2>
+      <div class="rcaps">
+        <p class="rcap">Un solo posto per preventivi, interventi e clienti: niente ricerche tra file, email e chat.</p>
+        <p class="rcap">Le richieste diventano attività da sole, con scadenza e responsabile.</p>
+        <p class="rcap">L'AI prepara il lavoro: tu controlli un campo, non ricopi cento.</p>
+      </div>
+      <div class="dash" id="dash">
+        <aside class="dash-side">
+          <div class="side-brand">STEALTH<span>•</span></div>
+          <nav class="snav-list" aria-label="Moduli">
+            <div class="snav snav-file on"><svg class="ic"><use href="#i-file"/></svg><span>Preventivi</span></div>
+            <div class="snav"><svg class="ic"><use href="#i-users"/></svg><span>Clienti</span></div>
+            <div class="snav snav-act"><svg class="ic"><use href="#i-activity"/></svg><span>Attività</span></div>
+            <div class="snav"><svg class="ic"><use href="#i-cal"/></svg><span>Agenda</span></div>
+            <div class="snav snav-ia"><svg class="ic"><use href="#i-spark"/></svg><span>IA</span></div>
+          </nav>
+        </aside>
+        <div class="dash-main">
+          <div class="chips">
+            <div class="chip"><span class="a-ic"><svg class="ic"><use href="#i-file"/></svg></span><div><b data-count="12">12</b><span>Preventivi in corso</span></div></div>
+            <div class="chip"><span class="a-ic"><svg class="ic"><use href="#i-activity"/></svg></span><div><b data-count="4">4</b><span>Interventi attivi</span></div></div>
+            <div class="chip"><span class="a-ic"><svg class="ic"><use href="#i-users"/></svg></span><div><b data-count="8">8</b><span>Clienti recenti</span></div></div>
+            <div class="chip"><span class="a-ic"><svg class="ic"><use href="#i-clock"/></svg></span><div><b data-count="3">3</b><span>Task da completare</span></div></div>
+          </div>
+          <div class="dash-cols">
+            <div class="dash-card dc-act">
+              <b class="dc-title">Attività recenti</b>
+              <div class="act"><span class="act-ic"><svg class="ic"><use href="#i-file"/></svg></span><p>Preventivo inviato – Rossi Srl</p><span class="mut">11:24</span></div>
+              <div class="act"><span class="act-ic c-slate"><svg class="ic"><use href="#i-chat"/></svg></span><p>Nuovo messaggio – Studio Verdi</p><span class="mut">10:41</span></div>
+              <div class="act"><span class="act-ic c-amber"><svg class="ic"><use href="#i-cycle"/></svg></span><p>Dati sincronizzati – ordine #4582</p><span class="mut">09:17</span></div>
+              <div class="act"><span class="act-ic c-green"><svg class="ic"><use href="#i-check"/></svg></span><p>Task completato – intervento</p><span class="mut">08:50</span></div>
+              <div class="act ai-row"><span class="act-ic"><svg class="ic"><use href="#i-spark"/></svg></span><p>Preventivo generato in automatico</p><span class="mut">ora</span></div>
+            </div>
+            <div class="dash-card dc-agenda">
+              <b class="dc-title">Prossimi impegni</b>
+              <p class="dc-sub mut small">Oggi, 12 set</p>
+              <div class="ev"><span class="ev-ic"><svg class="ic"><use href="#i-cal"/></svg></span><b>10:00</b><p>Riunione cliente Rossi</p></div>
+              <div class="ev"><span class="ev-ic"><svg class="ic"><use href="#i-nodes"/></svg></span><b>14:30</b><p>Intervento in sede</p></div>
+              <div class="ev"><span class="ev-ic"><svg class="ic"><use href="#i-file"/></svg></span><b>16:00</b><p>Revisione preventivi</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVOLUZIONE ============ -->
+  <section class="scene supporto" id="supporto" data-beats="4">
+    <div class="scene-view center sup-view">
+      <h2 class="display">E lo facciamo<br><em>evolvere</em> con te.</h2>
+      <p class="sub sup-sub">Perché tra un anno potresti lavorare diversamente.
+        Quello che costruiamo deve adattarsi alla tua azienda,
+        non diventare il prossimo problema da aggirare.</p>
+
+      <div class="eg-win">
+        <div class="eg-side">
+          <div class="eg-brand">STEALTH<span>•</span></div>
+          <div class="eg-nav">
+            <div class="eg-nav-item on"><span class="eg-dot"></span>Preventivi</div>
+            <div class="eg-nav-item"><span class="eg-dot"></span>Interventi</div>
+            <div class="eg-nav-item"><span class="eg-dot"></span>Clienti</div>
+            <div class="eg-nav-item eg-nav-new"><span class="eg-dot"></span>AI Assist</div>
+          </div>
+        </div>
+        <div class="eg-main">
+          <div class="eg-tiles">
+            <div class="eg-tile eg-t1"><b>Preventivi</b><span>12 attivi</span></div>
+            <div class="eg-tile eg-t2"><b>Interventi</b><span>oggi: 5</span></div>
+            <div class="eg-tile eg-t3"><b>Clienti</b><span>156</span></div>
+            <div class="eg-tile eg-tile-new eg-t4"><b>AI</b><span>nuovo modulo</span></div>
+          </div>
+          <div class="eg-chip-row">
+            <span class="eg-chip">PDF auto</span>
+            <span class="eg-chip">Firma digitale</span>
+            <span class="eg-chip eg-chip-new">Email → Attività</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sup-points">
+        <div class="sup-p"><svg class="ic"><use href="#i-cloud"/></svg><div><b>Rapporto diretto</b><span>persone, non help desk</span></div></div>
+        <div class="sup-p"><svg class="ic"><use href="#i-cube"/></svg><div><b>Tecnologia concreta</b><span>scelta per il problema</span></div></div>
+        <div class="sup-p"><svg class="ic"><use href="#i-cycle"/></svg><div><b>Evoluzione continua</b><span>senza ripartire da zero</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="scene cta" id="cta" data-beats="2" data-fade="none">
+    <div class="scene-view cta-view">
+      <div class="cta-veil" aria-hidden="true"></div>
+      <h2 class="display cta-el">Raccontaci <em>come lavori.</em></h2>
+      <p class="sub cta-el">Hai un problema preciso oppure semplicemente una domanda:<br>"Noi oggi facciamo così. Si può fare meglio?"</p>
+      <a class="btn light magnetic cta-el" href="https://www.stealthsoftware.it/valutazione-ai" target="_blank" rel="noopener">Parliamone <svg class="ic"><use href="#i-arr"/></svg></a>
+      <div class="cta-meta cta-el">
+        <a href="mailto:info@stealthsoftware.it">info@stealthsoftware.it</a>
+        <span class="sep">·</span>
+        <a href="tel:800864509">800 86 45 09</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-cols">
+    <div class="foot-col brand-col">
+      <a class="brand" href="#hero">STEALTH<span>•</span><small>digital innovation</small></a>
+      <p class="mut small">Stealth S.r.l. · Digital Innovation<br>Via Solferino 6/1, Villorba (TV) 31020<br>P.IVA 04978390260</p>
+    </div>
+    <div class="foot-col">
+      <b class="foot-t">Link</b>
+      <nav class="foot-nav">
+        <a href="https://www.stealthsoftware.it/" target="_blank" rel="noopener">Home</a>
+        <a href="https://www.stealthsoftware.it/about/" target="_blank" rel="noopener">About Us</a>
+        <a href="https://www.stealthsoftware.it/portfolio/" target="_blank" rel="noopener">Servizi</a>
+        <a href="https://www.stealthsoftware.it/contatti/" target="_blank" rel="noopener">Contatti</a>
+      </nav>
+    </div>
+    <div class="foot-col">
+      <b class="foot-t">Servizi</b>
+      <nav class="foot-nav">
+        <a href="https://www.stealthsoftware.it/servizi/software" target="_blank" rel="noopener">Sviluppo software</a>
+        <a href="https://www.stealthsoftware.it/servizi/siti-web" target="_blank" rel="noopener">Siti Web</a>
+        <a href="https://www.stealthsoftware.it/servizi/app" target="_blank" rel="noopener">App</a>
+        <a href="https://www.stealthsoftware.it/servizi/ai" target="_blank" rel="noopener">Intelligenza artificiale</a>
+        <a href="https://www.stealthsoftware.it/servizi/consulenza" target="_blank" rel="noopener">Servizi IT</a>
+      </nav>
+    </div>
+    <div class="foot-col">
+      <b class="foot-t">Parlaci del tuo progetto</b>
+      <p class="mut small">Richiedi una valutazione per il tuo progetto, grazie alla nostra intelligenza artificiale. Ricevi una risposta in tempo reale.</p>
+      <a class="link" href="https://www.stealthsoftware.it/valutazione-ai" target="_blank" rel="noopener">Richiedi una valutazione <svg class="ic"><use href="#i-arr"/></svg></a>
+      <p class="mut small contact-lines"><a href="tel:800864509">tel. 800 86 45 09</a><br><a href="mailto:info@stealthsoftware.it">info@stealthsoftware.it</a></p>
+    </div>
+  </div>
+  <div class="foot-legal">
+    <span>© Stealth S.r.l. · Digital Innovation · P.IVA 04978390260</span>
+    <nav>
+      <a href="https://www.stealthsoftware.it/privacy" target="_blank" rel="noopener">Privacy</a>
+      <a href="https://www.stealthsoftware.it/cookies/" target="_blank" rel="noopener">Cookies</a>
+      <a href="#hero" class="totop">Torna su ↑</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="vendor/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
