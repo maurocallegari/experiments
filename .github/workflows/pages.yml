@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'stealth-new/**'
+      - 'stealth-gpt/**'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -29,7 +30,11 @@ jobs:
       - name: Build production artifact
         run: |
           rm -rf _site
-          cp -R stealth-new _site
+          mkdir -p _site
+          cp -R stealth-new/. _site/
+          mkdir -p _site/stealth-new _site/stealth-gpt
+          cp -R stealth-new/. _site/stealth-new/
+          cp -R stealth-gpt/. _site/stealth-gpt/
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
