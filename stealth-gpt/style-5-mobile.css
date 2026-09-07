@@ -1,0 +1,130 @@
+/* Mobile V2: same art direction as desktop, rebuilt around safe vertical scene zones. */
+@media (max-width:900px){
+  html,body{overflow-x:clip}
+  .head{height:64px;padding:0 16px;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,.045)}
+  .brand{font-size:14px}.head-cta{padding:9px 12px;font-size:10px}
+
+  /* HERO: copy owns the top half; work objects own the lower half. */
+  .hero{height:360svh}
+  .hero-copy{left:20px;right:20px;width:auto;top:11svh;z-index:45}
+  .hero-copy h1{font-size:clamp(46px,12.7vw,62px);line-height:.96;max-width:9.2ch}
+  .copy-b{top:12svh}
+  .copy-b h2{font-size:clamp(38px,10.4vw,51px);line-height:.98;max-width:10.8ch}
+  .hero-copy p{font-size:16px;line-height:1.48;max-width:31ch;margin-top:17px}
+  .desk{inset:45svh 0 0;height:55svh;overflow:visible;perspective:900px}
+  .work{border-radius:13px;box-shadow:0 12px 34px rgba(26,31,44,.11)}
+  .mail{width:226px;right:-42px;top:3%;bottom:auto}
+  .mail>small{margin-top:11px}.mail>b{font-size:13px;margin-top:5px}.mail>p{font-size:9px}.attachment{margin:10px 13px 13px}
+  .word{width:182px;left:-28px;top:34%;bottom:auto;padding:14px}
+  .word>b{font-size:14px;margin-top:12px}.word>strong{font-size:12px;margin-top:12px}.word>i{margin-top:8px}
+  .excel{width:224px;right:-54px;top:73%;bottom:auto}.cells{font-size:7px}.cells>*{padding:7px}.sheethead{height:34px}
+  .paper{width:146px;left:12px;top:69%;bottom:auto;padding:14px}.paper>i{margin-top:8px}.paper>p{margin-top:10px}.signature{width:70px;height:20px;margin-top:8px}.lost{margin-top:8px}
+  .phone{width:108px;height:218px;right:8px;top:36%;bottom:auto;padding:10px;border-radius:22px}.notch{width:40px;height:10px}.avatar{width:34px;height:34px;margin:25px auto 6px}.phone>p{font-size:6px;margin-top:4px}.phone .photo{height:66px;margin-top:8px}
+  .sticky{width:118px;min-height:78px;left:12px;top:3%;padding:12px}.sticky>b{font-size:10px;margin-top:7px}
+  .duplicate{width:145px;left:37%;top:19%;padding:10px}
+  .duplicate b{font-size:9px}.duplicate span{font-size:7px}
+  .alert{width:132px;right:5px;top:17%;padding:8px;gap:7px}.alert>strong{width:24px;height:24px}.alert b{font-size:8px}.alert small{font-size:7px}
+  .call{display:none}
+  .hero-index{right:16px;bottom:13px}
+
+  /* CASES: mobile is deliberately vertical, one readable scene at a time. */
+  .cases{height:auto}
+  .cases-pin{position:relative;height:auto;overflow:visible}
+  .cases-head{position:relative;left:auto;top:auto;padding:88px 20px 34px;max-width:none}
+  .cases-head h2{font-size:clamp(40px,11vw,48px);line-height:.98;max-width:9.5ch}
+  .cases-head p{font-size:15px;line-height:1.48;max-width:32ch;margin-top:15px}
+  .track{position:relative;height:auto;display:block;padding:0;transform:none!important}
+  .case{width:100%;height:auto;min-height:108svh;display:grid;grid-template-rows:auto minmax(365px,52svh);align-content:start;gap:18px;padding:42px 20px 48px;overflow:hidden;border-top:1px solid #e3e5e7}
+  .case-copy{position:relative;z-index:8;max-width:100%;padding-right:2px}
+  .case-copy>span{font-size:9px}
+  .case-copy h3{font-size:clamp(34px,9.4vw,42px);line-height:1.02;max-width:11ch;margin-top:11px}
+  .case-copy p{font-size:15px;line-height:1.5;max-width:32ch;margin-top:14px}
+  .case-art{height:50svh;min-height:365px;margin:0;transform-origin:50% 50%;overflow:visible}
+  .case-progress{display:none}
+
+  /* 01 Preventivi */
+  [data-case="0"] .docstack{width:190px;height:244px;padding:17px;top:50%}
+  [data-case="0"] .docstack b{font-size:13px;margin:12px 0}
+  [data-case="0"] .docstack i{height:5px;margin-top:7px}
+  [data-case="0"] .docstack strong{font-size:12px;margin-top:13px}
+  [data-case="0"] .docstack.s1{transform:translate(-82%,-48%) rotate(-8deg) scale(.84)}
+  [data-case="0"] .docstack.s2{transform:translate(-52%,-51%) rotate(-2deg) scale(.94)}
+  [data-case="0"] .docstack.s3{transform:translate(-18%,-48%) rotate(7deg)}
+  [data-case="0"] .question{bottom:4%;font-size:8px;padding:8px 10px;white-space:nowrap}
+
+  /* 02 Carta */
+  [data-case="1"] .field-paper{width:194px;height:266px;left:34%;top:49%;padding:17px}
+  [data-case="1"] .field-paper i{height:5px;margin-top:10px}
+  [data-case="1"] .field-paper p{font-size:8px;margin-top:13px}
+  [data-case="1"] .field-phone{width:122px;height:238px;right:0;top:52%;padding:12px;border-radius:23px}
+  [data-case="1"] .field-phone .photo{height:123px;margin-top:35px}
+  [data-case="1"] .field-phone>small{font-size:7px;margin-top:7px}
+  [data-case="1"] .car-note{left:24%;bottom:2%;font-size:7px;padding:8px 10px;white-space:nowrap}
+
+  /* 03 Sistemi separati */
+  [data-case="2"] .system{width:166px;top:50%}
+  [data-case="2"] .system.a{left:-2%}
+  [data-case="2"] .system.b{right:-2%}
+  [data-case="2"] .system>small{padding:9px;font-size:7px}
+  [data-case="2"] .system dl{font-size:7px}
+  [data-case="2"] .system dt,[data-case="2"] .system dd{padding:8px}
+  [data-case="2"] .human-bridge{transform:translate(-50%,-50%) scale(.62);z-index:4}
+
+  /* 04 AI */
+  [data-case="3"] .source{width:116px;left:0;padding:10px}
+  [data-case="3"] .mail-mini{top:22%}
+  [data-case="3"] .pdf-mini{top:57%;left:4%}
+  [data-case="3"] .source b{font-size:7px}[data-case="3"] .source span{font-size:7px}
+  [data-case="3"] .ai-core{left:47%;width:54px;height:54px;font-size:12px;box-shadow:0 0 0 12px rgba(160,205,210,.17)}
+  [data-case="3"] .prepared{width:168px;right:-1%;padding:12px}
+  [data-case="3"] .prepared dl{font-size:7px}
+  [data-case="3"] .prepared dt,[data-case="3"] .prepared dd{padding:7px}
+
+  /* PIVOT: copy and selection never occupy the same screen band. */
+  .pivot{height:245svh}
+  .pivot-pin{display:block}
+  .pivot-copy{position:absolute;left:20px;right:20px;top:11svh;width:auto;margin:0;padding:0;z-index:20}
+  .pivot h2{font-size:clamp(44px,11.7vw,52px);line-height:.97;max-width:8.5ch}
+  .pivot p{font-size:16px;line-height:1.48;max-width:31ch;margin-top:18px}
+  .selection{inset:51svh 0 0;height:49svh;overflow:hidden}
+  .selection .s-photo,.selection .s-excel,.selection .s-sign{display:none}
+  .sel{font-size:8px;padding:8px 11px}
+  .s-mail{left:7%;top:9%}.s-word{right:7%;top:11%}.s-paper{left:9%;bottom:14%}
+  .sel-core{right:50%;top:51%;width:176px;height:176px;transform:translate(50%,-50%) scale(.82)}
+  .sel-core b{font-size:25px}
+
+  /* BUILD: narrative above, product stage below. */
+  .build{height:300svh}
+  .build-pin{display:block;padding:0 20px}
+  .build-copy{position:absolute;top:10svh;left:20px;right:20px}
+  .build-copy h2{font-size:clamp(45px,12vw,53px);line-height:.97;max-width:8.5ch}
+  .build-copy>p{font-size:16px;line-height:1.48;max-width:31ch;margin-top:18px}
+  .build-copy .closing{font-size:11px;line-height:1.5;max-width:31ch}
+  .build-art{position:absolute;left:20px;right:20px;top:47svh;bottom:auto;height:49svh}
+  .product{width:96%;height:326px;right:-2%;top:54%;border-radius:14px}
+  .product-top{height:38px}.product-side{display:none}.product-main{margin-left:0;padding:15px}.product-title b{font-size:15px}.product-grid{grid-template-columns:1fr 1fr;gap:7px;margin-top:15px}.product-grid>div{padding:9px}.product-grid>div:nth-child(n+3){display:none}.files{margin-top:12px;padding-top:10px}
+  .input{width:101px;padding:9px}.in-mail{left:0;top:0}.in-photo{left:0;top:34%}.in-sign{left:5%;bottom:0}
+  .output{width:154px;right:-1%;bottom:-1%;padding:12px}
+
+  /* EVOLUTION: retain depth, but place art after copy. */
+  .evolve{min-height:118svh;display:block;padding:90px 20px 52px}
+  .evolve h2{font-size:clamp(44px,11.7vw,52px);line-height:.98;max-width:9ch}
+  .evolve-copy p{font-size:16px;line-height:1.48;max-width:31ch;margin-top:18px}
+  .evolve-art{height:52svh;min-height:390px;margin-top:26px}
+  .ev-app{width:100%;left:0;top:48%;border-radius:14px}
+  .ev-app dl{padding:10px 14px}.ev-app dt,.ev-app dd{padding:10px 0;font-size:8px}
+  .need{width:190px;right:0;bottom:0;padding:14px}.need b{font-size:14px}
+
+  .cta{min-height:88svh;padding:80px 20px}
+  .cta h2{font-size:clamp(52px,14vw,64px);line-height:.95;max-width:8ch}
+  .cta p{font-size:16px;line-height:1.48;max-width:29ch}
+}
+
+@media (max-width:390px){
+  .head-cta{display:none}
+  .hero-copy{top:10svh}.copy-b{top:11svh}
+  .desk{inset:44svh 0 0;height:56svh}
+  .case{padding-inline:18px}.cases-head{padding-inline:18px}
+  [data-case="2"] .system{width:156px}
+  [data-case="3"] .prepared{width:158px}
+}
