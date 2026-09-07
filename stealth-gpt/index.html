@@ -14,7 +14,7 @@
 <div class="progress" aria-hidden="true"><i></i></div>
 <header class="head">
   <a class="brand" href="#hero">STEALTH<span>•</span><small>digital innovation</small></a>
-  <nav><a href="#attriti">Il problema</a><a href="#stealth">Come lavoriamo</a><a href="#costruiamo">Cosa costruiamo</a></nav>
+  <nav><a href="#attriti">Il problema</a><a href="#ai">L'AI</a><a href="#stealth">Come lavoriamo</a><a href="#costruiamo">Cosa costruiamo</a></nav>
   <a class="head-cta" href="#contatto">Parliamone</a>
 </header>
 <main>
@@ -45,26 +45,66 @@
 
 <section class="cases" id="attriti" data-chapter="cases">
  <div class="cases-pin">
-  <div class="cases-head"><h2>Dove si perde tempo, davvero.</h2><p>Carta, versioni duplicate, dati spostati a mano, richieste da leggere e ricopiare.</p></div>
+  <div class="cases-head"><h2>Dove si perde tempo, davvero.</h2><p>Carta, versioni duplicate, dati spostati a mano, richieste che fanno troppi giri.</p></div>
   <div class="track" id="caseTrack">
    <article class="case" data-case="0">
     <div class="case-copy"><span>01 / 04</span><h3>Ogni preventivo parte da un Word diverso.</h3><p>La versione giusta, i dati giusti, il prezzo da ricontrollare. Possiamo farlo partire dalle informazioni corrette e produrlo già come deve essere.</p></div>
-    <div class="case-art quote-art" aria-hidden="true"><div class="docstack s1"><small>REV_03</small><b>Preventivo Rossi</b><i></i><i></i><strong>€ 5.200</strong></div><div class="docstack s2"><small>REV_05</small><b>Preventivo Rossi</b><i></i><i></i><strong>€ 5.600</strong></div><div class="docstack s3"><small>FINALE?</small><b>Preventivo Rossi</b><i></i><i></i><strong>€ 5.600</strong></div><div class="question">Qual è quello giusto?</div></div>
+    <div class="case-art" aria-hidden="true">
+      <div class="ref-card rg-prev-a"><div class="ref-title"><b>Preventivo Rossi</b><em>rev_03</em></div><div class="ref-kv"><span>Cliente</span><b>Rossi Srl</b></div><div class="ref-kv"><span>Data</span><b>06/09</b></div><div class="ref-total"><span>Totale</span><b>€ 5.200</b></div></div>
+      <div class="ref-card rg-prev-b"><div class="ref-title"><b>Preventivo Rossi</b><em>rev_05</em></div><div class="ref-kv"><span>Cliente</span><b>Rossi Srl</b></div><div class="ref-kv"><span>Materiali</span><b>aggiornati</b></div><div class="ref-total"><span>Totale</span><b>€ 5.600</b></div></div>
+      <div class="ref-card rg-prev-c"><div class="ref-title"><b>Preventivo Rossi</b><em>FINALE?</em></div><div class="ref-kv"><span>Cliente</span><b>Rossi Srl</b></div><div class="ref-kv"><span>Stato</span><b>da firmare</b></div><div class="ref-total"><span>Totale</span><b>€ 5.600</b></div></div>
+      <div class="ref-stamp rg-c1-stamp">7 versioni</div><div class="ref-note rg-c1-note">Ha firmato il v2… o il v3?</div><div class="ref-chip rg-c1-chip">Qual è quello giusto?</div>
+    </div>
    </article>
    <article class="case" data-case="1">
     <div class="case-copy"><span>02 / 04</span><h3>La carta funziona. Finché non si perde.</h3><p>Fuori sede si compila, si firma, si fotografa. Poi quel foglio deve arrivare in ufficio e qualcuno deve rimettere tutto dentro al sistema.</p></div>
-    <div class="case-art paper-art" aria-hidden="true"><div class="field-paper"><small>RAPPORTO INTERVENTO</small><i></i><i></i><p>☑ lavoro eseguito</p><div class="signature"></div></div><div class="field-phone"><div class="notch"></div><div class="photo"><div></div></div><small>foto inviata · 16:28</small></div><div class="car-note">può restare in macchina</div></div>
+    <div class="case-art" aria-hidden="true">
+      <div class="ref-card rg-report"><small>RAPPORTO INTERVENTO</small><div class="ref-lines"><i></i><i></i><i></i></div><div class="check">☑ verifica eseguita</div><div class="check">☑ materiale utilizzato</div><div class="sign"></div></div>
+      <div class="rg-phone"><small>16:28</small><b>Marco · tecnico</b><div class="ph-photo"></div></div>
+      <div class="ref-stamp rg-c2-stamp">rimasto in macchina</div><div class="ref-note rg-c2-note">ricordarsi di fatturare!</div>
+    </div>
    </article>
    <article class="case" data-case="2">
     <div class="case-copy"><span>03 / 04</span><h3>Il dato esiste già. Perché copiarlo ancora?</h3><p>Cliente, ordine, scadenza, allegato. Se l'informazione è già da qualche parte, non dovrebbe servire una persona per spostarla.</p></div>
-    <div class="case-art bridge-art" aria-hidden="true"><div class="system a"><small>EXCEL</small><dl><dt>Cliente</dt><dd>Rossi Srl</dd><dt>Ordine</dt><dd>#4582</dd><dt>Scadenza</dt><dd>12/09</dd></dl></div><div class="human-bridge"><i></i><span>copia</span><b>→</b><span>incolla</span></div><div class="system b"><small>GESTIONALE</small><dl><dt>Cliente</dt><dd>Rossi Srl</dd><dt>Ordine</dt><dd>#4582</dd><dt>Scadenza</dt><dd>12/09</dd></dl></div></div>
+    <div class="case-art" aria-hidden="true">
+      <div class="ref-card rg-excel"><div class="ref-title"><b>EXCEL · clienti.xlsx</b><em>APERTO</em></div><div class="ref-kv"><span>Cliente</span><b>Rossi Srl</b></div><div class="ref-kv"><span>Ordine</span><b>#4582</b></div><div class="ref-kv"><span>Scadenza</span><b>12/09</b></div><div class="ref-kv"><span>Note</span><b>richiamare</b></div></div>
+      <div class="ref-card rg-gest"><div class="ref-title"><b>GESTIONALE</b><em>DA AGGIORNARE</em></div><div class="ref-kv"><span>Cliente</span><b>Rossi Srl</b></div><div class="ref-kv"><span>Ordine</span><b>#4582</b></div><div class="ref-kv"><span>Scadenza</span><b>12/09</b></div><div class="ref-kv"><span>Stato</span><b>vuoto</b></div></div>
+      <div class="ref-note rg-copy">stesso dato, due volte. Chi lo ricopia?</div><div class="ref-chip rg-c3-chip">copia → incolla → controlla</div>
+    </div>
    </article>
    <article class="case" data-case="3">
-    <div class="case-copy"><span>04 / 04</span><h3>E alcune cose oggi può leggerle anche l'AI.</h3><p>Una mail, un PDF, una richiesta: estrae le informazioni utili, le classifica e prepara il passo successivo. Tu controlli quello che conta davvero.</p></div>
-    <div class="case-art ai-art" aria-hidden="true"><div class="source mail-mini"><b>EMAIL</b><span>richiesta cliente</span></div><div class="source pdf-mini"><b>PDF</b><span>ordine firmato</span></div><div class="ai-core">AI</div><div class="prepared"><small>PRATICA PREPARATA</small><dl><dt>Cliente</dt><dd>Rossi Srl</dd><dt>Tipo</dt><dd>Intervento</dd><dt>Scadenza</dt><dd>12/09</dd></dl><b>1 punto da verificare</b></div></div>
+    <div class="case-copy"><span>04 / 04</span><h3>Una richiesta non dovrebbe fare cinque giri.</h3><p>Mail, PDF, messaggi, firma, telefono. Se tutto riguarda la stessa pratica, dovrebbe restare nello stesso posto e muoversi senza rincorse.</p></div>
+    <div class="case-art" aria-hidden="true">
+      <div class="ref-card rg-mail"><div class="ref-title"><b>marta@cliente.it</b><em>09:42</em></div><p>Richiesta preventivo impianto. Allego planimetria e scheda tecnica.</p></div>
+      <div class="ref-card rg-pdf"><span class="pdf-badge">PDF</span><b>scheda_tecnica.pdf</b><span class="mut">12 pagine</span></div>
+      <div class="ref-card rg-whatsapp"><p>“Ti mando anche la foto firmata qui così facciamo prima.”</p></div>
+      <div class="ref-card rg-sign"><small>DOCUMENTO FIRMATO</small><div class="ref-lines"><i></i><i></i><i></i></div><div class="ref-total"><span>stato</span><b>da riportare</b></div></div>
+      <div class="ref-stamp rg-c4-stamp">5 giri</div><div class="ref-chip teal rg-c4-chip">1 pratica</div>
+    </div>
    </article>
   </div>
   <div class="case-progress"><span id="caseNum">01</span><i><em id="caseFill"></em></i><b>04</b></div>
+ </div>
+</section>
+
+<section class="chapter ai-chapter" id="ai" data-chapter="ai">
+ <div class="pin ai-pin">
+  <div class="ai-copy"><span>AI, quando serve davvero</span><h2>E alcune cose oggi può leggerle <em>anche l'AI.</em></h2><p>Una mail, un PDF, una foto, una richiesta scritta male: può estrarre le informazioni utili, collegarle e preparare il passo successivo. Tu controlli quello che conta davvero.</p></div>
+  <div class="ai-stage2" aria-hidden="true">
+   <div class="ai-chaos">
+    <div class="ai-noise-card ain1"><b>EMAIL · 09:42</b><span>richiesta preventivo + 2 allegati</span></div>
+    <div class="ai-noise-card ain2"><b>PDF</b><span>scheda_tecnica.pdf · 12 pagine</span></div>
+    <div class="ai-noise-card ain3"><b>WHATSAPP</b><p>“Il rapporto 347 è già stato inserito?”</p></div>
+    <div class="ai-noise-card ain4"><b>POST-IT</b><span>ricontrollare prezzi</span></div>
+    <div class="ai-noise-card ain5"><b>TELEFONO · 00:38</b><span>Marco · tecnico</span></div>
+    <div class="ai-noise-card ain6"><b>preventivo_v3_FINALE(2).docx</b><span>quella giusta?</span></div>
+   </div>
+   <div class="ai-orbit-core"><span>AI</span><small>legge · estrae · propone</small></div>
+   <div class="ai-result">
+    <div class="ai-result-card"><small>PRATICA PREPARATA</small><span class="ai-ready">Pronta ✓</span><dl><dt>Cliente</dt><dd>Rossi Srl</dd><dt>Tipo</dt><dd>Intervento</dd><dt>Allegati</dt><dd>2 ricevuti</dd><dt>Scadenza</dt><dd>12/09</dd></dl><div class="ai-checks"><span>cliente ✓</span><span>allegati ✓</span><span class="warn">1 campo da te</span></div><div class="ai-actions"><span class="go">Approva</span><span>Modifica</span></div></div>
+    <div class="ai-outputs"><span>PDF pronto</span><span>Attività assegnata</span></div>
+   </div>
+  </div>
  </div>
 </section>
 
