@@ -1,0 +1,3 @@
+@media (max-width:900px){
+  #caseTrack{transform:translate3d(var(--case-x,0px),0,0)!important}
+}
