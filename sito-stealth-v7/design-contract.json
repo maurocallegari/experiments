@@ -1,0 +1,101 @@
+{
+  "name": "Stealth Homepage — production design contract",
+  "version": "1.0.0",
+  "status": "implementation source of truth",
+  "northStar": "Il visitatore deve pensare: il mio lavoro potrebbe essere più semplice; questi capiscono davvero le rotture quotidiane e sanno costruire la soluzione.",
+  "narrative": [
+    "Il tuo lavoro dovrebbe essere più semplice.",
+    "Il lavoro quotidiano si riempie di attriti piccoli ma cumulativi.",
+    "Quattro casi concreti rendono il problema riconoscibile.",
+    "Stealth entra solo dopo: prima ci sediamo accanto a te.",
+    "Poi lo costruiamo, usando gli stessi elementi del lavoro già mostrati.",
+    "Il sistema resta capace di evolvere.",
+    "CTA finale quieta: raccontaci come lavori."
+  ],
+  "visualSystem": {
+    "font": "Manrope",
+    "palette": {
+      "background": "#FFFFFF",
+      "backgroundAlt": "#F8F8F8",
+      "text": "#000000",
+      "heading": "#222222",
+      "muted": "#919191",
+      "accent": "#A0CDD2",
+      "border": "#F2F2F2",
+      "divider": "#DDDDDD",
+      "final": "#111111"
+    },
+    "rules": [
+      "White dominant, Stealth blue is the only accent.",
+      "No gradients, green, SaaS card grids, generic AI symbols, stock people or fake dashboard hero.",
+      "Objects must look like recognizable work artifacts: document, spreadsheet, email, paper, phone, signature, attachment, software fragment.",
+      "Sections are full width. Borders/shadows belong to work objects only.",
+      "Editorial asymmetry, large negative space, controlled depth and overlap."
+    ]
+  },
+  "motion": {
+    "principle": "La pagina fa ciò che racconta: accumula complessità, la rende evidente, poi la seleziona e la semplifica.",
+    "hero": {
+      "mode": "sticky scrub",
+      "sequence": [
+        "Start with a plausible, mostly ordered desk of work artifacts.",
+        "Introduce a duplicate Word document, extra paper, attachment, phone photo and notification.",
+        "Increase density without turning the page into random chaos.",
+        "Crossfade headline from positive statement to lost-time question.",
+        "Everything reverses exactly when scrolling upward."
+      ]
+    },
+    "casesDesktop": {
+      "mode": "vertical scroll drives horizontal pinned track",
+      "count": 4,
+      "requirements": [
+        "No carousel UI, arrows or required swipe.",
+        "Active scene is centered, sharp and full opacity.",
+        "Previous/next remain partially visible, smaller, dimmer and slightly blurred.",
+        "Movement is continuous and reversible.",
+        "Minimal 01–04 progress only."
+      ]
+    },
+    "casesMobile": {
+      "mode": "natural vertical",
+      "requirements": [
+        "No horizontal pin.",
+        "One scene approximately per viewport.",
+        "Maximum three important visual objects at once.",
+        "No horizontal overflow."
+      ]
+    },
+    "turn": {
+      "background": "#A0CDD2",
+      "mode": "short sticky scrub",
+      "sequence": [
+        "Rhythm slows.",
+        "Duplicates lose importance.",
+        "Useful artifacts remain.",
+        "Composition gains space.",
+        "Headline enters after visual selection starts."
+      ]
+    },
+    "build": "The same work artifacts converge into one concrete practice/work surface; Word/PDF becomes output, Excel stops being the center, phone and software coordinate.",
+    "evolution": "A new requirement enters and is absorbed without recreating a parallel Excel/mail process.",
+    "reducedMotion": "No scrub or horizontal pin. All final states remain readable and complete."
+  },
+  "breakpoints": {
+    "mobileMax": 899,
+    "desktopMin": 900,
+    "safePaddingMobile": "22px",
+    "safePaddingDesktop": "clamp(28px, 5vw, 84px)"
+  },
+  "qualityGates": [
+    "The horizontal chapter must not look or behave like a marketing carousel.",
+    "Returning upward must restore every previous state without glitches.",
+    "Stealth must not appear before the four concrete cases.",
+    "The blue section must feel like a narrative turning point, not decoration.",
+    "AI is one case among four, never the visual identity of the site.",
+    "No large section cards or box-within-box layouts.",
+    "At 320–430px: no horizontal overflow, clipped text or desktop pinning.",
+    "With JavaScript disabled the complete narrative remains readable.",
+    "prefers-reduced-motion is supported.",
+    "Core Web Vitals are protected by using HTML/CSS/SVG work objects rather than heavy video or image sequences."
+  ]
+}

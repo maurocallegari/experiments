@@ -1,0 +1,56 @@
+{
+  "site": {
+    "brand": "STEALTH",
+    "navCta": "Parliamone",
+    "metaTitle": "Stealth — il tuo lavoro dovrebbe essere più semplice",
+    "metaDescription": "Stealth osserva come lavori davvero e costruisce software, automazioni e integrazioni per togliere passaggi inutili."
+  },
+  "hero": {
+    "title": "Il tuo lavoro dovrebbe essere più semplice.",
+    "support": "Partiamo da come lavori davvero e costruiamo ciò che ti fa perdere meno tempo.",
+    "lostTimeTitle": "Quanto tempo perdi in cose inutili, invece di concentrarti sul tuo lavoro?",
+    "lostTimeSupport": "Mail, Excel, Word, carta, foto, telefonate e dati copiati da una parte all’altra. Ogni passaggio sembra piccolo. Insieme diventano lavoro che non dovresti fare."
+  },
+  "cases": {
+    "title": "Dove si perde tempo, davvero.",
+    "support": "Carta, versioni duplicate, dati spostati a mano, richieste da leggere e ricopiare.",
+    "items": [
+      {
+        "title": "Ogni preventivo parte da un Word diverso.",
+        "body": "La versione giusta, i dati giusti, il prezzo da ricontrollare. Il documento può partire dalle informazioni corrette e uscire già pronto."
+      },
+      {
+        "title": "La carta funziona. Finché non si perde.",
+        "body": "Chi lavora fuori sede compila, firma e fotografa. Poi quel foglio deve tornare in ufficio e qualcuno deve riportare tutto nel sistema."
+      },
+      {
+        "title": "Il dato esiste già. Perché copiarlo ancora?",
+        "body": "Cliente, ordine, scadenza, allegato. Se l’informazione è già da qualche parte, non dovrebbe servire una persona per spostarla."
+      },
+      {
+        "title": "E alcune cose oggi può leggerle anche l’AI.",
+        "body": "Una mail o un PDF può diventare dati già classificati e una proposta di passo successivo. Tu controlli ciò che richiede davvero una decisione."
+      }
+    ]
+  },
+  "turn": {
+    "title": "Prima ci sediamo accanto a te.",
+    "body": "Guardiamo come lavori davvero, capiamo cosa ti rallenta e scegliamo assieme cosa deve diventare più semplice. Non arriviamo con una soluzione già decisa."
+  },
+  "build": {
+    "title": "Poi lo costruiamo.",
+    "body": "A volte significa creare qualcosa di nuovo. A volte collegare meglio quello che hai già. A volte automatizzare una parte che oggi fai a mano.",
+    "closing": "La soluzione cambia. L’obiettivo no: farti lavorare in modo più semplice."
+  },
+  "evolution": {
+    "title": "E lo facciamo evolvere con te.",
+    "body": "Tra un anno potresti lavorare diversamente. Quello che costruiamo deve adattarsi alla tua azienda, non diventare il prossimo problema da aggirare."
+  },
+  "cta": {
+    "titleBefore": "Raccontaci ",
+    "titleAccent": "come lavori.",
+    "body": "Hai un problema preciso oppure semplicemente una domanda: “Noi oggi facciamo così. Si può fare meglio?”",
+    "button": "Parliamone",
+    "href": "mailto:info@stealthsoftware.it"
+  }
+}
