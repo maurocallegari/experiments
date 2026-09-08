@@ -1,0 +1,110 @@
+{
+  "hero": {
+    "primary": {
+      "title": "Il tuo lavoro dovrebbe essere",
+      "emphasis": "più semplice."
+    },
+    "secondary": {
+      "title": "Quanto tempo perdi in cose inutili, invece di concentrarti sul tuo lavoro?",
+      "emphasis": "concentrarti sul tuo lavoro?",
+      "body": "Presi uno alla volta sembrano dettagli. Insieme diventano ore di lavoro che non dovresti fare."
+    },
+    "cards": {
+      "mail": {
+        "app": "Posta in arrivo",
+        "meta": "marta@cliente.it · 09:42",
+        "title": "Richiesta preventivo — urgente",
+        "body": "Ti mando richiesta, planimetria e due foto.",
+        "attachment": "planimetria.pdf"
+      },
+      "word": {
+        "app": "WORD",
+        "title": "Preventivo Rossi",
+        "file": "preventivo_finale_rev05.docx",
+        "total": "€ 5.600"
+      },
+      "excel": {
+        "file": "clienti_2026.xlsx",
+        "columns": ["Cliente", "Stato", "Scad."]
+      },
+      "paper": {
+        "title": "RAPPORTO INTERVENTO",
+        "body": "☑ verifica eseguita",
+        "status": "da riportare in ufficio"
+      },
+      "phone": {
+        "time": "16:28",
+        "avatar": "MT",
+        "title": "Marco · tecnico",
+        "body": "Ti mando la foto del rapportino"
+      },
+      "sticky": {
+        "label": "DA FARE",
+        "title": "Richiamare Rossi dopo la firma"
+      },
+      "duplicate": {
+        "label": "VERSIONE",
+        "title": "preventivo_finale_2.docx",
+        "meta": "modificato ieri"
+      },
+      "alert": {
+        "title": "Manca un allegato",
+        "meta": "Pratica 347"
+      },
+      "call": {
+        "time": "03:42",
+        "title": "chiamata con Marco"
+      }
+    },
+    "extras": {
+      "chat": {"label": "CHAT", "title": "Foto ricevuta", "meta": "Marco · 16:28"},
+      "folder": {"label": "DOCUMENTI", "title": "Pratica Rossi", "meta": "4 allegati · 1 da verificare"},
+      "calendar": {"label": "AGENDA", "title": "Intervento in sede", "meta": "Domani · 10:00"},
+      "task": {"label": "ATTIVITÀ", "title": "Inviare conferma", "meta": "assegnata a te"},
+      "inbox": {"label": "INBOX", "title": "3 richieste nuove", "meta": "da smistare"},
+      "note": {"label": "NOTA VOCALE", "title": "Richiamare cliente", "meta": "02:10 · ieri"},
+      "receipt": {"label": "ALLEGATO", "title": "foto_finale.jpg", "meta": "versione da confermare"}
+    },
+    "chaos": {
+      "emails": [
+        {"from": "marta@cliente.it", "subject": "Re: Re: preventivo", "time": "09:42"},
+        {"from": "info@rossi.it", "subject": "Qual è l'ultima versione?", "time": "11:06"}
+      ],
+      "pdfs": [
+        {"file": "scheda_tecnica.pdf", "meta": "12 pagine"}
+      ],
+      "voice": {"title": "Nota vocale", "from": "Marco · tecnico", "time": "02:10"},
+      "call": {"name": "Marco · tecnico", "meta": "chiamata persa · 03:42"},
+      "postits": ["ricontrollare il prezzo", "manca un allegato", "richiamare dopo la firma", "da riportare in ufficio"],
+      "chat": {"text": "“Questo è il definitivo?”", "status": "✓✓"}
+    }
+  },
+  "sections": {
+    "cases": {
+      "title": "Dove si perde tempo, davvero.",
+      "body": "Carta, versioni duplicate, dati spostati a mano, richieste che fanno troppi giri.",
+      "items": [
+        {"title": "Ogni preventivo parte da un Word diverso.", "body": "La versione giusta, i dati giusti, il prezzo da ricontrollare. Possiamo farlo partire dalle informazioni corrette e produrlo già come deve essere."},
+        {"title": "La carta funziona. Finché non si perde.", "body": "Fuori sede si compila, si firma, si fotografa. Poi quel foglio deve arrivare in ufficio e qualcuno deve rimettere tutto dentro al sistema."},
+        {"title": "Il dato esiste già. Perché copiarlo ancora?", "body": "Cliente, ordine, scadenza, allegato. Se l'informazione è già da qualche parte, non dovrebbe servire una persona per spostarla."},
+        {"title": "Una richiesta non dovrebbe fare cinque giri.", "body": "Mail, PDF, messaggi, firma, telefono. Se tutto riguarda la stessa pratica, dovrebbe restare nello stesso posto e muoversi senza rincorse."}
+      ]
+    },
+    "ai": {
+      "html": "E alcune cose oggi<br>può leggerle <em>anche l'AI.</em>",
+      "bodyHtml": "Una mail, un PDF, una foto, una richiesta scritta male: può estrarre le informazioni utili e proporti il passo successivo.<br>Tu controlli quello che conta davvero."
+    },
+    "metodo": {
+      "html": "Prima ci sediamo <em>accanto a te.</em>",
+      "body": "Guardiamo come lavori davvero, capiamo cosa ti rallenta e scegliamo assieme cosa deve diventare più semplice. Non arriviamo con una soluzione già decisa."
+    },
+    "risultato": {
+      "html": "Poi lo <em>costruiamo.</em>",
+      "body": "A volte significa creare qualcosa di nuovo. A volte collegare meglio quello che hai già. A volte automatizzare una parte che oggi fai a mano."
+    },
+    "supporto": {
+      "html": "E lo facciamo<br><em>evolvere</em> con te.",
+      "body": "Perché tra un anno potresti lavorare diversamente. Quello che costruiamo deve adattarsi alla tua azienda, non diventare il prossimo problema da aggirare."
+    }
+  }
+}
