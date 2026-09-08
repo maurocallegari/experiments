@@ -19,7 +19,7 @@ setTimeout(()=>document.documentElement.classList.add('ready'),1400);
 if(!reduced&&!mobile()&&window.Lenis){try{const l=new Lenis({duration:1.28,easing:t=>1-Math.pow(1-t,4),smoothWheel:true,wheelMultiplier:.9});const raf=t=>{l.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf)}catch(e){}}
 
 const head=$('.head'),bar=$('.progress i');
-const hero=$('.hero'),copyA=$('.copy-a'),copyB=$('.copy-b'),desk=$('.desk');
+const hero=$('.hero'),copyA=$('.copy-a'),copyB=$('.copy-b'),desk=$('.desk'),scrollCue=$('.hero-index');
 if(copyA){const heroSub=$('p',copyA);if(heroSub)heroSub.remove()}
 if(desk&&!desk.querySelector('.hero-extra'))desk.insertAdjacentHTML('beforeend',`
   <article class="work hero-extra extra-chat" data-work="9" aria-hidden="true"><small>CHAT</small><b>Foto ricevuta</b><span>Marco · 16:28</span></article>
@@ -71,10 +71,11 @@ function applyHeroContent(data){
  const phoneCall=chaos.call||{};const phoneCallEl=card('hcc-1');if(phoneCallEl){setHeroText('b',phoneCall.name,phoneCallEl);setHeroText('small',phoneCall.meta,phoneCallEl)}
  (Array.isArray(chaos.postits)?chaos.postits:[]).forEach((value,i)=>{const el=card(`hcpst-${i+1}`);if(el&&typeof value==='string')el.textContent=value});
  const chat=chaos.chat||{},chatEl=card('hccht-1');if(chatEl){setHeroText('b',chat.text,chatEl);setHeroText('span',chat.status,chatEl)}
- Object.entries(c.sections||{}).forEach(([id,value])=>{const section=document.getElementById(id);if(!section||!value)return;const root=id==='cases'?$('.cases-head',section):section;if(id==='cases'){setHeroText('h2',value.title,root)}else{const display=$('.display',root);if(display&&typeof value.html==='string')display.innerHTML=value.html;else setHeroText('.display',value.title,root)}const body=$('p',root);if(body&&typeof value.bodyHtml==='string')body.innerHTML=value.bodyHtml;else setHeroText('p',value.body,root);if(id==='cases'&&Array.isArray(value.items)){value.items.forEach((item,i)=>{const copy=caseEls[i]&&$('.case-copy',caseEls[i]);if(!copy||!item)return;setHeroText('h3',item.title,copy);setHeroText('p',item.body,copy)})}});
+ Object.entries(c.sections||{}).forEach(([id,value])=>{const section=document.getElementById(id);if(!section||!value)return;const root=id==='cases'?$('.cases-head',section):section;if(id==='cases'){const heading=$('h2',root),markup=value.titleHtml||value.title;if(heading&&typeof markup==='string'&&markup.includes('<em>'))heading.innerHTML=markup;else setHeroText('h2',value.title,root)}else{const display=$('.display',root);if(display&&typeof value.html==='string')display.innerHTML=value.html;else setHeroText('.display',value.title,root)}const body=$('p',root);if(body&&typeof value.bodyHtml==='string')body.innerHTML=value.bodyHtml;else setHeroText('p',value.body,root);if(id==='cases'&&Array.isArray(value.items)){value.items.forEach((item,i)=>{const copy=caseEls[i]&&$('.case-copy',caseEls[i]);if(!copy||!item)return;setHeroText('h3',item.title,copy);setHeroText('p',item.body,copy)})}});
 }
-fetch(`hero-content.json?v=20260908-1435`,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(applyHeroContent).catch(()=>{});
+fetch(`hero-content.json?v=20260908-1505`,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(applyHeroContent).catch(()=>{});
 const cases=$('.cases'),casesHead=$('.cases-head'),track=$('#caseTrack'),caseEls=$$('[data-case]'),caseFill=$('#caseFill');
+const casesTitle=casesHead&&$('h2',casesHead);if(casesTitle&&!casesTitle.querySelector('em')){const title=casesTitle.textContent.trim(),mark='tempo';const at=title.indexOf(mark);if(at>=0){casesTitle.textContent='';casesTitle.append(document.createTextNode(title.slice(0,at)));const em=document.createElement('em');em.textContent=title.slice(at);casesTitle.append(em)}}
 if(caseEls[0]){const art=$('.case-art',caseEls[0]);if(art&&!art.querySelector('.rg-prev-d'))art.insertAdjacentHTML('beforeend',`<div class="ref-card rg-prev-d"><div class="ref-title"><b>Preventivo Rossi</b><em>rev_01</em></div><div class="ref-kv"><span>Totale</span><b>€ 4.980</b></div><div class="ref-kv"><span>Stato</span><b>in bozza</b></div></div><div class="ref-card rg-prev-e"><div class="ref-title"><b>Preventivo Rossi</b><em>rev_02</em></div><div class="ref-kv"><span>Totale</span><b>€ 5.200</b></div><div class="ref-kv"><span>Stato</span><b>inviato</b></div></div><div class="ref-card rg-prev-f"><div class="ref-title"><b>Preventivo Rossi</b><em>rev_04</em></div><div class="ref-kv"><span>Totale</span><b>€ 5.450</b></div><div class="ref-kv"><span>Stato</span><b>da ricontrollare</b></div></div><div class="ref-card rg-prev-g"><div class="ref-title"><b>Preventivo Rossi</b><em>rev_06</em></div><div class="ref-kv"><span>Totale</span><b>€ 5.600</b></div><div class="ref-kv"><span>Stato</span><b>firmato?</b></div></div>`)}
 if(caseEls[3]){const art=$('.case-art',caseEls[3]);if(art&&!art.querySelector('.rg-mail-2'))art.insertAdjacentHTML('beforeend',`<div class="ref-card rg-mail-2"><div class="ref-title"><b>marta@cliente.it</b><em>10:18</em></div><p>Re: Re: aggiungo anche la foto.</p></div><div class="ref-card rg-mail-3"><div class="ref-title"><b>info@rossi.it</b><em>11:06</em></div><p>Qual è l'ultima versione? Ho perso il filo.</p></div><div class="ref-card rg-mail-4"><div class="ref-title"><b>marta@cliente.it</b><em>23:14</em></div><p>Scusi l'ora, inoltro tutto qui.</p></div><div class="ref-card rg-call rg-call-1"><span class="call-badge">CALL</span><b>Marco · tecnico</b><small>03:42 · richiamare</small></div><div class="ref-card rg-call rg-call-2"><span class="call-badge">CALL</span><b>Ufficio Rossi</b><small>08:17 · “quale PDF?”</small></div><div class="ref-card rg-call rg-call-3"><span class="call-badge">CALL</span><b>Numero sconosciuto</b><small>12:04 · nota non salvata</small></div>`)}
 /* Rebuilt paper scene: the lost-sheet problem needs a whole trail of
@@ -143,6 +144,7 @@ const heroChaosM=[{x:-5,y:5,r:-4,s:.9},{x:5,y:3,r:3,s:.88},{x:-2,y:-3,r:-2,s:.9}
 function heroMotion(){
  if(!hero)return;
  const p=prog(hero),m=mobile(),bOn=p>=.44;
+ if(scrollCue){scrollCue.style.opacity=String(1-ease(range(p,.03,.2)));scrollCue.style.pointerEvents='none'}
  if(reduced){
    works.forEach(el=>{el.style.visibility=bOn?'visible':'hidden';el.style.opacity='1';el.style.transform='none';el.style.filter='none'});
    if(copyA){copyA.style.opacity='1';copyA.style.visibility=bOn?'hidden':'visible';copyA.style.transform='translateX(-50%)';copyA.style.filter='none'}
@@ -176,19 +178,19 @@ function casesMotion(now=performance.now()){
    if(art){art.style.opacity=String(vis);art.style.transform=`translate3d(${offset.toFixed(2)}vw,${lift.toFixed(1)}px,0) scale(${mix(.97,1,vis)})`;art.style.filter=`blur(${((1-vis)*(m?2.2:3.2)).toFixed(2)}px)`;
     const pieces=[...art.children].filter(piece=>!piece.classList.contains('chaos-piece'));
     pieces.forEach((piece,k)=>{
-      const stagger=.06+(k%8)*.065;
-      const reveal=isNext?ease(range(blend,stagger,Math.min(.98,stagger+.34))):isCurrent?1:0;
-      const side=(k%4)-1.5,fromX=side*(m?34:72),fromY=((k%3)-1)*(m?24:46);
-      piece.style.opacity=String(reveal);piece.style.visibility=reveal>.01?'visible':'hidden';piece.style.translate=isNext?`${(fromX*(1-reveal)).toFixed(1)}px ${(fromY*(1-reveal)).toFixed(1)}px`:'0 0';
+      const stagger=idx===0?.025+(k%12)*.035:.06+(k%8)*.065;
+      const reveal=idx===0&&isCurrent?ease(range(local,stagger,Math.min(.98,stagger+.28))):isNext?ease(range(blend,stagger,Math.min(.98,stagger+.34))):isCurrent?1:0;
+      const side=(k%4)-1.5,fromX=side*(m?54:105)+(k%2?18:-18),fromY=((k%3)-1)*(m?42:72),spin=((k%5)-2)*(m?10:22);
+      piece.style.opacity=String(reveal);piece.style.visibility=reveal>.01?'visible':'hidden';piece.style.translate=`${(fromX*(1-reveal)).toFixed(1)}px ${(fromY*(1-reveal)).toFixed(1)}px`;piece.style.rotate=`${(spin*(1-reveal)).toFixed(1)}deg`;piece.style.scale=(.72+.28*reveal).toFixed(3);
     });
    }
    if(copy){copy.style.opacity=String(vis);copy.style.transform=`translate3d(${(offset*.42).toFixed(2)}vw,${(lift*.65).toFixed(1)}px,0)`;copy.style.filter=`blur(${((1-vis)*(m?1.5:2.2)).toFixed(2)}px)`}
  });
  if(chaosPieces.length&&idx===0){
    chaosPieces.forEach((el,i)=>{
-     const start=.04+(i%9)*.045,reveal=ease(range(local,start,Math.min(.92,start+.2)));
-     el.style.visibility=reveal>.01?'visible':'hidden';
-     el.style.setProperty('translate',`0 ${((1-reveal)*(m?14:22)).toFixed(1)}px`,'important');
+     const start=.025+(i%12)*.035,reveal=ease(range(local,start,Math.min(.98,start+.24))),side=(i%4)-1.5,fromX=side*(m?58:118)+(i%2?16:-16),fromY=((i%3)-1)*(m?44:76),spin=((i%5)-2)*(m?12:26);
+     el.style.setProperty('opacity',String(reveal),'important');el.style.visibility=reveal>.01?'visible':'hidden';
+     el.style.setProperty('translate',`${(fromX*(1-reveal)).toFixed(1)}px ${(fromY*(1-reveal)).toFixed(1)}px`,'important');el.style.setProperty('rotate',`${(spin*(1-reveal)).toFixed(1)}deg`,'important');el.style.setProperty('scale',(.72+.28*reveal).toFixed(3),'important');
    });
  }
  if(caseFill)caseFill.style.width=(p*100)+'%';

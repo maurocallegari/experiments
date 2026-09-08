@@ -1498,3 +1498,30 @@ html:not(.js) .mx-inner{filter:none}
   .ref-scene + .ref-scene{margin-top:-80svh!important}
   .cases + .ref-scene{margin-top:-65svh!important}
 }
+
+/* FINAL NARRATIVE OVERRIDES: keep the opening cue and the two-level type
+   scale authoritative after every legacy/reference rule above. */
+.hero-copy h1,.hero-copy h2,.cases-head h2,.case-copy h3,.ref-scene .display,
+.ai-copy h2,.pivot h2,.build-copy h2,.evolve h2,.cta h2{
+  font-size:var(--fs-display)!important;line-height:1.05!important;letter-spacing:-.03em!important;
+}
+.hero-copy p,.cases-head p,.case-copy p,.ref-scene .sub,.ai-copy p,
+.pivot p,.build-copy>p,.evolve-copy p,.cta p{
+  font-size:var(--fs-body)!important;line-height:1.6!important;
+}
+.cases-head h2 em{color:#5f8790!important}
+.hero-index{
+  display:flex!important;position:absolute!important;left:50%!important;right:auto!important;
+  bottom:28px!important;transform:translateX(-50%)!important;align-items:center!important;
+  gap:11px!important;z-index:60!important;color:#68747a!important;white-space:nowrap!important;
+  font-size:9px!important;letter-spacing:.14em!important;transition:opacity .35s ease!important;
+}
+.hero-index b{font-size:0!important;font-weight:800!important}
+.hero-index b::after{content:"SCROLLA GIÙ";font-size:9px;letter-spacing:.14em}
+.hero-index i{display:block!important;width:48px!important;height:1px!important;background:#a9b8ba!important}
+.hero-index span{font-size:9px!important;color:#182124!important}
+@media (max-width:900px){
+  .hero-index{bottom:14px!important;gap:8px!important;font-size:8px!important}
+  .hero-index b::after,.hero-index span{font-size:8px!important}
+  .hero-index i{width:32px!important}
+}

@@ -82,6 +82,7 @@
   "sections": {
     "cases": {
       "title": "Dove si perde tempo, davvero.",
+      "titleHtml": "Dove si perde <em>tempo, davvero.</em>",
       "body": "Carta, versioni duplicate, dati spostati a mano, richieste che fanno troppi giri.",
       "items": [
         {"title": "Ogni preventivo parte da un Word diverso.", "body": "La versione giusta, i dati giusti, il prezzo da ricontrollare. Possiamo farlo partire dalle informazioni corrette e produrlo già come deve essere."},
