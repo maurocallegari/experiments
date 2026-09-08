@@ -1525,3 +1525,11 @@ html:not(.js) .mx-inner{filter:none}
   .hero-index b::after,.hero-index span{font-size:8px!important}
   .hero-index i{width:32px!important}
 }
+
+/* MOBILE TIMING AUTHORITY: give each pinned scene a real scroll runway and
+   center the opening hero copy in the viewport. */
+@media (max-width:900px){
+  .hero{height:260svh!important}
+  .hero-copy,.copy-b{top:50svh!important;transform:translate(-50%,-50%)!important}
+  .cases{height:520svh!important}
+}

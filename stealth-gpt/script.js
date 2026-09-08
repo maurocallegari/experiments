@@ -73,7 +73,7 @@ function applyHeroContent(data){
  const chat=chaos.chat||{},chatEl=card('hccht-1');if(chatEl){setHeroText('b',chat.text,chatEl);setHeroText('span',chat.status,chatEl)}
  Object.entries(c.sections||{}).forEach(([id,value])=>{const section=document.getElementById(id);if(!section||!value)return;const root=id==='cases'?$('.cases-head',section):section;if(id==='cases'){const heading=$('h2',root),markup=value.titleHtml||value.title;if(heading&&typeof markup==='string'&&markup.includes('<em>'))heading.innerHTML=markup;else setHeroText('h2',value.title,root)}else{const display=$('.display',root);if(display&&typeof value.html==='string')display.innerHTML=value.html;else setHeroText('.display',value.title,root)}const body=$('p',root);if(body&&typeof value.bodyHtml==='string')body.innerHTML=value.bodyHtml;else setHeroText('p',value.body,root);if(id==='cases'&&Array.isArray(value.items)){value.items.forEach((item,i)=>{const copy=caseEls[i]&&$('.case-copy',caseEls[i]);if(!copy||!item)return;setHeroText('h3',item.title,copy);setHeroText('p',item.body,copy)})}});
 }
-fetch(`hero-content.json?v=20260908-1505`,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(applyHeroContent).catch(()=>{});
+fetch(`hero-content.json?v=20260908-1525`,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(applyHeroContent).catch(()=>{});
 const cases=$('.cases'),casesHead=$('.cases-head'),track=$('#caseTrack'),caseEls=$$('[data-case]'),caseFill=$('#caseFill');
 const casesTitle=casesHead&&$('h2',casesHead);if(casesTitle&&!casesTitle.querySelector('em')){const title=casesTitle.textContent.trim(),mark='tempo';const at=title.indexOf(mark);if(at>=0){casesTitle.textContent='';casesTitle.append(document.createTextNode(title.slice(0,at)));const em=document.createElement('em');em.textContent=title.slice(at);casesTitle.append(em)}}
 if(caseEls[0]){const art=$('.case-art',caseEls[0]);if(art&&!art.querySelector('.rg-prev-d'))art.insertAdjacentHTML('beforeend',`<div class="ref-card rg-prev-d"><div class="ref-title"><b>Preventivo Rossi</b><em>rev_01</em></div><div class="ref-kv"><span>Totale</span><b>€ 4.980</b></div><div class="ref-kv"><span>Stato</span><b>in bozza</b></div></div><div class="ref-card rg-prev-e"><div class="ref-title"><b>Preventivo Rossi</b><em>rev_02</em></div><div class="ref-kv"><span>Totale</span><b>€ 5.200</b></div><div class="ref-kv"><span>Stato</span><b>inviato</b></div></div><div class="ref-card rg-prev-f"><div class="ref-title"><b>Preventivo Rossi</b><em>rev_04</em></div><div class="ref-kv"><span>Totale</span><b>€ 5.450</b></div><div class="ref-kv"><span>Stato</span><b>da ricontrollare</b></div></div><div class="ref-card rg-prev-g"><div class="ref-title"><b>Preventivo Rossi</b><em>rev_06</em></div><div class="ref-kv"><span>Totale</span><b>€ 5.600</b></div><div class="ref-kv"><span>Stato</span><b>firmato?</b></div></div>`)}
@@ -254,7 +254,7 @@ let vh=innerHeight;
 const scenes=qsa('.ref-scene').map(el=>({el,id:el.id,beats:parseFloat(el.getAttribute('data-beats')||'1'),view:qs('.scene-view',el),fade:el.getAttribute('data-fade')||'inout'}));
 /* Keep each mobile pin long enough for its choreography, without a trailing
    viewport where the content has already left the stage. */
-const mobileHeights={ai:3.6,metodo:2.02,risultato:2.4,supporto:1.68};
+const mobileHeights={ai:7.2,metodo:4.4,risultato:5.4,supporto:3.8};
 const desktopHeights={ai:7.2,metodo:5.2,risultato:5.4};
 
 function measureScenes(){
