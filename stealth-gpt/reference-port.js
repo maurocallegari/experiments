@@ -14,8 +14,8 @@ const mqMob=matchMedia('(max-width:899px)');
 let vh=innerHeight;
 
 const scenes=qsa('.ref-scene').map(el=>({el,id:el.id,beats:parseFloat(el.getAttribute('data-beats')||'1'),view:qs('.scene-view',el),fade:el.getAttribute('data-fade')||'inout'}));
-
 const mobileHeights={ai:2.12,metodo:1.92,risultato:1.72,supporto:1.62};
+
 function measureScenes(){
   vh=innerHeight;
   scenes.forEach(s=>{
@@ -33,6 +33,7 @@ function sceneFade(s,p){
   s.view.style.opacity=o.toFixed(3);s.view.style.transform=`translateY(${y.toFixed(1)}px) scale(${sc.toFixed(4)})`;
 }
 
+/* AI: mobile starts fully visible and changes only by physical motion. */
 const aiStage=qs('#ai .ai-stage'),aiCore=qs('#ai .ai-core'),aiOutBox=qs('#ai .ai-out');
 const nzEls=qsa('#ai .nz');
 const outCard=qs('#ai .doc.out'),out2Card=qs('#ai .doc.out2'),out3Card=qs('#ai .doc.out2.o3');
@@ -61,12 +62,31 @@ function updateAIDesktop(p){
 function updateAI(p){mqMob.matches?updateAIMobile(p):updateAIDesktop(p)}
 const approve=qs('#oApprove');if(approve)approve.addEventListener('click',()=>{const b=qs('#aiOut .out-badge');if(b)b.textContent='Inviata ✓';approve.textContent='Inviata ✓';approve.style.background='#2f7d55';approve.style.borderColor='#2f7d55'});
 
-const mxInners=qsa('#mx .mx-inner'),mIdx=qs('#mIdx'),mxTrack=qs('#mxTrack'),mxBox=qs('#mx');let mxCur=0,mxX=[],mxTrackX=0;
-function measureMx(){if(!mxTrack||!mxBox||RM){mxX=[];return}const sw=mxBox.clientWidth;mxX=mxInners.map(el=>Math.max(0,el.offsetLeft+el.offsetWidth/2-sw/2));mxTrackX=mxX[mxCur]||0}
+/* On mobile, restore the previous teal selection scene. It reuses the same
+   work artifacts as the AI/chaos visually: preventivo, carta, telefono, mail. */
+let mxBox=qs('#mx');
+if(mqMob.matches&&mxBox){
+  mxBox.classList.add('selection-stage-mobile');
+  mxBox.innerHTML=`
+    <div class="selection-object sel-doc duplicate" data-r="-8" data-vx="-62" data-vy="-36"><span>REV_03</span><b>Preventivo</b></div>
+    <div class="selection-object sel-doc keep" data-r="3" data-fx="-36" data-fy="-22"><span>DATI</span><b>Preventivo</b></div>
+    <div class="selection-object sel-paper duplicate" data-r="8" data-vx="58" data-vy="-30"><small>copia carta</small><i></i><i></i></div>
+    <div class="selection-object sel-phone keep" data-r="4" data-fx="42" data-fy="34"><div class="phone-notch"></div><small>foto + firma</small></div>
+    <div class="selection-object sel-mail keep" data-r="-3" data-fx="-28" data-fy="44"><small>richiesta cliente</small><b>ordine.pdf</b></div>
+    <div class="selection-ring"></div>`;
+}
+
+const mxInners=qsa('#mx .mx-inner'),mIdx=qs('#mIdx'),mxTrack=qs('#mxTrack');
+mxBox=qs('#mx');
+const selectionObjects=qsa('#metodo .selection-object'),selectionKeeps=qsa('#metodo .selection-object.keep'),selectionDuplicates=qsa('#metodo .selection-object.duplicate'),selectionRing=qs('#metodo .selection-ring');
+let mxCur=0,mxX=[],mxTrackX=0;
+function measureMx(){if(mqMob.matches)return;if(!mxTrack||!mxBox||RM){mxX=[];return}const sw=mxBox.clientWidth;mxX=mxInners.map(el=>Math.max(0,el.offsetLeft+el.offsetWidth/2-sw/2));mxTrackX=mxX[mxCur]||0}
 function updateMetodoMobile(p){
-  if(!mxTrack||!mxBox||!mxInners.length)return;if(!mxX.length)measureMx();const maxX=mxX[mxX.length-1]||0,x=maxX*clamp(p),center=mxBox.clientWidth/2;mxTrack.style.setProperty('transform',`translate3d(${(-x).toFixed(2)}px,0,0)`,'important');let nearest=0,nearestDist=Infinity;
-  mxInners.forEach((el,i)=>{const cardCenter=el.offsetLeft+el.offsetWidth/2-x,d=Math.abs(cardCenter-center)/Math.max(1,mxBox.clientWidth);if(d<nearestDist){nearestDist=d;nearest=i}el.style.setProperty('opacity','1','important');el.style.setProperty('filter','none','important');el.style.setProperty('transform','none','important')});
-  mxCur=nearest;mxInners.forEach((el,i)=>el.classList.toggle('is-c',i===nearest));if(mIdx)mIdx.textContent=('0'+(nearest+1)).slice(-2);
+  if(!mxBox||!selectionObjects.length)return;
+  const t=easeInOut(norm(p,.03,.94)),centerX=mxBox.clientWidth*.5,centerY=mxBox.clientHeight*.52;
+  selectionDuplicates.forEach(el=>{const vx=parseFloat(el.dataset.vx||0),vy=parseFloat(el.dataset.vy||0),r=parseFloat(el.dataset.r||0);el.style.setProperty('opacity','1','important');el.style.setProperty('transform',`translate3d(${(vx*t).toFixed(1)}px,${(vy*t).toFixed(1)}px,0) rotate(${(r*(1-t*.55)).toFixed(2)}deg) scale(${lerp(1,.88,t).toFixed(3)})`,'important')});
+  selectionKeeps.forEach(el=>{const fx=parseFloat(el.dataset.fx||0),fy=parseFloat(el.dataset.fy||0),r=parseFloat(el.dataset.r||0),cx=el.offsetLeft+el.offsetWidth/2,cy=el.offsetTop+el.offsetHeight/2,dx=centerX+fx-cx,dy=centerY+fy-cy;el.style.setProperty('opacity','1','important');el.style.setProperty('transform',`translate3d(${(dx*t).toFixed(1)}px,${(dy*t).toFixed(1)}px,0) rotate(${(r*(1-t)).toFixed(2)}deg) scale(${lerp(1,.93,t).toFixed(3)})`,'important')});
+  if(selectionRing){selectionRing.style.setProperty('opacity','.42','important');selectionRing.style.setProperty('transform',`translate(-50%,-50%) scale(${lerp(.72,1.04,t).toFixed(3)})`,'important')}
 }
 function updateMetodoDesktop(p){let cur=0;if(p>=2/3)cur=2;else if(p>=1/3)cur=1;mxCur=cur;if(mxTrack&&mxX.length){const target=mxX[cur]||0;mxTrackX=lerp(mxTrackX,target,.12);if(Math.abs(target-mxTrackX)<.5)mxTrackX=target;mxTrack.style.transform=`translate3d(${(-mxTrackX).toFixed(1)}px,0,0)`}mxInners.forEach((el,i)=>el.classList.toggle('is-c',i===cur));if(mIdx)mIdx.textContent=('0'+(cur+1)).slice(-2)}
 function updateMetodo(p){mqMob.matches?updateMetodoMobile(p):updateMetodoDesktop(p)}
