@@ -152,18 +152,35 @@ function heroMotion(){
    return;
  }
  const vectors=m?heroM:heroD,target=m?heroChaosM:heroChaosD,acc=ease(range(p,.04,.34)),gather=ease(range(p,.44,.72)),chaosY=!m&&bOn?10:0,appearY=!m&&bOn?34*(1-gather):0;
- works.forEach((el,i)=>{
-   const v=vectors[i%vectors.length],z=target[i%target.length],entryStart=.45+(i%8)*.012,entry=ease(range(p,entryStart,Math.min(.78,entryStart+.2))),edge=i%4===0?-112:i%4===1?112:i%4===2?-84:84,edgeY=i%2?22:30;
-   const x=edge*(1-entry)+(i%2?1:-1)*(m?5:11)*(1-entry)+lerp(v.x,z.x,gather)*gather+(i%2?1:-1)*acc*(m?1.5:3),y=edgeY*(1-entry)+(i%3-1)*(m?1:3)*(1-entry)+lerp(v.y,z.y,gather)*gather+appearY+chaosY*gather,rot=lerp(v.r,z.r,gather)*gather,sc=lerp(1,lerp(v.s,z.s,gather),gather);
-   el.style.transform=`translate3d(${x}vw,${y}vh,0) rotate(${rot}deg) scale(${sc})`;el.style.opacity='1';el.style.visibility=p>=entryStart?'visible':'hidden';el.style.filter='none';
+  works.forEach((el,i)=>{
+   const v=vectors[i%vectors.length],z=target[i%target.length],entryStart=m?.26+(i%12)*.018:.45+(i%8)*.012,entry=ease(range(p,entryStart,Math.min(.78,entryStart+.2))),edge=m?0:(i%4===0?-112:i%4===1?112:i%4===2?-84:84),edgeY=m?(i%2?9:13):(i%2?22:30);
+   let x=edge*(1-entry)+(i%2?1:-1)*(m?5:11)*(1-entry)+lerp(v.x,z.x,gather)*gather+(i%2?1:-1)*acc*(m?1.5:3),y=edgeY*(1-entry)+(i%3-1)*(m?1:3)*(1-entry)+lerp(v.y,z.y,gather)*gather+appearY+chaosY*gather;
+   const rot=lerp(v.r,z.r,gather)*gather,sc=lerp(1,lerp(v.s,z.s,gather),gather),visible=p>=entryStart;
+   if(m&&visible&&desk){
+    const area=desk.getBoundingClientRect(),pad=4;
+    /* Rotated/zoomed cards can leave a small residual after one correction;
+       settle twice so no visible card is clipped by the desk mask. */
+    for(let pass=0;pass<3;pass++){
+      el.style.transform=`translate3d(${x}vw,${y}vh,0) rotate(${rot}deg) scale(${sc})`;
+      const box=el.getBoundingClientRect();
+      let dx=0,dy=0;
+      if(box.left<area.left+pad)dx+=area.left+pad-box.left;
+      if(box.right>area.right-pad)dx-=box.right-(area.right-pad);
+      if(box.top<area.top+pad)dy+=area.top+pad-box.top;
+      if(box.bottom>area.bottom-pad)dy-=box.bottom-(area.bottom-pad);
+      x+=dx/innerWidth*100;y+=dy/innerHeight*100;
+      if(Math.abs(dx)<.25&&Math.abs(dy)<.25)break;
+    }
+   }
+   el.style.transform=`translate3d(${x}vw,${y}vh,0) rotate(${rot}deg) scale(${sc})`;el.style.opacity='1';el.style.visibility=visible?'visible':'hidden';el.style.filter='none';
  });
  const bin=ease(range(p,.41,.62)),bout=ease(range(p,m?.965:.86,m?.999:.985));
  if(m){
    /* Mobile needs a real 01→02 handoff instead of a visibility toggle. The
       first message drifts away while the question fades in over the same
       scroll interval; neither copy is ever left in a clipped position. */
-   const second=ease(range(p,.36,.5)),first=1-second,opening=ease(range(p,.03,.34));
-   if(copyA){copyA.style.opacity=first.toFixed(3);copyA.style.visibility=first>.002?'visible':'hidden';copyA.style.setProperty('transform',`translate(-50%,-50%) translateY(${(-opening*12).toFixed(1)}px) scale(${(1-opening*.025).toFixed(3)})`,'important');copyA.style.filter='none'}
+   const second=ease(range(p,.4,.56)),first=1-second,opening=ease(range(p,.03,.38));
+   if(copyA){copyA.style.opacity=first.toFixed(3);copyA.style.visibility=first>.002?'visible':'hidden';copyA.style.setProperty('transform',`translate(-50%,-50%) translateY(${(-opening*24).toFixed(1)}px) scale(${(1-opening*.12).toFixed(3)})`,'important');copyA.style.filter='none'}
    if(copyB){copyB.style.opacity=second.toFixed(3);copyB.style.visibility=second>.002?'visible':'hidden';copyB.style.setProperty('transform',`translate(-50%,0) translateY(${(18*(1-second)).toFixed(1)}px)`,'important');copyB.style.filter='none'}
  }else{
    if(copyA){copyA.style.opacity='1';copyA.style.visibility=bOn?'hidden':'visible';copyA.style.transform=`translateX(-50%) translateY(${bOn?-22:0}px)`;copyA.style.filter='none'}

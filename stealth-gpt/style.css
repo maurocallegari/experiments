@@ -1537,7 +1537,8 @@ html:not(.js) .mx-inner{filter:none}
   .copy-b{top:10svh!important;transform:translate(-50%,0)!important}
   .copy-b h2{max-width:11ch!important}
   .copy-b p{max-width:31ch!important;margin-top:13px!important}
-  .desk{inset:auto 0 0!important;top:53svh!important;height:45svh!important;overflow:hidden!important;clip-path:inset(0)!important;zoom:.82}
+  .desk{inset:auto 0 0!important;top:58svh!important;height:40svh!important;overflow:hidden!important;clip-path:inset(0)!important}
+  .desk .work{zoom:.78}
   /* Keep the settled mobile composition fully inside the viewport. */
   .mail{right:5px!important}.word{left:4px!important}.excel{right:6px!important}.phone{right:12px!important}
   .sticky{left:18px!important}.duplicate{left:42%!important}.alert{right:10px!important}
