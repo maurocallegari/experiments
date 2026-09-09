@@ -256,7 +256,10 @@ function evolveMotion(){
 }
 
 function globalUI(){const max=Math.max(1,document.documentElement.scrollHeight-innerHeight),p=clamp(scrollY/max);if(bar)bar.style.width=(p*100)+'%';if(head)head.classList.toggle('scrolled',scrollY>22)}
-let ticking=false;function update(){ticking=false;globalUI();heroMotion();casesMotion();aiMotion();pivotMotion();buildMotion();evolveMotion()}addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});addEventListener('resize',update,{passive:true});update();
+let ticking=false;function update(){globalUI();heroMotion();casesMotion();aiMotion();pivotMotion();buildMotion();evolveMotion()}
+/* The reference-scene engine below owns the single scroll scheduler. Expose
+   this renderer to it instead of installing a second scroll listener. */
+window.__stealthMainUpdate=update;
 })();
 
 /* Ported reference scenes choreography. */
@@ -408,5 +411,5 @@ function updateScenes(){
    if(s.id==='ai')updateAI(p);else if(s.id==='metodo')updateMetodo(p);else if(s.id==='risultato')updateRisultato(p);else if(s.id==='supporto')updateSupporto(p)
  });
 }
-let ticking=false;function frame(){ticking=false;updateScenes()}addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(frame)}},{passive:true});let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{measureScenes();frame()},180)},{passive:true});addEventListener('load',()=>{measureScenes();frame()},{once:true});setTimeout(()=>{measureScenes();frame()},300);measureScenes();frame();
+let ticking=false;function frame(){ticking=false;if(window.__stealthMainUpdate)window.__stealthMainUpdate();updateScenes()}addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(frame)}},{passive:true});let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{measureScenes();frame()},180)},{passive:true});addEventListener('load',()=>{measureScenes();frame()},{once:true});setTimeout(()=>{measureScenes();frame()},300);measureScenes();frame();
 })();
