@@ -153,7 +153,7 @@ function heroMotion(){
  }
  const vectors=m?heroM:heroD,target=m?heroChaosM:heroChaosD,acc=ease(range(p,.04,.34)),gather=ease(range(p,.44,.72)),chaosY=!m&&bOn?10:0,appearY=!m&&bOn?34*(1-gather):0;
   works.forEach((el,i)=>{
-   const v=vectors[i%vectors.length],z=target[i%target.length],entryStart=m?.26+(i%12)*.018:.45+(i%8)*.012,entry=ease(range(p,entryStart,Math.min(.78,entryStart+.2))),edge=m?0:(i%4===0?-112:i%4===1?112:i%4===2?-84:84),edgeY=m?(i%2?9:13):(i%2?22:30);
+   const v=vectors[i%vectors.length],z=target[i%target.length],entryStart=m?.22+(i%12)*.018:.45+(i%8)*.012,entry=ease(range(p,entryStart,Math.min(.78,entryStart+.2))),edge=m?(i%4===0?-26:i%4===1?26:i%4===2?-18:18):(i%4===0?-112:i%4===1?112:i%4===2?-84:84),edgeY=m?(i%4===0?-18:i%4===1?18:i%4===2?-10:10):(i%2?22:30);
    let x=edge*(1-entry)+(i%2?1:-1)*(m?5:11)*(1-entry)+lerp(v.x,z.x,gather)*gather+(i%2?1:-1)*acc*(m?1.5:3),y=edgeY*(1-entry)+(i%3-1)*(m?1:3)*(1-entry)+lerp(v.y,z.y,gather)*gather+appearY+chaosY*gather;
    const rot=lerp(v.r,z.r,gather)*gather,sc=lerp(1,lerp(v.s,z.s,gather),gather),visible=p>=entryStart;
    if(m&&visible&&desk){
@@ -179,9 +179,9 @@ function heroMotion(){
    /* Mobile needs a real 01→02 handoff instead of a visibility toggle. The
       first message drifts away while the question fades in over the same
       scroll interval; neither copy is ever left in a clipped position. */
-   const second=ease(range(p,.4,.56)),first=1-second,opening=ease(range(p,.03,.38));
-   if(copyA){copyA.style.opacity=first.toFixed(3);copyA.style.visibility=first>.002?'visible':'hidden';copyA.style.setProperty('transform',`translate(-50%,-50%) translateY(${(-opening*24).toFixed(1)}px) scale(${(1-opening*.12).toFixed(3)})`,'important');copyA.style.filter='none'}
-   if(copyB){copyB.style.opacity=second.toFixed(3);copyB.style.visibility=second>.002?'visible':'hidden';copyB.style.setProperty('transform',`translate(-50%,0) translateY(${(18*(1-second)).toFixed(1)}px)`,'important');copyB.style.filter='none'}
+   const firstExit=ease(range(p,.22,.41)),first=1-firstExit,second=ease(range(p,.45,.64));
+   if(copyA){copyA.style.opacity=first.toFixed(3);copyA.style.visibility=first>.002?'visible':'hidden';copyA.style.setProperty('transform',`translate(-50%,-50%) translateY(${(-firstExit*42).toFixed(1)}px) scale(${(1-firstExit*.12).toFixed(3)})`,'important');copyA.style.filter='none'}
+   if(copyB){copyB.style.opacity=second.toFixed(3);copyB.style.visibility=second>.002?'visible':'hidden';copyB.style.setProperty('transform',`translate(-50%,0) translateY(${(72*(1-second)).toFixed(1)}px)`,'important');copyB.style.filter='none'}
  }else{
    if(copyA){copyA.style.opacity='1';copyA.style.visibility=bOn?'hidden':'visible';copyA.style.transform=`translateX(-50%) translateY(${bOn?-22:0}px)`;copyA.style.filter='none'}
    if(copyB){copyB.style.opacity='1';copyB.style.visibility=bOn?'visible':'hidden';copyB.style.transform=`translateX(-50%) translateY(${bOn?mix(18,0,bin)-12*bout:18}px)`;copyB.style.filter='none'}
