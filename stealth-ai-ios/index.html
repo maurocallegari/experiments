@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stealth — AI scrollytelling v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f8f8f8;
+  --ink:#171717;
+  --muted:#6d7478;
+  --accent:#A0CDD2;
+  --line:#e6eaeb;
+  --paper:#fff;
+  --shadow:0 16px 36px rgba(18,24,27,.07),0 4px 10px rgba(18,24,27,.035);
+  --shadow-strong:0 28px 64px rgba(18,24,27,.11),0 8px 20px rgba(18,24,27,.05);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden;-webkit-text-size-adjust:100%} body{touch-action:pan-y;overscroll-behavior-y:auto}
+.ai-chapter{height:300vh;position:relative;background:var(--bg)}
+.ai-pin{position:-webkit-sticky;position:sticky;top:0;height:100vh;height:100dvh;min-height:760px;overflow:hidden;transform:translateZ(0);-webkit-transform:translateZ(0)}
+.copy{position:absolute;left:50%;top:7vh;transform:translateX(-50%);width:min(980px,92vw);text-align:center;z-index:30}
+.copy h2{margin:0;font-size:clamp(38px,5vw,70px);line-height:1.02;letter-spacing:-.055em;font-weight:800}
+.copy h2 em{font-style:normal;color:var(--accent)}
+.copy p{max-width:820px;margin:18px auto 0;font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:var(--muted)}
+.stage{position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);width:min(1300px,94vw);height:min(620px,68vh)}
+.card{position:absolute;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:14px 16px;will-change:transform,opacity,filter}
+.card small{display:block;color:#899397;font-size:9px;font-weight:800;letter-spacing:.08em}
+.card b{display:block;color:#2c3437;font-size:14px;line-height:1.2}
+.line{height:7px;background:#edf0f1;border-radius:999px;margin-top:8px}
+.mail{left:3%;top:8%;width:210px;height:128px;transform:rotate(-7deg)}
+.mail b{margin-top:10px}
+.word{left:22%;top:0;width:190px;height:116px;transform:rotate(5deg)}
+.word b{margin-top:10px}
+.pdf{left:4%;top:59%;width:150px;height:128px;transform:rotate(5deg)}
+.pdf .pdfmark{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;background:#f2f4f5;font-size:11px;font-weight:800;color:#667176;margin-top:8px}
+.wa{left:24%;top:68%;width:205px;height:112px;transform:rotate(-5deg)}
+.wa p{font-size:11px;line-height:1.4;color:#5c686d;margin:8px 0 0}
+.phone{right:23%;top:1%;width:184px;height:110px;transform:rotate(-6deg)}
+.phone b{margin-top:9px}
+.photo{right:5%;top:15%;width:166px;height:130px;padding:9px;transform:rotate(7deg)}
+.photo .ph{width:100%;height:100%;border-radius:14px;background:#eef2f3;position:relative;overflow:hidden}
+.photo .ph:before{content:"";position:absolute;left:18px;bottom:14px;width:54px;height:38px;background:#dbe2e4;transform:skew(-16deg)}
+.photo .ph:after{content:"";position:absolute;right:16px;bottom:15px;width:70px;height:44px;background:#e1e6e8;transform:skew(12deg)}
+.note{right:4%;top:62%;width:165px;height:110px;background:#f3f3f0;transform:rotate(-7deg)}
+.note b{margin-top:10px}
+.call{right:24%;top:68%;width:176px;height:92px;transform:rotate(5deg)}
+.call b{margin-top:10px}
+.chat{left:42%;top:16%;width:170px;height:92px;transform:rotate(-4deg)}
+.chat b{margin-top:8px}
+.core-wrap{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:220px;height:220px;display:grid;place-items:center;z-index:12}
+.core{width:144px;height:144px;border-radius:50%;background:#fff;border:1px solid #dce3e5;box-shadow:var(--shadow-strong);display:grid;place-items:center;opacity:0;transform:scale(.45);will-change:transform,opacity,box-shadow}
+.core span{font-size:42px;font-weight:800;letter-spacing:-.055em}
+.core-ring{position:absolute;inset:12px;border-radius:50%;border:1px dashed rgba(93,124,130,.28);opacity:0;transform:scale(.8);will-change:transform,opacity}
+.output-wrap{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:330px;height:390px;z-index:14;opacity:0;will-change:transform,opacity}
+.output{position:absolute;inset:0;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-strong);padding:24px}
+.out-top{height:34px;display:flex;align-items:center;justify-content:space-between}
+.out-top .mark{width:70px;height:10px;border-radius:999px;background:#dfe4e5}
+.out-top .ok{width:28px;height:28px;border-radius:50%;background:var(--accent);display:grid;place-items:center;font-size:14px;font-weight:800}
+.out-row{display:grid;grid-template-columns:82px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid #edf0f1}
+.out-row i,.out-row b{display:block;height:9px;border-radius:999px}
+.out-row i{background:#e8ecee}
+.out-row b{background:#cfd8da}
+.out-row:nth-child(3) b{width:82%}
+.out-row:nth-child(4) b{width:64%}
+.out-row:nth-child(5) b{width:90%}
+.out-block{margin-top:22px;border:1px solid #e8ecee;border-radius:16px;padding:16px}
+.out-block .bar{height:9px;border-radius:999px;background:#d6dee0;margin-bottom:10px}
+.out-block .bar:nth-child(2){width:74%}
+.out-block .bar:nth-child(3){width:52%;background:var(--accent)}
+.out-footer{position:absolute;left:24px;right:24px;bottom:24px;display:flex;gap:10px}
+.out-footer i{height:42px;flex:1;border-radius:13px;background:#eef1f2}
+.out-footer i:first-child{background:var(--accent)}
+.connector{position:absolute;left:50%;top:50%;width:0;height:1px;background:var(--accent);transform-origin:left center;opacity:0;z-index:7}
+.output-connector{position:absolute;left:58%;top:50%;width:20%;height:1px;background:var(--accent);opacity:0;transform:scaleX(.1);transform-origin:left center;z-index:8}
+.scroll-hint{position:absolute;left:50%;bottom:3vh;transform:translateX(-50%);display:flex;align-items:center;gap:10px;color:#899195;font-size:11px;font-weight:800;letter-spacing:.08em;z-index:30}
+.scroll-hint i{display:block;width:68px;height:1px;background:#dfe4e5;position:relative}
+.scroll-hint i:after{content:"";position:absolute;left:0;top:-1px;width:var(--p,0%);height:3px;background:var(--accent);border-radius:999px}
+@media(max-width:800px){
+  .ai-chapter{height:320vh}
+  .ai-pin{min-height:700px}
+  .copy{top:5vh;width:calc(100% - 34px)}
+  .copy h2{font-size:40px}
+  .copy p{font-size:15px;margin-top:14px}
+  .stage{top:57%;height:58vh;width:100vw}
+  .mail{left:2%;top:5%;width:142px;height:96px;padding:10px}
+  .word{left:30%;top:-1%;width:140px;height:88px;padding:10px}
+  .pdf{left:3%;top:64%;width:110px;height:94px;padding:10px}
+  .wa{left:25%;top:75%;width:145px;height:88px;padding:10px}
+  .phone{right:22%;top:0;width:140px;height:86px;padding:10px}
+  .photo{right:2%;top:18%;width:118px;height:94px;padding:7px}
+  .note{right:2%;top:68%;width:118px;height:84px;padding:10px}
+  .call{right:27%;top:79%;width:132px;height:72px;padding:10px}
+  .chat{left:41%;top:22%;width:130px;height:72px;padding:10px}
+  .core-wrap{width:150px;height:150px}
+  .core{width:104px;height:104px}
+  .core span{font-size:30px}
+  .output-wrap{right:auto;left:50%;top:60%;width:270px;height:315px;transform:translate(-50%,-50%)}
+  .output{padding:18px}
+  .out-row{padding:12px 0}
+  .out-footer{left:18px;right:18px;bottom:18px}
+  .output-connector{display:none}
+}
+</style>
+</head>
+<body>
+<section class="ai-chapter" id="aiChapter">
+  <div class="ai-pin">
+    <div class="copy">
+      <h2>E alcune cose oggi può leggerle <em>anche l’AI.</em></h2>
+      <p>Una mail, un PDF, una foto, una richiesta scritta male: può estrarre le informazioni utili e proporti il passo successivo.<br>Tu controlli quello che conta davvero.</p>
+    </div>
+    <div class="stage" id="stage">
+      <article class="card noise mail"><small>MAIL</small><b>Richiesta preventivo</b><div class="line" style="width:90%"></div><div class="line" style="width:68%"></div></article>
+      <article class="card noise word"><small>WORD</small><b>preventivo_v3_FINALE(2).docx</b><div class="line" style="width:76%"></div></article>
+      <article class="card noise pdf"><small>PDF</small><span class="pdfmark">PDF</span><div class="line" style="width:74%"></div></article>
+      <article class="card noise wa"><small>WHATSAPP</small><p>“Ti mando tutto qui così facciamo prima.”</p></article>
+      <article class="card noise phone"><small>NOTA VOCALE</small><b>02:10 · “aspetta…”</b><div class="line" style="width:82%"></div></article>
+      <article class="card noise photo"><div class="ph"></div></article>
+      <article class="card noise note"><small>POST-IT</small><b>ricontrollare i prezzi</b></article>
+      <article class="card noise call"><small>TELEFONO</small><b>chiamata persa · 03:42</b></article>
+      <article class="card noise chat"><small>CHAT</small><b>“È quella definitiva?”</b></article>
+      <div class="core-wrap"><div class="core-ring" id="coreRing"></div><div class="core" id="core"><span>AI</span></div></div>
+      <div class="output-connector" id="outputConnector"></div>
+      <div class="output-wrap" id="output"><div class="output"><div class="out-top"><span class="mark"></span><span class="ok">✓</span></div><div class="out-row"><i></i><b></b></div><div class="out-row"><i></i><b></b></div><div class="out-row"><i></i><b></b></div><div class="out-row"><i></i><b></b></div><div class="out-block"><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><div class="out-footer"><i></i><i></i></div></div></div>
+    </div>
+    <div class="scroll-hint"><span>SCROLL</span><i id="progress"></i></div>
+  </div>
+</section>
+<script>
+(()=>{
+  const chapter=document.getElementById('aiChapter');
+  const stage=document.getElementById('stage');
+  const cards=[...document.querySelectorAll('.noise')];
+  const core=document.getElementById('core');
+  const ring=document.getElementById('coreRing');
+  const output=document.getElementById('output');
+  const connector=document.getElementById('outputConnector');
+  const prog=document.getElementById('progress');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n));
+  const range=(p,a,b)=>clamp((p-a)/(b-a));
+  const ease=t=>{t=clamp(t);return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2};
+  const mix=(a,b,t)=>a+(b-a)*t;
+  let initial=[];
+  function measure(){const s=stage.getBoundingClientRect(); initial=cards.map(el=>{const r=el.getBoundingClientRect();return{x:r.left-s.left+r.width/2,y:r.top-s.top+r.height/2}})}
+  function chapterProgress(){const r=chapter.getBoundingClientRect();const vh=(window.visualViewport&&window.visualViewport.height)||window.innerHeight||document.documentElement.clientHeight;return clamp((-r.top)/Math.max(1,chapter.offsetHeight-vh))}
+  function render(){const p=chapterProgress();prog.style.setProperty('--p',(p*100).toFixed(1)+'%');if(reduced){cards.forEach(el=>el.style.opacity='0');core.style.opacity='.18';output.style.opacity='1';return}const gather=ease(range(p,.05,.48));const coreIn=ease(range(p,.18,.48));const coreFade=ease(range(p,.60,.78));const out=ease(range(p,.52,.84));const sw=stage.clientWidth,sh=stage.clientHeight,centerX=sw/2,centerY=sh/2;cards.forEach((el,i)=>{const a=initial[i]||{x:centerX,y:centerY};const dx=(centerX-a.x)*gather;const dy=(centerY-a.y)*gather;const rotate=(i%2?1:-1)*mix(0,6,gather);el.style.opacity=String(1-gather*.985);el.style.filter=`blur(${mix(0,3.2,gather)}px)`;el.style.transform=`translate3d(${dx}px,${dy}px,0) rotate(${rotate}deg) scale(${mix(1,.38,gather)})`});core.style.opacity=String(coreIn*(1-coreFade*.72));core.style.transform=`scale(${mix(.45,1,coreIn)})`;ring.style.opacity=String(coreIn*(1-coreFade*.8));ring.style.transform=`scale(${mix(.78,1.08,coreIn)})`;connector.style.opacity=String(out*.85);connector.style.transform=`scaleX(${mix(.1,1,out)})`;output.style.opacity=String(out);if(innerWidth<=800){output.style.transform=`translate(-50%,-50%) translateY(${mix(70,0,out)}px) scale(${mix(.9,1,out)})`}else{output.style.transform=`translateY(-50%) translateX(${mix(70,0,out)}px) scale(${mix(.92,1,out)})`}}
+  let ticking=false;const queue=()=>{if(!ticking){ticking=true;requestAnimationFrame(()=>{render();ticking=false})}};
+  addEventListener('scroll',queue,{passive:true});addEventListener('touchmove',queue,{passive:true});addEventListener('touchend',queue,{passive:true});if(window.visualViewport){visualViewport.addEventListener('resize',()=>{measure();queue()},{passive:true});visualViewport.addEventListener('scroll',queue,{passive:true})}addEventListener('resize',()=>{measure();queue()});
+  requestAnimationFrame(()=>{measure();render()});
+})();
+</script>
+<!-- iOS Safari build 2026-09-10 -->
+</body>
+</html>
