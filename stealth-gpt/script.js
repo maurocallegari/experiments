@@ -16,7 +16,7 @@ let lp=0;const loading=setInterval(()=>{lp=Math.min(92,lp+7);if(loaderBar)loader
 addEventListener('load',()=>{clearInterval(loading);if(loaderBar)loaderBar.style.width='100%';if(loaderPct)loaderPct.textContent='100%';setTimeout(()=>document.documentElement.classList.add('ready'),150)},{once:true});
 setTimeout(()=>document.documentElement.classList.add('ready'),1400);
 
-if(!reduced&&!mobile()&&window.Lenis){try{const l=new Lenis({duration:1.28,easing:t=>1-Math.pow(1-t,4),smoothWheel:true,wheelMultiplier:.9});const raf=t=>{l.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf)}catch(e){}}
+if(!reduced&&!mobile()&&window.Lenis){try{const l=new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),smoothWheel:true,wheelMultiplier:.9});const raf=t=>{l.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf)}catch(e){}}
 
 const head=$('.head'),bar=$('.progress i');
 const hero=$('.hero'),copyA=$('.copy-a'),copyB=$('.copy-b'),desk=$('.desk'),scrollCue=$('.hero-index');
@@ -123,7 +123,6 @@ if(caseEls[0]){
     <div class="chaos-piece chaos-chat rg-chaos-chat-1"><b>“Te l'avevo mandato ieri…”</b><span>✓✓</span></div>
     <div class="chaos-piece chaos-chat rg-chaos-chat-2"><b>“Questo è il definitivo?”</b><span>✓✓</span></div>`);
 }
-const chaosPieces=$$('.chaos-piece',caseEls[0]);
 const ai=$('.ai-chapter'),aiNoise=$$('.ai-noise-card'),aiCore=$('.ai-orbit-core'),aiResult=$('.ai-result');
 const pivot=$('.pivot'),sels=$$('.sel'),selCore=$('.sel-core');
 const build=$('.build'),inputs=$$('.input'),product=$('.product'),output=$('.output');
@@ -188,39 +187,96 @@ function heroMotion(){
  }
 }
 
-/* Cases crossfade at the handoff so the stage never drops to an empty frame. */
+/* Cases use one pinned stage, like the reference scrollytelling scene. Each
+   step has a hold, an ordered exit, a short hand-off and an entrance from
+   below/side. This prevents fast wheel/touch input from making every asset
+   appear in one block while preserving the current visual language. */
 let casesPlayhead=0,casesReady=false,casesRaf=0,casesLast=0;
 function casesMotion(now=performance.now()){
  if(!cases||!caseEls.length)return;
- const p=prog(cases),m=mobile(),n=caseEls.length,target=Math.min(n-.000001,p*n);
+ if(reduced){
+   caseEls.forEach((el,i)=>{
+     el.style.visibility=i===0?'visible':'hidden';
+     el.style.opacity=i===0?'1':'0';
+     el.style.transform='none';
+     const copy=$('.case-copy',el),art=$('.case-art',el);
+     if(copy){copy.style.opacity='1';copy.style.transform='none';copy.style.filter='none'}
+     if(art){art.style.opacity='1';art.style.transform='none';art.style.filter='none'}
+   });
+   return;
+ }
+ const p=prog(cases),m=mobile(),n=caseEls.length;
+ const target=clamp(p)*(n-.000001);
  if(!casesReady){casesPlayhead=target;casesReady=true}
  const dt=Math.min(80,Math.max(1,now-(casesLast||now)));casesLast=now;
- casesPlayhead+= (target-casesPlayhead)*(1-Math.exp(-dt/155));
- const scaled=clamp(casesPlayhead,0,n-.000001),idx=Math.min(n-1,Math.floor(scaled)),local=scaled-idx,finalOut=idx===n-1?ease(range(local,.86,.995)):0;
+ const response=m?230:190;
+ casesPlayhead+=(target-casesPlayhead)*(1-Math.exp(-dt/response));
+ const scaled=clamp(casesPlayhead,0,n-.000001),idx=Math.min(n-1,Math.floor(scaled)),local=scaled-idx;
+ const finalOut=idx===n-1?ease(range(local,.9,.998)):0;
  if(track)track.style.setProperty('transform','none','important');
- if(casesHead){casesHead.style.opacity=String(1-finalOut);casesHead.style.transform=m?'none':`translateX(-50%) translateY(${(-finalOut*12).toFixed(1)}px)`}
- caseEls.forEach((el,i)=>{
-   const art=$('.case-art',el),copy=$('.case-copy',el),isCurrent=i===idx,isNext=i===idx+1&&idx<n-1,blend=ease(range(local,.68,1)),vis=isCurrent?1-blend:isNext?blend:0,distance=Math.abs(scaled-i),offset=(i-scaled)*(m?8:6),lift=distance*(m?8:12);
-   el.style.visibility=vis>.002?'visible':'hidden';el.style.opacity='1';el.style.zIndex=String(Math.round(vis*100));el.style.pointerEvents=vis>.7?'auto':'none';
-   if(art){art.style.opacity=String(vis);art.style.transform=`translate3d(${offset.toFixed(2)}vw,${lift.toFixed(1)}px,0) scale(${mix(.97,1,vis)})`;art.style.filter=`blur(${((1-vis)*(m?2.2:3.2)).toFixed(2)}px)`;
-    const pieces=[...art.children].filter(piece=>!piece.classList.contains('chaos-piece'));
-    pieces.forEach((piece,k)=>{
-      const stagger=idx===0?.025+(k%12)*.035:.06+(k%8)*.065;
-      const reveal=idx===0&&isCurrent?ease(range(local,stagger,Math.min(.98,stagger+.28))):isNext?ease(range(blend,stagger,Math.min(.98,stagger+.34))):isCurrent?1:0;
-      const side=(k%4)-1.5,fromX=side*(m?54:105)+(k%2?18:-18),fromY=((k%3)-1)*(m?42:72),spin=((k%5)-2)*(m?10:22);
-      piece.style.opacity=String(reveal);piece.style.visibility=reveal>.01?'visible':'hidden';piece.style.translate=`${(fromX*(1-reveal)).toFixed(1)}px ${(fromY*(1-reveal)).toFixed(1)}px`;piece.style.rotate=`${(spin*(1-reveal)).toFixed(1)}deg`;piece.style.scale=(.72+.28*reveal).toFixed(3);
-    });
-   }
-   if(copy){copy.style.opacity=String(vis);copy.style.transform=`translate3d(${(offset*.42).toFixed(2)}vw,${(lift*.65).toFixed(1)}px,0)`;copy.style.filter=`blur(${((1-vis)*(m?1.5:2.2)).toFixed(2)}px)`}
- });
- if(chaosPieces.length&&idx===0){
-   chaosPieces.forEach((el,i)=>{
-     const start=.025+(i%12)*.035,reveal=ease(range(local,start,Math.min(.98,start+.24))),side=(i%4)-1.5,fromX=side*(m?58:118)+(i%2?16:-16),fromY=((i%3)-1)*(m?44:76),spin=((i%5)-2)*(m?12:26);
-     el.style.setProperty('opacity',String(reveal),'important');el.style.visibility=reveal>.01?'visible':'hidden';
-     el.style.setProperty('translate',`${(fromX*(1-reveal)).toFixed(1)}px ${(fromY*(1-reveal)).toFixed(1)}px`,'important');el.style.setProperty('rotate',`${(spin*(1-reveal)).toFixed(1)}deg`,'important');el.style.setProperty('scale',(.72+.28*reveal).toFixed(3),'important');
-   });
+ if(casesHead){
+   const intro=1-ease(range(p,.14,.31));
+   casesHead.style.opacity=String(intro);
+   casesHead.style.transform=m?'none':`translateX(-50%) translateY(${(-12*(1-intro)).toFixed(1)}px)`;
  }
+ caseEls.forEach((el,i)=>{
+   const art=$('.case-art',el),copy=$('.case-copy',el);
+   const current=i===idx,previous=i===idx-1;
+   /* A new case enters only after the previous copy/art has started leaving.
+      The opening case remains present so the section never flashes empty. */
+   const entry=current?(idx===0?1:ease(range(local,.11,.48))):0;
+   const exit=previous?1-ease(range(local,.015,.30)):0;
+   let vis=current?entry:previous?exit:0;
+   if(current&&idx===n-1)vis*=1-finalOut;
+   const entering=current&&idx>0,leaving=previous;
+   const copyY=entering?(1-entry)*(m?34:38):leaving?-(1-exit)*(m?28:32):0;
+   const artY=entering?(1-entry)*(m?26:32):leaving?-(1-exit)*(m?38:46):0;
+   const artX=entering?(1-entry)*(m?8:3):leaving?-(1-exit)*(m?4:2):0;
+   el.style.visibility=vis>.002?'visible':'hidden';
+   el.style.opacity=vis.toFixed(3);
+   el.style.zIndex=String(current?20:previous?10:0);
+   el.style.pointerEvents=vis>.7?'auto':'none';
+   if(copy){
+     copy.style.opacity=vis.toFixed(3);
+     copy.style.transform=`translate3d(${artX.toFixed(2)}vw,${copyY.toFixed(1)}px,0)`;
+     copy.style.filter=`blur(${((1-vis)*(m?1.2:1.8)).toFixed(2)}px)`;
+   }
+   if(art){
+     art.style.opacity=vis.toFixed(3);
+     art.style.transform=`translate3d(${artX.toFixed(2)}vw,${artY.toFixed(1)}px,0) scale(${mix(.96,1,vis)})`;
+     art.style.filter=`blur(${((1-vis)*(m?1.8:2.4)).toFixed(2)}px)`;
+     const pieces=[...art.children];
+     pieces.forEach((piece,k)=>{
+       const stagger=(k%12)*.025+(Math.floor(k/12)%3)*.035;
+       let reveal=0;
+       if(current){
+         if(idx===0){
+           /* The first case is the reference's already-established visual
+              state; subsequent cases earn their entrance during the hand-off. */
+           reveal=1;
+         }else{
+           const start=.15+stagger*.55;
+           const end=.49+stagger*.72;
+           reveal=ease(range(local,start,Math.min(.96,end)))*entry;
+         }
+       }else if(previous){
+         reveal=exit;
+       }
+       const side=(k%4)-1.5;
+       const fromX=side*(m?58:108)+(k%2?18:-18);
+       const fromY=((k%3)-1)*(m?46:78);
+       const spin=((k%5)-2)*(m?12:28);
+       const set=(name,value)=>piece.style.setProperty(name,value,'important');
+       set('opacity',String(reveal));
+       piece.style.visibility=reveal>.01?'visible':'hidden';
+       set('translate',`${(fromX*(1-reveal)).toFixed(1)}px ${(fromY*(1-reveal)).toFixed(1)}px`);
+       set('rotate',`${(spin*(1-reveal)).toFixed(1)}deg`);
+       set('scale',(.72+.28*reveal).toFixed(3));
+     });
+   }
+ });
  if(caseFill)caseFill.style.width=(p*100)+'%';
+ const caseNum=$('#caseNum');if(caseNum)caseNum.textContent=('0'+(idx+1)).slice(-2);
  if(Math.abs(target-casesPlayhead)>.0005&&!casesRaf)casesRaf=requestAnimationFrame(t=>{casesRaf=0;casesMotion(t)});
 }
 
@@ -298,10 +354,29 @@ function measureScenes(){
 }
 function sceneFade(s,p){
   if(!s.view)return;
-  if(mqMob.matches){s.view.style.setProperty('opacity','1','important');s.view.style.setProperty('transform','none','important');s.view.style.setProperty('filter','none','important');return}
-  if(s.fade==='none'){s.view.style.opacity='1';s.view.style.transform='';s.view.style.filter='none';return}
-  const vin=s.fade==='out'?1:win(p,0,.2),outStart=s.id==='ai'?.985:s.id==='metodo'?.92:.8,vout=s.fade==='in'?0:win(p,outStart,.999),o=Math.min(Math.max(vin,.46),1-vout);
-  s.view.style.opacity=o.toFixed(3);s.view.style.transform='none';s.view.style.filter=`blur(${((1-o)*.8).toFixed(2)}px)`;
+  const copy=qsa(':scope > .display, :scope > .sub',s.view);
+  if(s.fade==='none'){
+    s.view.style.setProperty('opacity','1','important');
+    s.view.style.setProperty('transform','none','important');
+    s.view.style.setProperty('filter','none','important');
+    copy.forEach(el=>{el.style.transform='none';el.style.opacity='1'});
+    return;
+  }
+  /* Match the reference timing: a long readable hold, then a short dissolve.
+     The stage itself never slides; only the copy has a small vertical entry. */
+  const vin=s.fade==='out'?1:win(p,0,.22);
+  const outStart=s.id==='ai'?.985:s.id==='metodo'?.92:.8;
+  const vout=s.fade==='in'?0:win(p,outStart,.999);
+  const o=Math.min(Math.max(vin,.55),1-vout);
+  /* On phones the section backgrounds are part of the composition (teal for
+     the method scene, white elsewhere). Keep that backdrop solid and dissolve
+     only the staged content so no white rectangle appears to slide in. */
+  const mobileScene=mqMob.matches;
+  s.view.style.setProperty('opacity',mobileScene?'1':o.toFixed(3),'important');
+  s.view.style.setProperty('filter',mobileScene?'none':`blur(${((1-o)*.8).toFixed(2)}px)`,'important');
+  s.view.style.setProperty('transform','none','important');
+  const y=((1-vin)*32-vout*28).toFixed(1);
+  copy.forEach(el=>{el.style.transform=`translate3d(0,${y}px,0)`;el.style.opacity=o.toFixed(3)});
 }
 
 /* AI: mobile starts fully visible and changes only by physical motion. */

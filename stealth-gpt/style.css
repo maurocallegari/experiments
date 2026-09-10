@@ -1563,3 +1563,11 @@ html:not(.js) .mx-inner{filter:none}
   #ai .ai-stage{height:36svh!important;min-height:270px!important;margin-top:6px!important}
   #metodo .selection-stage-mobile{height:34svh!important;min-height:240px!important;margin-top:6px!important}
 }
+
+/* Reference-style staged entrances: the pinned backdrop stays put while the
+   two text levels can be eased independently by the shared scroll scheduler. */
+.ref-scene .scene-view > .display,
+.ref-scene .scene-view > .sub{
+  will-change:transform,opacity;
+  backface-visibility:hidden;
+}
