@@ -6,6 +6,26 @@
   root.classList.remove('is-loading');
   root.classList.add('is-loaded','static-ready');
 
+  function important(el,prop,value){
+    if(el)el.style.setProperty(prop,value,'important');
+  }
+
+  var viewportUnit=(window.CSS&&CSS.supports&&CSS.supports('height','100svh'))?'100svh':'100vh';
+
+  /* Structural rule: every main section owns at least one full viewport. */
+  Array.prototype.forEach.call(document.querySelectorAll('main > section'),function(section){
+    important(section,'position','relative');
+    important(section,'min-height',viewportUnit);
+    important(section,'margin','0');
+    important(section,'box-sizing','border-box');
+  });
+
+  /* Full-height inner stages for the normal sections. */
+  Array.prototype.forEach.call(document.querySelectorAll('main > section:not(#attriti) > .pin, main > section:not(#attriti) > .scene-view'),function(stage){
+    important(stage,'min-height',viewportUnit);
+    important(stage,'box-sizing','border-box');
+  });
+
   document.addEventListener('click',function(e){
     var target=e.target;
     if(!target||!target.closest)return;
@@ -24,35 +44,80 @@
   if(!section||!track)return;
 
   var pin=section.querySelector('.cases-pin');
+  var head=section.querySelector('.cases-head');
   var slides=Array.prototype.slice.call(track.querySelectorAll('.case'));
   if(slides.length<2)return;
 
-  function important(el,prop,value){
-    el.style.setProperty(prop,value,'important');
+  /* The friction section is exactly one viewport and contains the carousel completely. */
+  section.classList.add('slider-ready');
+  important(section,'height',viewportUnit);
+  important(section,'min-height',viewportUnit);
+  important(section,'max-height',viewportUnit);
+  important(section,'padding','0');
+  important(section,'overflow','hidden');
+  important(section,'width','100%');
+  important(section,'background','#f8f8f8');
+  important(section,'z-index','2');
+
+  if(pin){
+    important(pin,'height','100%');
+    important(pin,'min-height','0');
+    important(pin,'width','100%');
+    important(pin,'display','flex');
+    important(pin,'flex-direction','column');
+    important(pin,'align-items','stretch');
+    important(pin,'overflow','hidden');
+    important(pin,'padding','clamp(82px,9vh,104px) 0 16px');
+    important(pin,'box-sizing','border-box');
   }
 
-  /* Hard overrides: the static foundation cannot force the slides back into a vertical stack. */
-  section.classList.add('slider-ready');
-  important(section,'overflow','hidden');
-  if(pin)important(pin,'overflow','hidden');
+  if(head){
+    important(head,'flex','0 0 auto');
+    important(head,'width','min(760px,calc(100% - 36px))');
+    important(head,'margin','0 auto clamp(18px,2.5vh,30px)');
+    important(head,'padding','0');
+    important(head,'box-sizing','border-box');
+  }
 
+  /* True full-viewport-width horizontal track. */
+  important(track,'position','relative');
   important(track,'display','flex');
+  important(track,'flex','1 1 0');
   important(track,'grid-template-columns','none');
   important(track,'gap','0');
-  important(track,'width','min(1280px, 100%)');
-  important(track,'max-width','100%');
-  important(track,'margin','0 auto');
+  important(track,'width','100vw');
+  important(track,'max-width','none');
+  important(track,'min-width','100vw');
+  important(track,'height','auto');
+  important(track,'min-height','0');
+  important(track,'margin','0');
+  important(track,'padding','0');
   important(track,'align-items','stretch');
+  important(track,'overflow','visible');
   important(track,'will-change','transform');
   important(track,'touch-action','pan-y');
   important(track,'transition','transform 680ms cubic-bezier(.22,1,.36,1)');
+  important(track,'box-sizing','border-box');
 
   slides.forEach(function(slide){
-    important(slide,'flex','0 0 100%');
-    important(slide,'width','100%');
-    important(slide,'min-width','100%');
-    important(slide,'max-width','100%');
+    important(slide,'flex','0 0 100vw');
+    important(slide,'width','100vw');
+    important(slide,'min-width','100vw');
+    important(slide,'max-width','100vw');
+    important(slide,'height','100%');
+    important(slide,'min-height','0');
     important(slide,'margin','0');
+    important(slide,'border-radius','0');
+    important(slide,'box-sizing','border-box');
+    important(slide,'overflow','hidden');
+    important(slide,'padding','clamp(28px,4vw,64px) max(var(--pad),calc((100vw - 1280px)/2 + var(--pad)))');
+  });
+
+  /* Keep the artwork inside the viewport-height slide. */
+  Array.prototype.forEach.call(track.querySelectorAll('.case-art'),function(art){
+    important(art,'height','min(46vh,430px)');
+    important(art,'min-height','0');
+    important(art,'max-height','46vh');
   });
 
   section.setAttribute('role','region');
@@ -62,7 +127,7 @@
 
   var ui=document.createElement('div');
   ui.className='case-slider-ui';
-  ui.style.cssText='width:min(1280px,100%);margin:28px auto 0;display:flex;align-items:center;justify-content:center;gap:14px;position:relative;z-index:30;';
+  ui.style.cssText='width:100%;flex:0 0 62px;margin:0;display:flex;align-items:center;justify-content:center;gap:14px;position:relative;z-index:30;box-sizing:border-box;';
 
   var prev=document.createElement('button');
   var next=document.createElement('button');
@@ -149,7 +214,7 @@
   }
 
   function render(animate){
-    important(track,'transform','translate3d('+(-index*100)+'%,0,0)');
+    important(track,'transform','translate3d('+(-index*100)+'vw,0,0)');
 
     slides.forEach(function(slide,i){
       var active=i===index;
