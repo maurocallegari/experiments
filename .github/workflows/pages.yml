@@ -8,6 +8,7 @@ on:
       - 'stealth-gpt/**'
       - 'stealth-ai-ios/**'
       - 'stealth-method-ios/**'
+      - 'stealth-build-ios/**'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -34,11 +35,12 @@ jobs:
           rm -rf _site
           mkdir -p _site
           cp -R stealth-new/. _site/
-          mkdir -p _site/stealth-new _site/stealth-gpt _site/stealth-ai-ios _site/stealth-method-ios
+          mkdir -p _site/stealth-new _site/stealth-gpt _site/stealth-ai-ios _site/stealth-method-ios _site/stealth-build-ios
           cp -R stealth-new/. _site/stealth-new/
           cp -R stealth-gpt/. _site/stealth-gpt/
           cp -R stealth-ai-ios/. _site/stealth-ai-ios/
           cp -R stealth-method-ios/. _site/stealth-method-ios/
+          cp -R stealth-build-ios/. _site/stealth-build-ios/
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
