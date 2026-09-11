@@ -1,0 +1,677 @@
+@import url("../stealth-gpt/style.css");
+
+/*
+ * STEALTH — static foundation
+ * Visual layer reused from stealth-gpt, scroll choreography deliberately disabled.
+ * The page must remain complete, readable and responsive without animation JS.
+ */
+
+html{
+  scroll-behavior:auto!important;
+  scrollbar-width:auto!important;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar{
+  display:initial!important;
+  width:auto!important;
+  height:auto!important;
+}
+body{
+  overflow-x:hidden!important;
+}
+
+/* Nothing in the static build waits for JS. */
+.loader,
+.progress,
+.hero-index,
+.case-progress{
+  display:none!important;
+}
+
+main *,
+main *::before,
+main *::after{
+  animation:none!important;
+  transition:none!important;
+}
+
+/* Header remains a normal lightweight fixed navigation. */
+.head{
+  height:72px!important;
+  background:rgba(255,255,255,.94)!important;
+  border-bottom:1px solid rgba(26,31,44,.07)!important;
+  backdrop-filter:blur(14px)!important;
+  -webkit-backdrop-filter:blur(14px)!important;
+  transform:none!important;
+}
+
+/* ==========================================================
+   NORMAL DOCUMENT FLOW
+   ========================================================== */
+.chapter,
+.hero,
+.cases,
+.scene,
+.ref-scene,
+.metodo,
+.risultato,
+.supporto{
+  position:relative!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:0!important;
+  overflow:visible!important;
+}
+
+.pin,
+.hero-pin,
+.cases-pin,
+.scene-view{
+  position:relative!important;
+  top:auto!important;
+  left:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  height:auto!important;
+  min-height:0!important;
+  overflow:visible!important;
+  transform:none!important;
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+}
+
+.scene + .scene{
+  margin-top:0!important;
+}
+.scene.cta::after{
+  display:none!important;
+}
+
+/* Stateful pieces are visible in their finished static state. */
+.hero-copy,
+.work,
+.case,
+.case-copy,
+.case-art,
+.ai-stage,
+.ai-noise,
+.ai-noise .nz,
+.ai-core-wrap,
+.ai-core,
+.ai-out,
+.ai-out .out,
+.ai-out .out2,
+.mx,
+.mx-track,
+.mx-inner,
+.rcaps,
+.rcap,
+.dash,
+.dash-side,
+.dash-main,
+.chip,
+.dash-card,
+.act,
+.ev,
+.eg-win,
+.eg-side,
+.eg-main,
+.eg-tiles,
+.eg-tile,
+.eg-chip-row,
+.eg-chip,
+.sup-points,
+.sup-p{
+  opacity:1!important;
+  visibility:visible!important;
+  filter:none!important;
+}
+
+/* ==========================================================
+   HERO — centered copy + a real static chaos composition
+   ========================================================== */
+.hero{
+  background:#fff!important;
+}
+.hero-pin{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  padding:clamp(120px,12vw,170px) var(--pad) 100px!important;
+}
+.hero-copy{
+  position:relative!important;
+  inset:auto!important;
+  z-index:30!important;
+  width:min(980px,100%)!important;
+  max-width:none!important;
+  margin:0 auto!important;
+  transform:none!important;
+  text-align:center!important;
+}
+.hero-copy h1,
+.hero-copy h2{
+  margin-inline:auto!important;
+}
+.hero-copy p{
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+.copy-a{
+  order:1!important;
+}
+.desk{
+  order:2!important;
+  position:relative!important;
+  inset:auto!important;
+  top:auto!important;
+  left:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:min(1240px,100%)!important;
+  height:650px!important;
+  margin:50px auto 0!important;
+  overflow:hidden!important;
+  clip-path:none!important;
+  transform:none!important;
+  perspective:none!important;
+  z-index:10!important;
+}
+.desk .work{
+  visibility:visible!important;
+}
+.copy-b{
+  order:3!important;
+  position:relative!important;
+  top:auto!important;
+  left:auto!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:min(980px,100%)!important;
+  margin:95px auto 0!important;
+  padding:80px 0 0!important;
+  border-top:1px solid var(--line)!important;
+  transform:none!important;
+  opacity:1!important;
+}
+
+/* ==========================================================
+   FOUR FRICTION CASES — four honest sections, no fake horizontal scroll
+   ========================================================== */
+.cases{
+  background:#f8f8f8!important;
+  padding:120px var(--pad)!important;
+}
+.cases-pin{
+  display:block!important;
+}
+.cases-head{
+  position:relative!important;
+  inset:auto!important;
+  width:min(760px,100%)!important;
+  max-width:none!important;
+  margin:0 auto 72px!important;
+  text-align:center!important;
+  transform:none!important;
+}
+.cases-head h2{
+  max-width:none!important;
+}
+.cases-head p{
+  display:block!important;
+  max-width:620px!important;
+  margin:16px auto 0!important;
+}
+.track{
+  position:relative!important;
+  inset:auto!important;
+  width:min(1280px,100%)!important;
+  height:auto!important;
+  margin:0 auto!important;
+  padding:0!important;
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:32px!important;
+  align-items:stretch!important;
+  transform:none!important;
+  will-change:auto!important;
+}
+.case{
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  height:auto!important;
+  min-height:520px!important;
+  flex:none!important;
+  display:grid!important;
+  grid-template-columns:minmax(280px,.78fr) minmax(0,1.22fr)!important;
+  align-items:center!important;
+  gap:clamp(32px,5vw,76px)!important;
+  padding:clamp(38px,5vw,72px)!important;
+  background:#fff!important;
+  border:1px solid rgba(26,31,44,.07)!important;
+  border-radius:24px!important;
+  overflow:hidden!important;
+  transform:none!important;
+}
+.case-copy{
+  position:relative!important;
+  inset:auto!important;
+  width:auto!important;
+  max-width:520px!important;
+  margin:0!important;
+  transform:none!important;
+  text-align:left!important;
+  z-index:5!important;
+}
+.case-copy h3{
+  max-width:12ch!important;
+}
+.case-art{
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  height:430px!important;
+  min-height:430px!important;
+  margin:0!important;
+  transform:none!important;
+  overflow:visible!important;
+}
+
+/* ==========================================================
+   COMMON STATIC SECTIONS
+   ========================================================== */
+.scene-view{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:center!important;
+  width:100%!important;
+  padding:120px var(--pad)!important;
+  text-align:center!important;
+}
+.scene-view > .display,
+.scene-view > .sub{
+  position:relative!important;
+  z-index:20!important;
+}
+
+/* AI: keep the visual language, show the input mess and prepared output together. */
+.ai{
+  background:#fff!important;
+}
+.ai-stage{
+  position:relative!important;
+  inset:auto!important;
+  width:min(1240px,100%)!important;
+  height:700px!important;
+  min-height:700px!important;
+  margin:64px auto 0!important;
+  transform:none!important;
+}
+.ai-noise{
+  transform:none!important;
+}
+.ai-noise .nz{
+  opacity:.92!important;
+  visibility:visible!important;
+}
+.ai-core-wrap{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+}
+.ai-core{
+  opacity:1!important;
+  visibility:visible!important;
+  transform:none!important;
+}
+.ai-out{
+  opacity:1!important;
+  visibility:visible!important;
+}
+.ai-out .out,
+.ai-out .out2{
+  opacity:1!important;
+  visibility:visible!important;
+}
+
+/* Method: three cards beside each other instead of a scroll-driven track. */
+.metodo{
+  background:#f8f8f8!important;
+}
+.met-view{
+  overflow:visible!important;
+}
+.mx{
+  position:relative!important;
+  inset:auto!important;
+  width:min(1240px,100%)!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:64px auto 0!important;
+  transform:none!important;
+}
+.mx-track{
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  height:auto!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:20px!important;
+  transform:none!important;
+}
+.mx-inner{
+  position:relative!important;
+  inset:auto!important;
+  width:auto!important;
+  min-width:0!important;
+  height:auto!important;
+  min-height:430px!important;
+  padding:28px!important;
+  transform:none!important;
+}
+.mx-eq{
+  display:none!important;
+}
+
+/* Result: copy first, finished product underneath. */
+.risultato .scene-view{
+  overflow:visible!important;
+}
+.rcaps{
+  position:relative!important;
+  inset:auto!important;
+  width:min(1050px,100%)!important;
+  margin:42px auto 0!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:14px!important;
+  transform:none!important;
+}
+.rcap{
+  position:relative!important;
+  inset:auto!important;
+  width:auto!important;
+  margin:0!important;
+  transform:none!important;
+}
+.dash{
+  position:relative!important;
+  inset:auto!important;
+  width:min(1180px,100%)!important;
+  height:auto!important;
+  min-height:600px!important;
+  margin:58px auto 0!important;
+  transform:none!important;
+}
+
+/* Evolution/support section is also a finished static state. */
+.supporto{
+  background:#f8f8f8!important;
+}
+.sup-view{
+  overflow:visible!important;
+}
+.eg-win{
+  position:relative!important;
+  inset:auto!important;
+  width:min(1120px,100%)!important;
+  height:auto!important;
+  min-height:470px!important;
+  margin:58px auto 0!important;
+  transform:none!important;
+}
+.sup-points{
+  position:relative!important;
+  inset:auto!important;
+  width:min(1000px,100%)!important;
+  margin:32px auto 0!important;
+  transform:none!important;
+}
+.sup-p{
+  transform:none!important;
+}
+
+/* CTA/footer are regular content, not the end of a pinned sequence. */
+.cta{
+  position:relative!important;
+  min-height:72vh!important;
+  height:auto!important;
+  margin:0!important;
+  padding:120px var(--pad)!important;
+}
+footer{
+  position:relative!important;
+  margin:0!important;
+}
+
+/* ==========================================================
+   TABLET
+   ========================================================== */
+@media (max-width:1000px){
+  .head nav{display:none!important}
+  .hero-pin{padding-top:118px!important}
+  .desk{height:600px!important}
+  .case{
+    grid-template-columns:1fr!important;
+    min-height:0!important;
+    gap:34px!important;
+  }
+  .case-copy{
+    max-width:680px!important;
+    text-align:center!important;
+    margin-inline:auto!important;
+  }
+  .case-copy h3{
+    max-width:18ch!important;
+    margin-inline:auto!important;
+  }
+  .case-art{
+    max-width:760px!important;
+    margin-inline:auto!important;
+  }
+  .mx-track{
+    grid-template-columns:1fr!important;
+    max-width:760px!important;
+    margin-inline:auto!important;
+  }
+  .mx-inner{min-height:0!important}
+  .rcaps{grid-template-columns:1fr!important;max-width:760px!important}
+}
+
+/* ==========================================================
+   MOBILE — same hierarchy, no alternate storytelling system
+   ========================================================== */
+@media (max-width:700px){
+  :root{--pad:18px}
+  .head{
+    height:64px!important;
+    padding:0 18px!important;
+  }
+  .head-cta{font-size:11px!important;padding:9px 12px!important}
+  .brand small{display:none!important}
+
+  .hero-pin{
+    padding:106px 18px 78px!important;
+  }
+  .hero-copy{
+    width:100%!important;
+  }
+  .hero-copy h1,
+  .hero-copy h2{
+    font-size:clamp(38px,11.5vw,54px)!important;
+    line-height:.98!important;
+    letter-spacing:-.055em!important;
+  }
+  .hero-copy p{
+    max-width:32ch!important;
+    font-size:15px!important;
+    line-height:1.55!important;
+  }
+  .desk{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    align-items:start!important;
+    gap:12px!important;
+    width:100%!important;
+    height:auto!important;
+    margin-top:42px!important;
+    overflow:visible!important;
+  }
+  .desk .work{
+    position:relative!important;
+    inset:auto!important;
+    top:auto!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    width:auto!important;
+    max-width:none!important;
+    min-width:0!important;
+    height:auto!important;
+    margin:0!important;
+    transform:none!important;
+    rotate:none!important;
+    opacity:1!important;
+    scale:1!important;
+  }
+  .desk .mail,
+  .desk .excel,
+  .desk .paper{
+    grid-column:1 / -1!important;
+  }
+  .copy-b{
+    margin-top:72px!important;
+    padding-top:64px!important;
+  }
+
+  .cases{
+    padding:84px 18px!important;
+  }
+  .cases-head{
+    margin-bottom:42px!important;
+  }
+  .cases-head h2{
+    font-size:clamp(34px,10vw,46px)!important;
+    max-width:12ch!important;
+    margin-inline:auto!important;
+  }
+  .cases-head p{
+    display:block!important;
+    font-size:14px!important;
+  }
+  .track{gap:18px!important}
+  .case{
+    display:flex!important;
+    flex-direction:column!important;
+    padding:28px 18px 24px!important;
+    border-radius:18px!important;
+  }
+  .case-copy{
+    order:1!important;
+    text-align:center!important;
+  }
+  .case-copy h3{
+    font-size:clamp(30px,9vw,42px)!important;
+    line-height:1!important;
+    max-width:14ch!important;
+  }
+  .case-copy p{
+    font-size:14px!important;
+    line-height:1.55!important;
+    max-width:36ch!important;
+    margin-inline:auto!important;
+  }
+  .case-art{
+    order:2!important;
+    width:100%!important;
+    height:390px!important;
+    min-height:390px!important;
+    overflow:hidden!important;
+  }
+
+  .scene-view{
+    padding:88px 18px!important;
+  }
+  .scene-view .display{
+    font-size:clamp(38px,11vw,52px)!important;
+    line-height:1!important;
+  }
+  .scene-view .sub{
+    font-size:15px!important;
+    line-height:1.55!important;
+  }
+  .ai-stage{
+    height:620px!important;
+    min-height:620px!important;
+    margin-top:42px!important;
+    overflow:hidden!important;
+  }
+  .ai-noise{
+    transform:scale(.78)!important;
+    transform-origin:center center!important;
+  }
+  .ai-out{
+    transform:scale(.86)!important;
+    transform-origin:center bottom!important;
+  }
+
+  .mx{
+    margin-top:42px!important;
+  }
+  .mx-inner{
+    padding:22px 18px!important;
+  }
+  .mx-table{
+    font-size:11px!important;
+  }
+
+  .rcaps{
+    margin-top:34px!important;
+  }
+  .dash{
+    min-height:0!important;
+    margin-top:42px!important;
+    transform:none!important;
+    overflow:hidden!important;
+  }
+  .dash-side{
+    display:none!important;
+  }
+  .dash-main{
+    width:100%!important;
+    margin:0!important;
+  }
+
+  .eg-win{
+    min-height:0!important;
+    margin-top:42px!important;
+    overflow:hidden!important;
+  }
+  .eg-side{
+    display:none!important;
+  }
+  .eg-main{
+    width:100%!important;
+  }
+  .sup-points{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+    margin-top:24px!important;
+  }
+
+  .cta{
+    min-height:0!important;
+    padding:96px 18px!important;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto!important}
+}
