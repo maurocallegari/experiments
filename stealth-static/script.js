@@ -1,4 +1,4 @@
-/* STEALTH static foundation: native page scroll + event-driven friction slider. */
+/* STEALTH static foundation: native page scroll + scroll-driven friction track. */
 (function(){
   'use strict';
 
@@ -10,9 +10,11 @@
     if(el)el.style.setProperty(prop,value,'important');
   }
 
-  var viewportUnit=(window.CSS&&CSS.supports&&CSS.supports('height','100svh'))?'100svh':'100vh';
+  var supportsSvh=window.CSS&&CSS.supports&&CSS.supports('height','100svh');
+  var viewportUnit=supportsSvh?'100svh':'100vh';
+  var viewportSuffix=supportsSvh?'svh':'vh';
 
-  /* Structural rule: every main section owns at least one full viewport. */
+  /* Every normal section owns at least one full viewport. */
   Array.prototype.forEach.call(document.querySelectorAll('main > section'),function(section){
     important(section,'position','relative');
     important(section,'min-height',viewportUnit);
@@ -20,7 +22,6 @@
     important(section,'box-sizing','border-box');
   });
 
-  /* Full-height inner stages for the normal sections. */
   Array.prototype.forEach.call(document.querySelectorAll('main > section:not(#attriti) > .pin, main > section:not(#attriti) > .scene-view'),function(stage){
     important(stage,'min-height',viewportUnit);
     important(stage,'box-sizing','border-box');
@@ -46,41 +47,63 @@
   var pin=section.querySelector('.cases-pin');
   var head=section.querySelector('.cases-head');
   var slides=Array.prototype.slice.call(track.querySelectorAll('.case'));
-  if(slides.length<2)return;
+  if(!pin||slides.length<2)return;
 
-  /* The friction section is exactly one viewport and contains the carousel completely. */
-  section.classList.add('slider-ready');
-  important(section,'height',viewportUnit);
-  important(section,'min-height',viewportUnit);
-  important(section,'max-height',viewportUnit);
+  /* Remove any controls left by earlier carousel experiments. */
+  Array.prototype.forEach.call(section.querySelectorAll('.case-slider-ui'),function(el){el.remove();});
+
+  section.classList.add('slider-ready','scroll-slider');
+  section.setAttribute('role','region');
+  section.setAttribute('aria-label','Dove si perde tempo, davvero');
+
+  /*
+   * The visible stage is ALWAYS one viewport tall.
+   * The outer wrapper is N viewports tall only to provide native vertical scroll distance.
+   * With 4 slides: 400svh wrapper - 100svh sticky stage = 300svh travel,
+   * exactly one vertical viewport of travel for each horizontal slide change.
+   */
+  important(section,'height',(slides.length*100)+viewportSuffix);
+  important(section,'min-height',(slides.length*100)+viewportSuffix);
+  important(section,'max-height','none');
   important(section,'padding','0');
-  important(section,'overflow','hidden');
+  important(section,'overflow','visible');
   important(section,'width','100%');
   important(section,'background','#f8f8f8');
   important(section,'z-index','2');
 
-  if(pin){
-    important(pin,'height','100%');
-    important(pin,'min-height','0');
-    important(pin,'width','100%');
-    important(pin,'display','flex');
-    important(pin,'flex-direction','column');
-    important(pin,'align-items','stretch');
-    important(pin,'overflow','hidden');
-    important(pin,'padding','clamp(82px,9vh,104px) 0 16px');
-    important(pin,'box-sizing','border-box');
-  }
+  important(pin,'position','sticky');
+  important(pin,'top','0');
+  important(pin,'left','0');
+  important(pin,'right','0');
+  important(pin,'height',viewportUnit);
+  important(pin,'min-height',viewportUnit);
+  important(pin,'max-height',viewportUnit);
+  important(pin,'width','100%');
+  important(pin,'display','flex');
+  important(pin,'flex-direction','column');
+  important(pin,'align-items','stretch');
+  important(pin,'overflow','hidden');
+  important(pin,'padding','clamp(78px,8vh,96px) 0 clamp(18px,2.5vh,30px)');
+  important(pin,'box-sizing','border-box');
+  important(pin,'background','#f8f8f8');
+  important(pin,'transform','none');
 
   if(head){
+    important(head,'position','relative');
+    important(head,'inset','auto');
     important(head,'flex','0 0 auto');
     important(head,'width','min(760px,calc(100% - 36px))');
-    important(head,'margin','0 auto clamp(18px,2.5vh,30px)');
+    important(head,'max-width','none');
+    important(head,'margin','0 auto clamp(18px,2.3vh,28px)');
     important(head,'padding','0');
+    important(head,'text-align','center');
+    important(head,'transform','none');
     important(head,'box-sizing','border-box');
   }
 
-  /* True full-viewport-width horizontal track. */
+  /* Full-width horizontal strip. No buttons, no dots, no carousel chrome. */
   important(track,'position','relative');
+  important(track,'inset','auto');
   important(track,'display','flex');
   important(track,'flex','1 1 0');
   important(track,'grid-template-columns','none');
@@ -96,78 +119,50 @@
   important(track,'overflow','visible');
   important(track,'will-change','transform');
   important(track,'touch-action','pan-y');
-  important(track,'transition','transform 680ms cubic-bezier(.22,1,.36,1)');
+  important(track,'transition','none');
   important(track,'box-sizing','border-box');
 
-  slides.forEach(function(slide){
+  slides.forEach(function(slide,i){
+    important(slide,'position','relative');
+    important(slide,'inset','auto');
     important(slide,'flex','0 0 100vw');
     important(slide,'width','100vw');
     important(slide,'min-width','100vw');
     important(slide,'max-width','100vw');
     important(slide,'height','100%');
     important(slide,'min-height','0');
+    important(slide,'max-height','none');
     important(slide,'margin','0');
     important(slide,'border-radius','0');
     important(slide,'box-sizing','border-box');
     important(slide,'overflow','hidden');
-    important(slide,'padding','clamp(28px,4vw,64px) max(var(--pad),calc((100vw - 1280px)/2 + var(--pad)))');
-  });
-
-  /* Keep the artwork inside the viewport-height slide. */
-  Array.prototype.forEach.call(track.querySelectorAll('.case-art'),function(art){
-    important(art,'height','min(46vh,430px)');
-    important(art,'min-height','0');
-    important(art,'max-height','46vh');
-  });
-
-  section.setAttribute('role','region');
-  section.setAttribute('aria-roledescription','carousel');
-  section.setAttribute('aria-label','Dove si perde tempo, davvero');
-  section.tabIndex=0;
-
-  var ui=document.createElement('div');
-  ui.className='case-slider-ui';
-  ui.style.cssText='width:100%;flex:0 0 62px;margin:0;display:flex;align-items:center;justify-content:center;gap:14px;position:relative;z-index:30;box-sizing:border-box;';
-
-  var prev=document.createElement('button');
-  var next=document.createElement('button');
-  var dotsWrap=document.createElement('div');
-  prev.type=next.type='button';
-  prev.textContent='←';
-  next.textContent='→';
-  prev.setAttribute('aria-label','Slide precedente');
-  next.setAttribute('aria-label','Slide successiva');
-  dotsWrap.setAttribute('role','tablist');
-  dotsWrap.setAttribute('aria-label','Seleziona una slide');
-  dotsWrap.style.cssText='display:flex;align-items:center;gap:8px;';
-
-  [prev,next].forEach(function(btn){
-    btn.style.cssText='width:46px;height:46px;border-radius:50%;border:1px solid rgba(26,31,44,.14);background:#fff;color:#1a1f2c;display:grid;place-items:center;font:600 20px/1 Manrope,system-ui,sans-serif;cursor:pointer;-webkit-tap-highlight-color:transparent;';
-  });
-
-  ui.appendChild(prev);
-  ui.appendChild(dotsWrap);
-  ui.appendChild(next);
-  track.insertAdjacentElement('afterend',ui);
-
-  var dots=slides.map(function(slide,i){
-    var dot=document.createElement('button');
-    dot.type='button';
-    dot.setAttribute('role','tab');
-    dot.setAttribute('aria-label','Mostra slide '+(i+1));
-    dot.style.cssText='width:9px;height:9px;border:0;border-radius:999px;padding:0;background:#d4dadd;cursor:pointer;-webkit-tap-highlight-color:transparent;';
-    dot.addEventListener('click',function(){go(i,true);});
-    dotsWrap.appendChild(dot);
-
+    important(slide,'padding','clamp(22px,3.5vw,56px) max(var(--pad),calc((100vw - 1280px)/2 + var(--pad)))');
+    important(slide,'opacity','1');
+    important(slide,'visibility','visible');
+    important(slide,'transform','none');
     slide.setAttribute('role','group');
     slide.setAttribute('aria-roledescription','slide');
     slide.setAttribute('aria-label',(i+1)+' di '+slides.length);
-    return dot;
   });
 
-  var index=0;
-  var entered=false;
+  /* Every slide has its own artwork; force it to stay visible inside the 100vh stage. */
+  Array.prototype.forEach.call(track.querySelectorAll('.case-art'),function(art){
+    important(art,'display','block');
+    important(art,'width','100%');
+    important(art,'height','min(45vh,430px)');
+    important(art,'min-height','240px');
+    important(art,'max-height','45vh');
+    important(art,'opacity','1');
+    important(art,'visibility','visible');
+    important(art,'overflow','visible');
+  });
+  Array.prototype.forEach.call(track.querySelectorAll('.case-art > *'),function(el){
+    important(el,'visibility','visible');
+  });
+
   var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var activeIndex=-1;
+  var ticking=false;
 
   function cancelEntryAnimations(slide){
     if(!slide||!slide.querySelectorAll)return;
@@ -180,8 +175,9 @@
     });
   }
 
-  function animateActive(){
-    if(reduceMotion)return;
+  /* Entry motion starts when a new slide becomes active; it is time-based, never scrubbed. */
+  function animateSlide(index){
+    if(reduceMotion||index<0||index>=slides.length)return;
     var slide=slides[index];
     cancelEntryAnimations(slide);
 
@@ -189,116 +185,68 @@
     var art=Array.prototype.slice.call(slide.querySelectorAll('.case-art > *'));
 
     copy.forEach(function(el,i){
+      if(!el.animate)return;
       el.animate([
         {opacity:0,translate:'-24px 0'},
         {opacity:1,translate:'0 0'}
       ],{
-        duration:560,
-        delay:i*70,
+        duration:520,
+        delay:i*65,
         easing:'cubic-bezier(.22,1,.36,1)',
         fill:'both'
       });
     });
 
     art.forEach(function(el,i){
+      if(!el.animate)return;
       el.animate([
-        {opacity:0,translate:'30px 18px'},
+        {opacity:0,translate:'34px 18px'},
         {opacity:1,translate:'0 0'}
       ],{
-        duration:620,
-        delay:90+i*55,
+        duration:600,
+        delay:80+i*55,
         easing:'cubic-bezier(.22,1,.36,1)',
         fill:'both'
       });
     });
   }
 
-  function render(animate){
-    important(track,'transform','translate3d('+(-index*100)+'vw,0,0)');
+  function clamp(value,min,max){return Math.max(min,Math.min(max,value));}
 
-    slides.forEach(function(slide,i){
-      var active=i===index;
-      slide.classList.toggle('is-active',active);
-      slide.setAttribute('aria-hidden',active?'false':'true');
-      if(!active)cancelEntryAnimations(slide);
-    });
+  function updateHorizontalScroll(){
+    ticking=false;
 
-    dots.forEach(function(dot,i){
-      var active=i===index;
-      dot.setAttribute('aria-selected',active?'true':'false');
-      dot.tabIndex=active?0:-1;
-      dot.style.width=active?'28px':'9px';
-      dot.style.background=active?'#7aaeb5':'#d4dadd';
-    });
+    var rect=section.getBoundingClientRect();
+    var stageHeight=pin.getBoundingClientRect().height||window.innerHeight;
+    var travel=Math.max(1,section.offsetHeight-stageHeight);
+    var consumed=clamp(-rect.top,0,travel);
+    var progress=consumed/travel;
+    var x=-progress*(slides.length-1)*window.innerWidth;
 
-    prev.disabled=index===0;
-    next.disabled=index===slides.length-1;
-    prev.style.opacity=prev.disabled?'.28':'1';
-    next.style.opacity=next.disabled?'.28':'1';
-    prev.style.cursor=prev.disabled?'default':'pointer';
-    next.style.cursor=next.disabled?'default':'pointer';
+    important(track,'transform','translate3d('+x+'px,0,0)');
 
-    if(animate&&entered){
-      window.setTimeout(animateActive,120);
-    }
-  }
-
-  function go(nextIndex,animate){
-    nextIndex=Math.max(0,Math.min(slides.length-1,nextIndex));
-    if(nextIndex===index){
-      if(animate&&entered)animateActive();
-      return;
-    }
-    index=nextIndex;
-    render(animate!==false);
-  }
-
-  prev.addEventListener('click',function(){go(index-1,true);});
-  next.addEventListener('click',function(){go(index+1,true);});
-
-  section.addEventListener('keydown',function(e){
-    if(e.key==='ArrowLeft'){
-      e.preventDefault();
-      go(index-1,true);
-    }else if(e.key==='ArrowRight'){
-      e.preventDefault();
-      go(index+1,true);
-    }
-  });
-
-  var sx=0,sy=0,tracking=false;
-  track.addEventListener('touchstart',function(e){
-    if(!e.touches||e.touches.length!==1)return;
-    sx=e.touches[0].clientX;
-    sy=e.touches[0].clientY;
-    tracking=true;
-  },{passive:true});
-
-  track.addEventListener('touchend',function(e){
-    if(!tracking||!e.changedTouches||!e.changedTouches.length)return;
-    tracking=false;
-    var dx=e.changedTouches[0].clientX-sx;
-    var dy=e.changedTouches[0].clientY-sy;
-    if(Math.abs(dx)<44||Math.abs(dx)<=Math.abs(dy)*1.15)return;
-    if(dx<0)go(index+1,true);
-    else go(index-1,true);
-  },{passive:true});
-
-  if('IntersectionObserver' in window){
-    var observer=new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(!entered&&entry.isIntersecting){
-          entered=true;
-          window.setTimeout(animateActive,100);
-          observer.disconnect();
-        }
+    var nextIndex=clamp(Math.round(progress*(slides.length-1)),0,slides.length-1);
+    if(nextIndex!==activeIndex){
+      activeIndex=nextIndex;
+      slides.forEach(function(slide,i){
+        var active=i===activeIndex;
+        slide.classList.toggle('is-active',active);
+        slide.setAttribute('aria-hidden',active?'false':'true');
+        if(!active)cancelEntryAnimations(slide);
       });
-    },{threshold:.18});
-    observer.observe(section);
-  }else{
-    entered=true;
-    window.setTimeout(animateActive,100);
+      window.setTimeout(function(){animateSlide(activeIndex);},70);
+    }
   }
 
-  render(false);
+  function requestUpdate(){
+    if(ticking)return;
+    ticking=true;
+    window.requestAnimationFrame(updateHorizontalScroll);
+  }
+
+  window.addEventListener('scroll',requestUpdate,{passive:true});
+  window.addEventListener('resize',requestUpdate,{passive:true});
+  window.addEventListener('orientationchange',requestUpdate,{passive:true});
+
+  requestUpdate();
 })();
