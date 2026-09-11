@@ -43,6 +43,7 @@ jobs:
           cp -R stealth-ai-ios/. _site/stealth-ai-ios/
           cp -R stealth-method-ios/. _site/stealth-method-ios/
           cp -R stealth-build-ios/. _site/stealth-build-ios/
+          sed -E -i "s#style\.css\?v=[^\"]+#style.css?v=${GITHUB_SHA}#g; s#script\.js\?v=[^\"]+#script.js?v=${GITHUB_SHA}#g" _site/stealth-static/index.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
