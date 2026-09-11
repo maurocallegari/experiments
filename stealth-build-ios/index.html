@@ -25,8 +25,9 @@ h1 em{font-style:normal;color:var(--blue)}
 .app{position:absolute;z-index:16;left:50%;top:50%;width:min(305px,82vw);height:344px;transform:translate(-50%,-50%) scale(.88);opacity:0;background:#fff;border:1px solid #dfe5e6;border-radius:24px;box-shadow:var(--strong);overflow:hidden;will-change:transform,opacity}
 .appbar{height:42px;border-bottom:1px solid #edf0f1;display:flex;align-items:center;gap:7px;padding:0 14px}.dot{width:7px;height:7px;border-radius:50%;background:#dfe4e5}.appbar b{margin-left:5px;font-size:10px;letter-spacing:-.015em}.appbody{padding:16px}.field{display:grid;grid-template-columns:74px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid #edf0f1;font-size:10px;line-height:1.3}.field span{color:#7b868a}.field b{color:#273236}.origin{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}.chip{padding:6px 8px;border-radius:999px;background:#f1f4f4;font-size:8px;font-weight:800;color:#59676b}.chip.blue{background:#eef6f7;color:#4f6b70}.action{margin-top:14px;height:36px;border-radius:12px;background:var(--blue);display:grid;place-items:center;font-size:10px;font-weight:850;color:#243438}.done{margin-top:10px;display:flex;align-items:center;gap:8px;font-size:9px;color:#617075;opacity:0;transform:translateY(5px)}.done i{width:20px;height:20px;border-radius:50%;background:#eef6f7;display:grid;place-items:center;font-style:normal;font-weight:900;color:#527077}
 .orbit{position:absolute;z-index:12;left:50%;top:50%;width:170px;height:170px;transform:translate(-50%,-50%) scale(.78);border:1px dashed rgba(160,205,210,.55);border-radius:50%;opacity:0;pointer-events:none}.orbit:before{content:"";position:absolute;inset:18px;border:1px solid rgba(160,205,210,.20);border-radius:50%}
+.processor{position:absolute;z-index:14;left:50%;top:50%;width:152px;height:152px;transform:translate(-50%,-50%) scale(.72);opacity:0;pointer-events:none;display:grid;place-items:center;will-change:transform,opacity}.proc-ring{position:absolute;inset:3px;border:2px solid rgba(160,205,210,.38);border-top-color:#5f777c;border-right-color:var(--blue);border-radius:50%;transform:rotate(0deg)}.proc-shell{width:108px;height:108px;border-radius:30px;background:#fff;border:1px solid #dfe5e6;box-shadow:var(--strong);display:grid;place-items:center;text-align:center;position:relative}.proc-shell svg{width:42px;height:42px;stroke:#537279;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.proc-shell b{position:absolute;left:0;right:0;bottom:18px;font-size:8px;letter-spacing:.11em;color:#566a6f}.proc-dots{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);display:flex;gap:5px}.proc-dots i{width:6px;height:6px;border-radius:50%;background:#cfdadd}.proc-dots i:nth-child(2){background:var(--blue)}.proc-dots i:nth-child(3){background:#7f969b}.proc-caption{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);white-space:nowrap;font-size:8px;font-weight:800;letter-spacing:.06em;color:#78868a;background:#fff;border:1px solid #e2e8e9;border-radius:999px;padding:6px 9px;box-shadow:0 6px 16px rgba(18,24,27,.05)}
 .progress{position:absolute;z-index:40;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:9px;font-size:9px;font-weight:800;letter-spacing:.08em;color:#8b9498}.progress i{display:block;width:72px;height:2px;background:#dfe4e5;position:relative}.progress i:after{content:"";position:absolute;left:0;top:0;height:2px;width:var(--p,0%);background:var(--blue)}
-@media(min-width:801px){.chapter{height:320vh}.copy{top:6vh;width:min(980px,92vw)}h1{font-size:68px}.copy p{font-size:18px;max-width:780px;margin-top:18px}.stage{top:245px;bottom:60px;left:4vw;right:4vw}.source{padding:14px 15px;border-radius:18px}.source-head{gap:9px;margin-bottom:9px}.icon{width:32px;height:32px;border-radius:10px}.icon svg{width:17px;height:17px}.source small{font-size:9px}.source b{font-size:13px}.source p{font-size:11px}.photo-thumb{height:108px}.s1{--x:2%;--y:5%;--w:192px;--h:116px}.s2{--x:20%;--y:0%;--w:198px;--h:110px}.s3{--x:77%;--y:8%;--w:176px;--h:106px}.s4{--x:3%;--y:64%;--w:170px;--h:110px}.s5{--x:22%;--y:74%;--w:194px;--h:104px}.s6{--x:61%;--y:74%;--w:184px;--h:100px}.s7{--x:81%;--y:48%;--w:170px;--h:128px}.s8{--x:41%;--y:16%;--w:178px;--h:96px}.app{width:390px;height:430px}.appbar{height:52px}.appbar b{font-size:13px}.appbody{padding:22px}.field{grid-template-columns:94px 1fr;font-size:13px;padding:13px 0}.chip{font-size:10px;padding:7px 10px}.action{height:44px;font-size:12px}.done{font-size:11px}.orbit{width:270px;height:270px}}
+@media(min-width:801px){.chapter{height:320vh}.copy{top:6vh;width:min(980px,92vw)}h1{font-size:68px}.copy p{font-size:18px;max-width:780px;margin-top:18px}.stage{top:245px;bottom:60px;left:4vw;right:4vw}.source{padding:14px 15px;border-radius:18px}.source-head{gap:9px;margin-bottom:9px}.icon{width:32px;height:32px;border-radius:10px}.icon svg{width:17px;height:17px}.source small{font-size:9px}.source b{font-size:13px}.source p{font-size:11px}.photo-thumb{height:108px}.s1{--x:2%;--y:5%;--w:192px;--h:116px}.s2{--x:20%;--y:0%;--w:198px;--h:110px}.s3{--x:77%;--y:8%;--w:176px;--h:106px}.s4{--x:3%;--y:64%;--w:170px;--h:110px}.s5{--x:22%;--y:74%;--w:194px;--h:104px}.s6{--x:61%;--y:74%;--w:184px;--h:100px}.s7{--x:81%;--y:48%;--w:170px;--h:128px}.s8{--x:41%;--y:16%;--w:178px;--h:96px}.app{width:390px;height:430px}.appbar{height:52px}.appbar b{font-size:13px}.appbody{padding:22px}.field{grid-template-columns:94px 1fr;font-size:13px;padding:13px 0}.chip{font-size:10px;padding:7px 10px}.action{height:44px;font-size:12px}.done{font-size:11px}.orbit{width:270px;height:270px}.processor{width:220px;height:220px}.proc-shell{width:150px;height:150px;border-radius:38px}.proc-shell svg{width:56px;height:56px}.proc-shell b{bottom:24px;font-size:10px}.proc-caption{font-size:10px;padding:7px 11px}}
 </style>
 </head>
 <body>
@@ -43,6 +44,15 @@ h1 em{font-style:normal;color:var(--blue)}
    <article class="source photo s7" data-r="7"><div class="photo-thumb"><div class="paper-shot"><i></i><i></i><i></i><div class="sign"></div></div></div><span class="photo-badge"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m4 17 5-4 4 3 3-2 4 3"/></svg></span></article>
    <article class="source note s8" data-r="-3"><div class="source-head"><span class="icon"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8 9h8M8 13h6"/></svg></span><small>POST-IT</small></div><b>generare il PDF</b></article>
    <div class="orbit" id="orbit"></div>
+   <div class="processor" id="processor" aria-hidden="true">
+    <div class="proc-ring" id="procRing"></div>
+    <div class="proc-shell">
+     <svg viewBox="0 0 48 48"><rect x="8" y="8" width="10" height="10" rx="3"/><rect x="30" y="8" width="10" height="10" rx="3"/><rect x="19" y="30" width="10" height="10" rx="3"/><path d="M18 13h12M13 18l9 12M35 18l-9 12"/></svg>
+     <b>ELABORAZIONE</b>
+     <div class="proc-dots"><i></i><i></i><i></i></div>
+    </div>
+    <div class="proc-caption">collego · ordino · automatizzo</div>
+   </div>
    <div class="app" id="app"><div class="appbar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><b>Richiesta #2481</b></div><div class="appbody"><div class="field"><span>Cliente</span><b>Rossi Srl</b></div><div class="field"><span>Richiesta</span><b>Preventivo impianto</b></div><div class="field"><span>Documenti</span><b>4 allegati collegati</b></div><div class="field"><span>Scadenza</span><b>12 settembre</b></div><div class="field"><span>Stato</span><b>Pronto per controllo</b></div><div class="origin"><span class="chip">Email</span><span class="chip">Documento</span><span class="chip">PDF</span><span class="chip">Messaggio</span><span class="chip blue">tutto nello stesso punto</span></div><div class="action">Genera il documento</div><div class="done" id="done"><i>✓</i><span>Documento creato. Nessun dato ricopiato.</span></div></div></div>
   </div>
   <div class="progress"><span>SCROLL</span><i id="bar"></i></div>
@@ -52,24 +62,29 @@ h1 em{font-style:normal;color:var(--blue)}
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script>
 (()=>{
- const chapter=document.getElementById('chapter'),stage=document.getElementById('stage'),sources=[...document.querySelectorAll('.source')],app=document.getElementById('app'),orbit=document.getElementById('orbit'),done=document.getElementById('done'),bar=document.getElementById('bar');
+ const chapter=document.getElementById('chapter'),stage=document.getElementById('stage'),sources=[...document.querySelectorAll('.source')],app=document.getElementById('app'),orbit=document.getElementById('orbit'),processor=document.getElementById('processor'),procRing=document.getElementById('procRing'),done=document.getElementById('done'),bar=document.getElementById('bar');
  const clamp=n=>Math.max(0,Math.min(1,n));
  const nativeProgress=()=>{const r=chapter.getBoundingClientRect();return clamp(-r.top/Math.max(1,chapter.offsetHeight-innerHeight))};
  function nativeRender(){const p=nativeProgress();bar.style.setProperty('--p',(p*100).toFixed(1)+'%')}
  addEventListener('scroll',nativeRender,{passive:true});nativeRender();
  if(!window.gsap||!window.ScrollTrigger)return;
  gsap.registerPlugin(ScrollTrigger);ScrollTrigger.config({ignoreMobileResize:true});
- gsap.set(app,{autoAlpha:0,scale:.88});gsap.set(orbit,{autoAlpha:0,scale:.78});gsap.set(done,{autoAlpha:0,y:5});
+ gsap.set(app,{autoAlpha:0,scale:.88});gsap.set(orbit,{autoAlpha:0,scale:.78});gsap.set(processor,{autoAlpha:0,scale:.72});gsap.set(procRing,{rotation:0});gsap.set(done,{autoAlpha:0,y:5});
  const tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:chapter,start:'top top',end:'bottom bottom',scrub:.7,invalidateOnRefresh:true,onUpdate:self=>bar.style.setProperty('--p',(self.progress*100).toFixed(1)+'%')}});
  tl.to(sources,{rotation:0,x:(i,el)=>stage.clientWidth/2-(el.offsetLeft+el.offsetWidth/2),y:(i,el)=>stage.clientHeight/2-(el.offsetTop+el.offsetHeight/2),scale:.32,duration:.78,stagger:{each:.025,from:'random'}},0)
  .to(orbit,{autoAlpha:1,scale:1,duration:.34,ease:'power2.out'},.18)
- .to(sources,{autoAlpha:0,scale:.12,duration:.30,stagger:.018,ease:'power2.in'},.68)
- .to(app,{autoAlpha:1,scale:1,duration:.52,ease:'power2.out'},.77)
- .to(orbit,{autoAlpha:0,scale:1.12,duration:.28},.86)
- .from('.field',{autoAlpha:0,y:8,duration:.18,stagger:.055,ease:'power2.out'},.92)
- .from('.chip',{autoAlpha:0,y:6,duration:.16,stagger:.045,ease:'power2.out'},1.18)
- .from('.action',{autoAlpha:0,y:7,duration:.2,ease:'power2.out'},1.42)
- .to(done,{autoAlpha:1,y:0,duration:.22,ease:'power2.out'},1.6)
+ .to(processor,{autoAlpha:1,scale:1,duration:.34,ease:'power2.out'},.48)
+ .to(procRing,{rotation:300,duration:.58,ease:'none'},.46)
+ .to('.proc-dots i',{scale:1.65,duration:.12,stagger:.08,yoyo:true,repeat:2,ease:'power1.inOut'},.56)
+ .to(sources,{autoAlpha:0,scale:.08,duration:.30,stagger:.018,ease:'power2.in'},.68)
+ .to(processor,{scale:1.08,duration:.22,ease:'power1.inOut'},.84)
+ .to(processor,{autoAlpha:0,scale:.72,duration:.26,ease:'power2.in'},1.02)
+ .to(orbit,{autoAlpha:0,scale:1.14,duration:.30},1.00)
+ .to(app,{autoAlpha:1,scale:1,duration:.52,ease:'power2.out'},1.06)
+ .from('.field',{autoAlpha:0,y:8,duration:.18,stagger:.055,ease:'power2.out'},1.20)
+ .from('.chip',{autoAlpha:0,y:6,duration:.16,stagger:.045,ease:'power2.out'},1.46)
+ .from('.action',{autoAlpha:0,y:7,duration:.2,ease:'power2.out'},1.70)
+ .to(done,{autoAlpha:1,y:0,duration:.22,ease:'power2.out'},1.88)
  .to({}, {duration:.38});
  const refresh=()=>ScrollTrigger.refresh();addEventListener('load',refresh,{once:true});addEventListener('pageshow',refresh);addEventListener('resize',refresh);addEventListener('orientationchange',()=>setTimeout(refresh,260));if(document.fonts&&document.fonts.ready)document.fonts.ready.then(refresh);
 })();
