@@ -9,6 +9,7 @@ on:
       - 'stealth-static/**'
       - 'stealth-clean/**'
       - 'stealth-editorial/**'
+      - 'stealth-concepts/**'
       - 'stealth-ai-ios/**'
       - 'stealth-method-ios/**'
       - 'stealth-build-ios/**'
@@ -40,12 +41,13 @@ jobs:
           rm -rf _site /tmp/astra-preview
           mkdir -p _site /tmp/astra-preview
           cp -R stealth-new/. _site/
-          mkdir -p _site/stealth-new _site/stealth-gpt _site/stealth-static _site/stealth-clean _site/stealth-editorial _site/stealth-astra-preview _site/stealth-ai-ios _site/stealth-method-ios _site/stealth-build-ios
+          mkdir -p _site/stealth-new _site/stealth-gpt _site/stealth-static _site/stealth-clean _site/stealth-editorial _site/stealth-concepts _site/stealth-astra-preview _site/stealth-ai-ios _site/stealth-method-ios _site/stealth-build-ios
           cp -R stealth-new/. _site/stealth-new/
           cp -R stealth-gpt/. _site/stealth-gpt/
           cp -R stealth-static/. _site/stealth-static/
           cp -R stealth-clean/. _site/stealth-clean/
           cp -R stealth-editorial/. _site/stealth-editorial/
+          cp -R stealth-concepts/. _site/stealth-concepts/
           cp -R stealth-ai-ios/. _site/stealth-ai-ios/
           cp -R stealth-method-ios/. _site/stealth-method-ios/
           cp -R stealth-build-ios/. _site/stealth-build-ios/
