@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-12T08:34:50.211324+00:00",
+  "title": "Design System: Stealth Astra",
+  "extensions": {
+    "colorMeta": {
+      "blue": {
+        "role": "primary",
+        "displayName": "Cold cyan"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Near-black ink"
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "White paper"
+      }
+    },
+    "shadows": [
+      {
+        "name": "object",
+        "value": "0 16px 36px -18px #17212645",
+        "purpose": "Selected wireframe objects."
+      },
+      {
+        "name": "note",
+        "value": "0 12px 20px -16px #17212670",
+        "purpose": "Small cyan notes."
+      },
+      {
+        "name": "desk",
+        "value": "0 14px 27px -24px #17212666",
+        "purpose": "Desk surface."
+      },
+      {
+        "name": "app",
+        "value": "0 20px 45px -30px #17212655",
+        "purpose": "Software demonstration frame."
+      }
+    ],
+    "motion": [
+      {
+        "name": "entry",
+        "value": "650ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Optional one-shot scene entry: translateY(16px) to 0, opacity .72 to 1; disabled or cancelled with reduced motion."
+      },
+      {
+        "name": "hover",
+        "value": "200ms ease",
+        "purpose": "Action background and contact-arrow rotation transitions; zero duration with reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tablet",
+        "value": "600px"
+      },
+      {
+        "name": "desktop",
+        "value": "1000px"
+      },
+      {
+        "name": "wide",
+        "value": "1400px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Anchor action; preserves hover and visible keyboard focus.",
+      "html": "<a class=\"ds-button\" href=\"#contatto\">Raccontaci come lavori <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 12h16m-6-6 6 6-6 6\"/></svg></a>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;gap:22px;background:var(--ink,#172126);color:#fff;padding:17px 23px;border-radius:3px;text-decoration:none;font:600 14px Manrope,sans-serif;min-height:54px;transition:background .2s}.ds-button svg{width:20px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.ds-button:hover{background:#314b58}.ds-button:focus-visible{outline:3px solid var(--focus,#0877a5);outline-offset:6px;}@media(prefers-reduced-motion:reduce){.ds-button{transition-duration:0s}}"
+    },
+    {
+      "name": "Navigation contact",
+      "kind": "nav",
+      "description": "Static header contact link; no menu overlay.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#contatto\">Parliamone ↗</a></nav>",
+      "css": ".ds-nav{display:flex;gap:40px;font:600 13px Manrope,sans-serif}.ds-nav a{color:var(--ink,#172126);display:inline-flex;align-items:center;min-height:44px;text-decoration:none}.ds-nav a:hover{text-decoration:underline;text-underline-offset:5px}.ds-nav a:focus-visible{outline:3px solid var(--focus,#0877a5);outline-offset:6px;}"
+    },
+    {
+      "name": "Work window",
+      "kind": "card",
+      "refersTo": "window",
+      "description": "Illustrative window frame; has no interactive states.",
+      "html": "<div class=\"ds-window\"><div class=\"ds-bar\">Messaggio inoltrato</div><div class=\"ds-body\"><strong>Fwd: Re: intervento</strong><p>Ve ne occupate voi?</p></div></div>",
+      "css": ".ds-window{background:#fff;color:var(--ink,#172126);border:1px solid #9eafb9;border-radius:var(--radius,7px);overflow:hidden;font:13px Manrope,sans-serif;width:280px}.ds-bar{min-height:36px;display:flex;align-items:center;padding:8px 12px;background:#f2f5f7;border-bottom:1px solid var(--line,#cdd7dc);font-size:10px;font-weight:500}.ds-body{padding:16px}.ds-body p{color:var(--muted,#56636b);font-size:12px}"
+    },
+    {
+      "name": "Workflow status",
+      "kind": "chip",
+      "refersTo": "status",
+      "description": "Noninteractive illustrative status.",
+      "html": "<span class=\"ds-status\">Da verificare</span>",
+      "css": ".ds-status{font:600 8px Manrope,sans-serif;background:var(--blue,#bceaff);padding:4px 7px;border-radius:3px;white-space:nowrap;color:var(--ink,#172126)}"
+    },
+    {
+      "name": "Contact arrow",
+      "kind": "button",
+      "description": "Circular mail action, shown at its mobile size.",
+      "html": "<a class=\"ds-contact\" href=\"mailto:info@stealthsoftware.it\" aria-label=\"Scrivi a Stealth\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 12h16m-6-6 6 6-6 6\"/></svg></a>",
+      "css": ".ds-contact{width:85px;height:85px;border:1px solid #6da6be;border-radius:50%;display:grid;place-items:center;color:var(--ink,#172126);transition:background .2s,transform .2s}.ds-contact svg{width:46px;height:46px;transform:rotate(-35deg);fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}.ds-contact:hover{background:#dff5ff;transform:rotate(8deg)}.ds-contact:focus-visible{outline:3px solid var(--focus,#0877a5);outline-offset:6px;}@media(prefers-reduced-motion:reduce){.ds-contact{transition-duration:0s}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Precisione nel lavoro quotidiano",
+    "overview": "Precisione nel lavoro quotidiano: white space, confident editorial type and recognizable work objects express competence, order and directness. Cold cyan identifies useful information and deliberate emphasis. Realistic documents and interfaces are built from HTML, CSS and SVG.",
+    "keyCharacteristics": [
+      "Locally hosted Manrope throughout.",
+      "White and near-black with one cold cyan accent family.",
+      "Bounded work compositions; readable copy in normal mobile flow."
+    ],
+    "rules": [],
+    "dos": [
+      "Do preserve ASTRA-BRIEF.md as the authority for this homepage.",
+      "Do keep short Italian copy and label illustrative workflows as examples.",
+      "Do recompose wireframes at narrow widths and keep all reading available without JavaScript."
+    ],
+    "donts": [
+      "Don't import sibling experiment CSS or JavaScript.",
+      "Don't introduce raster screenshots, stock illustrations, mascots or green brand accents.",
+      "Don't add fixed or sticky choreography, scroll-jacking or mandatory horizontal scrolling."
+    ]
+  }
+}

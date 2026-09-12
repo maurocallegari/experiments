@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="Software su misura per piccole aziende. Stealth lavora al tuo fianco per collegare strumenti, ridurre i passaggi manuali e rendere il lavoro più semplice."
+    />
+    <title>Stealth — Il tuo lavoro dovrebbe essere più semplice.</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="assets/manrope-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenuto">Salta al contenuto</a>
+    <svg
+      class="svg-library"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <defs>
+        <symbol id="i-arrow" viewBox="0 0 24 24">
+          <path d="M4 12h15m-6-6 6 6-6 6" />
+        </symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="14" rx="1" />
+          <path d="m3 6 9 7 9-7" />
+        </symbol>
+        <symbol id="i-file" viewBox="0 0 24 24">
+          <path d="M5 3h10l4 4v14H5zM14 3v5h5M8 12h8m-8 4h6" />
+        </symbol>
+        <symbol id="i-grid" viewBox="0 0 24 24">
+          <rect x="3" y="4" width="18" height="16" rx="1" />
+          <path d="M3 9h18M3 14h18M9 4v16m6-16v16" />
+        </symbol>
+        <symbol id="i-chat" viewBox="0 0 24 24">
+          <path
+            d="M20 15a3 3 0 0 1-3 3H9l-5 3v-4a3 3 0 0 1-2-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3zM6 8h10M6 12h7"
+          />
+        </symbol>
+        <symbol id="i-pen" viewBox="0 0 24 24">
+          <path d="m4 15 11-11 5 5L9 20l-6 1zM12 7l5 5M4 15l5 5" />
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24">
+          <path d="m5 12 4 4L19 6" />
+        </symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24">
+          <path
+            d="m7 3 3 5-3 3a16 16 0 0 0 6 6l3-3 5 3c-1 4-3 5-6 4A22 22 0 0 1 3 9C2 6 3 4 7 3Z"
+          />
+        </symbol>
+      </defs>
+    </svg>
+    <header class="site-header wrap">
+      <a class="wordmark" href="#" aria-label="Stealth, inizio pagina"
+        >stealth<span aria-hidden="true">.</span></a
+      >
+      <nav aria-label="Navigazione principale">
+        <a class="nav-story" href="#approccio">Come lavoriamo</a
+        ><a class="header-contact" href="#contatto"
+          >Parliamone
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg
+        ></a>
+      </nav>
+    </header>
+    <main id="contenuto">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-copy copy">
+          <h1 id="hero-title">
+            Il tuo lavoro<br />dovrebbe essere<br /><span class="underline-blue"
+              >più semplice.</span
+            >
+          </h1>
+          <p>
+            Costruiamo software attorno alla tua azienda.<br
+              class="desktop-break"
+            />
+            Per togliere passaggi, non aggiungerne.
+          </p>
+          <a class="button" href="#contatto"
+            >Raccontaci come lavori
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg
+          ></a>
+        </div>
+        <div
+          class="hero-desk"
+          role="img"
+          aria-label="Una scrivania piena di email, fogli di calcolo, preventivi, messaggi e appunti. Esempi illustrativi."
+        >
+          <div class="work-object hero-email window">
+            <div class="window-bar">
+              <svg class="icon"><use href="#i-mail" /></svg
+              ><span>Posta in arrivo</span><span class="tiny-dot"></span>
+            </div>
+            <div class="object-body">
+              <span class="small muted">Oggi, 09:41</span
+              ><strong>Re: preventivo aggiornato</strong>
+              <p>
+                Ti allego l’ultima versione.<br />O forse era quella di ieri?
+              </p>
+              <span class="attachment"
+                ><svg class="icon"><use href="#i-file" /></svg
+                >preventivo_finale_v3.docx</span
+              >
+            </div>
+          </div>
+          <div class="work-object hero-sheet window">
+            <div class="window-bar">
+              <svg class="icon"><use href="#i-grid" /></svg
+              >Ordini_settembre.xlsx
+            </div>
+            <div class="mini-grid">
+              <span></span><span>A</span><span>B</span><span>1</span
+              ><b>Cliente</b><b>Totale</b><span>2</span><span>Officina R.</span
+              ><span>1.240</span><span>3</span
+              ><span class="selected-cell">Da copiare</span><span>680</span>
+            </div>
+          </div>
+          <div class="work-object hero-note note">
+            <span>DA RICORDARE</span
+            ><strong
+              >Richiamare.<br />Rifare il PDF.<br />Cercare la firma.</strong
+            ><svg class="note-line" viewBox="0 0 160 20">
+              <path d="M3 12C43 4 102 5 157 10" />
+            </svg>
+          </div>
+          <div class="work-object hero-phone phone">
+            <div class="phone-speaker"></div>
+            <div class="phone-top">
+              09:41 <svg class="icon"><use href="#i-chat" /></svg>
+            </div>
+            <div class="chat-person">Ufficio</div>
+            <div class="bubble">Hai visto la mail?</div>
+            <div class="bubble outgoing">Quale delle tre?</div>
+            <span class="chat-time">09:42</span>
+            <div class="phone-input">Messaggio… <span>+</span></div>
+          </div>
+          <div class="work-object hero-paper paper">
+            <span class="document-type">PDF</span
+            ><span class="small">PREVENTIVO / 024</span
+            ><strong>Quello definitivo.</strong>
+            <div class="rule-lines"><i></i><i></i><i></i></div>
+            <span class="small muted">Firma del cliente</span
+            ><svg class="signature" viewBox="0 0 150 45">
+              <path
+                d="M4 34 27 8 16 37 39 14 33 34c9-13 17-10 14-1 9-6 10-10 13-4s5 7 13-1c7-7 4 10 15 3s14-7 12 0l42-7"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="hero-foot">
+          <span>Software su misura. Persone al tuo fianco.</span
+          ><a href="#problema" aria-label="Scopri dove si perde tempo"
+            ><svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg
+          ></a>
+        </div>
+      </section>
+
+      <section
+        class="problem section"
+        id="problema"
+        aria-labelledby="problem-title"
+      >
+        <div class="wrap">
+          <h2 id="problem-title">
+            Quanto tempo perdi<br class="desktop-break" />
+            in cose inutili,<br /><span class="soft-ink"
+              >invece di concentrarti<br class="desktop-break" />
+              sul tuo lavoro?</span
+            >
+          </h2>
+          <div class="handoffs" aria-label="Passaggi di una richiesta">
+            <ol>
+              <li>
+                <svg class="icon"><use href="#i-chat" /></svg
+                ><span>Richiesta</span>
+              </li>
+              <li>
+                <svg class="icon"><use href="#i-mail" /></svg><span>Email</span>
+              </li>
+              <li>
+                <svg class="icon"><use href="#i-grid" /></svg><span>Excel</span>
+              </li>
+              <li>
+                <svg class="icon"><use href="#i-file" /></svg><span>Word</span>
+              </li>
+              <li><span class="pdf-icon">PDF</span><span>PDF</span></li>
+              <li>
+                <svg class="icon"><use href="#i-pen" /></svg><span>Firma</span>
+              </li>
+              <li>
+                <svg class="icon"><use href="#i-grid" /></svg
+                ><span>Gestionale</span>
+              </li>
+            </ol>
+          </div>
+          <p class="problem-bottom">
+            Gli strumenti funzionano.<br /><strong
+              >È tenerli insieme a mano che ti porta via tempo.</strong
+            >
+          </p>
+        </div>
+      </section>
+
+      <section class="frictions wrap" aria-label="Dove si inceppa il lavoro">
+        <article class="friction">
+          <div class="copy">
+            <h2>
+              Ogni preventivo<br />parte da un<br /><span class="underline-blue"
+                >Word diverso.</span
+              >
+            </h2>
+            <p>
+              Cambia il prezzo, manca una voce, il logo è vecchio. E si
+              ricomincia da capo.
+            </p>
+          </div>
+          <div
+            class="scene quote-scene"
+            role="img"
+            aria-label="Tre versioni dello stesso preventivo, con un prezzo da aggiornare. Esempio illustrativo."
+          >
+            <div class="version-slip slip-one">
+              <svg class="icon"><use href="#i-file" /></svg
+              >preventivo_finale.docx
+            </div>
+            <div class="version-slip slip-two">
+              <svg class="icon"><use href="#i-file" /></svg
+              >preventivo_finale_2.docx
+            </div>
+            <div class="quote-doc window">
+              <div class="window-bar">
+                <b class="file-letter">W</b
+                ><span>preventivo_finale_2_OK.docx</span>
+              </div>
+              <div class="word-tools">
+                File <b>Home</b> Inserisci <span class="tool-type">A</span>
+                <b>B</b> <i>I</i>
+              </div>
+              <div class="quote-page">
+                <div class="doc-heading">
+                  <span>OFFERTA COMMERCIALE</span><b>N. 024</b>
+                </div>
+                <strong>Il vostro preventivo.</strong>
+                <p>Spett.le Officina Rossi<br />Fornitura e installazione</p>
+                <div class="quote-line">
+                  <span>Materiale</span><b>€ 980,00</b>
+                </div>
+                <div class="quote-line">
+                  <span>Manodopera</span><b>€ 260,00</b>
+                </div>
+                <div class="quote-line total">
+                  <span>Totale</span><b>€ 1.240,00</b>
+                </div>
+                <span class="revision-mark">Prezzo aggiornato?</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="friction reverse">
+          <div class="copy">
+            <h2>
+              La carta funziona.<br /><span class="underline-blue"
+                >Finché non si perde.</span
+              >
+            </h2>
+            <p>
+              Quel rapporto era sul tavolo. La firma era sul retro. Ora serve, e
+              nessuno lo trova.
+            </p>
+          </div>
+          <div
+            class="scene paper-scene"
+            role="img"
+            aria-label="Una cartella con rapporti cartacei; il rapporto numero 18 è mancante. Esempio illustrativo."
+          >
+            <div class="folder-back"><span>INTERVENTI / SETTEMBRE</span></div>
+            <div class="report-back paper">
+              <b>Rapporto d’intervento</b>
+              <div class="rule-lines"><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="report-front paper">
+              <div class="doc-heading">
+                <span>RAPPORTO D’INTERVENTO</span><b>017</b>
+              </div>
+              <strong>Intervento completato.</strong>
+              <div class="report-field">
+                <span>Cliente</span><b>Officina Rossi</b>
+              </div>
+              <div class="report-field">
+                <span>Data</span><b>12 settembre</b>
+              </div>
+              <div class="report-check">
+                <svg class="icon"><use href="#i-check" /></svg>Manutenzione
+                ordinaria
+              </div>
+              <div class="rule-lines"><i></i><i></i></div>
+              <span class="small muted">Firma per accettazione</span
+              ><svg class="signature" viewBox="0 0 150 45">
+                <path
+                  d="M4 34 27 8 16 37 39 14 33 34c9-13 17-10 14-1 9-6 10-10 13-4s5 7 13-1c7-7 4 10 15 3s14-7 12 0l42-7"
+                />
+              </svg>
+            </div>
+            <div class="missing-paper">
+              <span>018</span><b>E quello<br />di ieri?</b
+              ><svg class="icon"><use href="#i-file" /></svg>
+            </div>
+          </div>
+        </article>
+        <article class="friction">
+          <div class="copy">
+            <h2>
+              Il dato esiste già.<br /><span class="underline-blue"
+                >Perché copiarlo<br />ancora?</span
+              >
+            </h2>
+            <p>
+              Da un foglio alla mail. Dalla mail al gestionale. Lo stesso dato,
+              un’altra occasione per sbagliare.
+            </p>
+          </div>
+          <div
+            class="scene data-scene"
+            role="img"
+            aria-label="L'importo 1.240 euro viene copiato da Excel nel gestionale. Esempio illustrativo."
+          >
+            <div class="source-sheet window">
+              <div class="window-bar">
+                <svg class="icon"><use href="#i-grid" /></svg>Ordini.xlsx
+              </div>
+              <div class="formula-bar"><span>fx</span>1.240,00</div>
+              <div class="data-table">
+                <div class="table-row table-head">
+                  <span>Cliente</span><span>Ordine</span><span>Importo</span>
+                </div>
+                <div class="table-row">
+                  <span>Officina Rossi</span><span>024</span
+                  ><b class="selected-cell">1.240,00</b>
+                </div>
+                <div class="table-row">
+                  <span>Studio Bianchi</span><span>025</span><span>680,00</span>
+                </div>
+                <div class="table-row">
+                  <span>Falegnameria M.</span><span>026</span
+                  ><span>920,00</span>
+                </div>
+              </div>
+            </div>
+            <div class="copy-bridge">
+              <svg class="icon"><use href="#i-arrow" /></svg
+              ><span>Copia. Incolla. Ricontrolla.</span>
+            </div>
+            <div class="destination-form window">
+              <div class="window-bar">Gestionale / Nuovo ordine</div>
+              <div class="object-body">
+                <span class="small muted">Cliente</span>
+                <div class="fake-input">Officina Rossi</div>
+                <span class="small muted">Importo totale</span>
+                <div class="fake-input input-active">
+                  1.240,00 <span>EUR</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="friction reverse">
+          <div class="copy">
+            <h2>
+              Una richiesta<br />non dovrebbe fare<br /><span
+                class="underline-blue"
+                >cinque giri.</span
+              >
+            </h2>
+            <p>
+              «L’hai detto a Luca?» «Girala in ufficio.» Intanto il cliente
+              aspetta una risposta.
+            </p>
+          </div>
+          <div
+            class="scene request-scene"
+            role="img"
+            aria-label="Una richiesta passa da un messaggio WhatsApp a una telefonata e a un'email inoltrata. Esempio illustrativo."
+          >
+            <div class="request-phone phone">
+              <div class="phone-speaker"></div>
+              <div class="phone-top">
+                09:41 <svg class="icon"><use href="#i-chat" /></svg>
+              </div>
+              <div class="chat-person">Cliente</div>
+              <div class="bubble">Riuscite a passare giovedì?</div>
+              <div class="bubble outgoing">Chiedo in ufficio.</div>
+              <span class="chat-time">Letto 09:43</span>
+              <div class="phone-input">Messaggio… <span>+</span></div>
+            </div>
+            <div class="forward-mail window">
+              <div class="window-bar">
+                <svg class="icon"><use href="#i-mail" /></svg>Messaggio
+                inoltrato
+              </div>
+              <div class="object-body">
+                <span class="small muted">A: amministrazione</span
+                ><strong>Fwd: Re: intervento</strong>
+                <p>Ve ne occupate voi?<br />Il cliente ha scritto a me.</p>
+                <span class="forward-count">Inoltrato 3 volte</span>
+              </div>
+            </div>
+            <div class="call-strip">
+              <svg class="icon"><use href="#i-phone" /></svg
+              ><span>Luca · Chiamata persa</span><b>10:12</b>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="ai-section section" aria-labelledby="ai-title">
+        <div class="wrap">
+          <div class="section-intro">
+            <h2 id="ai-title">
+              L’AI è utile<br />quando
+              <span class="underline-white">ti toglie lavoro.</span>
+            </h2>
+            <p>
+              Legge quello che arriva, estrae i dati e prepara il prossimo
+              passo. Tu controlli quello che conta.
+            </p>
+          </div>
+          <div
+            class="ai-workflow"
+            role="img"
+            aria-label="Esempio illustrativo: email, PDF, foto e un messaggio incompleto vengono letti dall'AI. L'AI prepara una bozza d'intervento; la persona verifica data e dettagli prima di confermare."
+          >
+            <div class="ai-input">
+              <div class="workflow-label">Quello che arriva</div>
+              <div class="input-item">
+                <svg class="icon"><use href="#i-mail" /></svg>
+                <div>
+                  <b>Re: intervento</b><span>«ci sarebbe da sistemare…»</span>
+                </div>
+              </div>
+              <div class="input-item">
+                <svg class="icon"><use href="#i-file" /></svg>
+                <div>
+                  <b>documento_scan.pdf</b><span>2 pagine, una ruotata</span>
+                </div>
+              </div>
+              <div class="input-item">
+                <svg class="icon"><use href="#i-chat" /></svg>
+                <div>
+                  <b>«giov matt va bn?»</b
+                  ><span>Messaggio + foto del guasto</span>
+                </div>
+              </div>
+              <div class="photo-attachment">
+                <svg viewBox="0 0 100 64">
+                  <rect x="1" y="1" width="98" height="62" rx="3" />
+                  <path
+                    d="M18 49V22h58v27M25 22V12h43v10M18 35h58M39 22v27m20-27v27M30 15h30"
+                  />
+                  <circle cx="81" cy="15" r="5" /></svg
+                ><span>IMG_2841.jpg</span>
+              </div>
+            </div>
+            <div class="ai-processor">
+              <div class="processor-mark">AI</div>
+              <span>Legge.<br />Collega.<br />Prepara.</span
+              ><svg class="icon"><use href="#i-arrow" /></svg>
+            </div>
+            <div class="ai-output window">
+              <div class="window-bar">
+                <svg class="icon"><use href="#i-file" /></svg
+                ><b>Bozza intervento</b
+                ><span class="status">Da verificare</span>
+              </div>
+              <div class="object-body">
+                <div class="extracted-row">
+                  <span>Cliente</span><b>Officina Rossi</b>
+                </div>
+                <div class="extracted-row">
+                  <span>Richiesta</span><b>Manutenzione impianto</b>
+                </div>
+                <div class="extracted-row">
+                  <span>Allegati</span><b>Rapporto + foto</b>
+                </div>
+                <div class="human-check">
+                  <svg class="icon"><use href="#i-pen" /></svg>
+                  <div>
+                    <b>La data va confermata.</b>
+                    <p>
+                      «Giovedì mattina»: verifica disponibilità e orario con il
+                      cliente.
+                    </p>
+                  </div>
+                </div>
+                <div class="review-footer">
+                  <span class="review-avatar">MR</span
+                  ><span>Il controllo resta a te.</span
+                  ><svg class="icon"><use href="#i-check" /></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="demo-note">
+            Esempio illustrativo di un flusso con AI e verifica umana.
+          </p>
+        </div>
+      </section>
+
+      <section
+        class="approach section wrap"
+        id="approccio"
+        aria-labelledby="approach-title"
+      >
+        <div class="copy">
+          <h2 id="approach-title">
+            Prima ci sediamo<br /><span class="underline-blue"
+              >accanto a te.</span
+            >
+          </h2>
+          <p>
+            Ci fai vedere una giornata di lavoro.<br />Le persone, i fogli, le
+            telefonate.<br />Anche i passaggi che «abbiamo sempre fatto così».
+          </p>
+          <p class="emphasis">Da lì capiamo cosa serve davvero.</p>
+        </div>
+        <div
+          class="scene desk-scene"
+          role="img"
+          aria-label="Vista dall'alto di un tavolo di lavoro con due posti affiancati, un computer, documenti e appunti sui passaggi da semplificare."
+        >
+          <div class="desk-top">
+            <div class="desk-laptop">
+              <div class="laptop-screen">
+                <div class="laptop-menu"></div>
+                <div class="laptop-content">
+                  <span></span>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+              <div class="laptop-base"></div>
+            </div>
+            <div class="desk-document paper">
+              <span>COME LAVORATE OGGI</span><b>Richiesta</b><i></i
+              ><b>Inserimento</b><i></i><b>Conferma</b>
+            </div>
+            <div class="desk-note note">
+              Questo lo<br />scriviamo<br />due volte.
+            </div>
+            <div class="desk-pen"></div>
+          </div>
+          <div class="seats">
+            <div><span class="chair"></span><b>Tu</b></div>
+            <div><span class="chair"></span><b>Noi, al tuo fianco.</b></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="build-section section" aria-labelledby="build-title">
+        <div class="wrap">
+          <div class="section-intro">
+            <h2 id="build-title">
+              Poi <span class="underline-blue">lo costruiamo.</span>
+            </h2>
+            <p>
+              Uno strumento che parla la tua lingua.<br />Si collega a ciò che
+              usi già.<br />E segue il tuo modo di lavorare.
+            </p>
+          </div>
+          <div
+            class="app-demo window"
+            role="img"
+            aria-label="Esempio illustrativo di software su misura per un'azienda di manutenzione: richieste collegate a clienti, tecnici, rapporti e preventivi. Un intervento aperto mostra i documenti e il prossimo passo."
+          >
+            <div class="app-top">
+              <span class="app-brand">Il tuo ufficio<span></span></span
+              ><span class="app-top-context"
+                >Tutto il lavoro, nello stesso posto.</span
+              ><span class="review-avatar">MR</span>
+            </div>
+            <div class="app-layout">
+              <aside class="app-sidebar">
+                <b class="active">Interventi <span>12</span></b
+                ><span>Clienti</span><span>Preventivi</span><span>Rapporti</span
+                ><span class="sidebar-bottom">Il tuo modo di lavorare.</span>
+              </aside>
+              <div class="app-main">
+                <div class="app-heading">
+                  <div>
+                    <span class="small muted">Giovedì, 12 settembre</span>
+                    <h3>Il lavoro di oggi.</h3>
+                  </div>
+                  <span class="demo-pill">Esempio illustrativo</span>
+                </div>
+                <div class="app-tabs">
+                  <b>Da organizzare <span>4</span></b
+                  ><span>In programma <b>6</b></span
+                  ><span>Completati <b>2</b></span>
+                </div>
+                <div class="app-workspace">
+                  <div class="job-list">
+                    <div class="job-head">
+                      <span>Cliente / Intervento</span><span>Stato</span>
+                    </div>
+                    <div class="job active-job">
+                      <div>
+                        <b>Officina Rossi</b><span>Manutenzione impianto</span
+                        ><small>INT-024 · Luca</small>
+                      </div>
+                      <span class="status">Da confermare</span>
+                    </div>
+                    <div class="job">
+                      <div>
+                        <b>Studio Bianchi</b><span>Controllo periodico</span
+                        ><small>INT-025 · Marco</small>
+                      </div>
+                      <span class="status neutral">Programmata</span>
+                    </div>
+                    <div class="job">
+                      <div>
+                        <b>Falegnameria Moretti</b
+                        ><span>Sostituzione componente</span
+                        ><small>INT-026 · Luca</small>
+                      </div>
+                      <span class="status neutral">In attesa</span>
+                    </div>
+                  </div>
+                  <div class="job-detail">
+                    <div class="detail-title">
+                      <span>INT-024</span
+                      ><svg class="icon"><use href="#i-arrow" /></svg>
+                    </div>
+                    <h4>Officina Rossi</h4>
+                    <p>Manutenzione impianto</p>
+                    <div class="detail-row">
+                      <span>Referente</span><b>Paolo Rossi</b>
+                    </div>
+                    <div class="detail-row">
+                      <span>Tecnico</span><b>Luca</b>
+                    </div>
+                    <div class="detail-attachments">
+                      <span
+                        ><svg class="icon"><use href="#i-mail" /></svg>Email
+                        originale</span
+                      ><span
+                        ><svg class="icon"><use href="#i-file" /></svg>Rapporto
+                        + foto</span
+                      >
+                    </div>
+                    <div class="next-action">
+                      <span>PROSSIMO PASSO</span
+                      ><b>Confermare giovedì mattina.</b>
+                      <p>
+                        La richiesta è già collegata al cliente e ai suoi
+                        documenti.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="app-bottom">
+                  <svg class="icon"><use href="#i-check" /></svg>Un solo dato.
+                  Sempre aggiornato, per tutti.
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="build-caption">
+            Il software si adatta alla tua azienda. Non il contrario.
+          </p>
+        </div>
+      </section>
+
+      <section class="evolution section wrap" aria-labelledby="evolution-title">
+        <div class="copy">
+          <h2 id="evolution-title">
+            E lo facciamo<br /><span class="underline-blue"
+              >evolvere con te.</span
+            >
+          </h2>
+          <p>
+            Arriva una nuova persona. Cambia un servizio.<br />Un altro
+            passaggio si può automatizzare.
+          </p>
+          <p class="emphasis">Restiamo al tuo fianco anche dopo la consegna.</p>
+        </div>
+        <div
+          class="evolution-log"
+          role="img"
+          aria-label="Esempi di evoluzione del software: un nuovo accesso per il tecnico, rapporti firmati sul posto, promemoria automatici ai clienti."
+        >
+          <div class="evolution-request">
+            <svg class="icon"><use href="#i-chat" /></svg>
+            <p>«Adesso anche i tecnici<br />devono usarlo fuori ufficio.»</p>
+          </div>
+          <div class="change-row">
+            <svg class="icon"><use href="#i-check" /></svg>
+            <div>
+              <b>Un accesso per chi è sul campo.</b
+              ><span>Solo le informazioni che gli servono.</span>
+            </div>
+          </div>
+          <div class="change-row">
+            <svg class="icon"><use href="#i-check" /></svg>
+            <div>
+              <b>Il rapporto si firma sul posto.</b
+              ><span>E arriva subito in ufficio.</span>
+            </div>
+          </div>
+          <div class="change-row">
+            <svg class="icon"><use href="#i-check" /></svg>
+            <div>
+              <b>Il promemoria parte da solo.</b
+              ><span>Un’altra cosa da togliere dalla lista.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="contact-section section"
+        id="contatto"
+        aria-labelledby="contact-title"
+      >
+        <div class="wrap contact-layout">
+          <div>
+            <h2 id="contact-title">
+              Raccontaci<br />come <span class="underline-white">lavori.</span>
+            </h2>
+            <p>
+              Partiamo da una cosa concreta<br />che oggi ti fa perdere tempo.
+            </p>
+            <a
+              class="contact-email"
+              href="mailto:info@stealthsoftware.it?subject=Raccontarvi%20come%20lavoriamo"
+              >info@stealthsoftware.it</a
+            >
+          </div>
+          <a
+            class="contact-arrow"
+            href="mailto:info@stealthsoftware.it?subject=Raccontarvi%20come%20lavoriamo"
+            aria-label="Scrivi a Stealth per raccontarci come lavori"
+            ><svg aria-hidden="true"><use href="#i-arrow" /></svg
+          ></a>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer wrap">
+      <a class="wordmark" href="#" aria-label="Stealth, torna all'inizio"
+        >stealth<span aria-hidden="true">.</span></a
+      >
+      <p>Stealth SRL · Software su misura, rapporti diretti.</p>
+      <a href="#contenuto"
+        >Torna su
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg
+      ></a>
+    </footer>
+  </body>
+</html>
