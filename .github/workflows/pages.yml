@@ -50,6 +50,7 @@ jobs:
           sed -E -i "s#style\.css\?v=[^\"]+#style.css?v=${GITHUB_SHA}#g; s#script\.js\?v=[^\"]+#script.js?v=${GITHUB_SHA}#g" _site/stealth-static/index.html
           sed -E -i "s#style\.css\?v=[^\"]+#style.css?v=${GITHUB_SHA}#g; s#script\.js\?v=[^\"]+#script.js?v=${GITHUB_SHA}#g" _site/stealth-clean/index.html
           sed -E -i "s#premium\.css\?v=[^\"]+#premium.css?v=${GITHUB_SHA}#g; s#script\.js\?v=[^\"]+#script.js?v=${GITHUB_SHA}#g" _site/stealth-editorial/index.html
+          sed -i "s#</head>#<link rel=\"stylesheet\" href=\"mobile.css?v=${GITHUB_SHA}\">\n</head>#" _site/stealth-editorial/index.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
