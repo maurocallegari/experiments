@@ -33,12 +33,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - name: Build production artifact
         run: |
-          rm -rf _site
-          mkdir -p _site
+          rm -rf _site /tmp/astra-preview
+          mkdir -p _site /tmp/astra-preview
           cp -R stealth-new/. _site/
-          mkdir -p _site/stealth-new _site/stealth-gpt _site/stealth-static _site/stealth-clean _site/stealth-editorial _site/stealth-ai-ios _site/stealth-method-ios _site/stealth-build-ios
+          mkdir -p _site/stealth-new _site/stealth-gpt _site/stealth-static _site/stealth-clean _site/stealth-editorial _site/stealth-astra-preview _site/stealth-ai-ios _site/stealth-method-ios _site/stealth-build-ios
           cp -R stealth-new/. _site/stealth-new/
           cp -R stealth-gpt/. _site/stealth-gpt/
           cp -R stealth-static/. _site/stealth-static/
@@ -47,10 +49,14 @@ jobs:
           cp -R stealth-ai-ios/. _site/stealth-ai-ios/
           cp -R stealth-method-ios/. _site/stealth-method-ios/
           cp -R stealth-build-ios/. _site/stealth-build-ios/
+          git fetch origin feat/stealth-astra-homepage:refs/remotes/origin/feat/stealth-astra-homepage
+          git archive --format=tar origin/feat/stealth-astra-homepage stealth-astra | tar -xf - -C /tmp/astra-preview
+          cp -R /tmp/astra-preview/stealth-astra/. _site/stealth-astra-preview/
           sed -E -i "s#style\.css\?v=[^\"]+#style.css?v=${GITHUB_SHA}#g; s#script\.js\?v=[^\"]+#script.js?v=${GITHUB_SHA}#g" _site/stealth-static/index.html
           sed -E -i "s#style\.css\?v=[^\"]+#style.css?v=${GITHUB_SHA}#g; s#script\.js\?v=[^\"]+#script.js?v=${GITHUB_SHA}#g" _site/stealth-clean/index.html
           sed -E -i "s#premium\.css\?v=[^\"]+#premium.css?v=${GITHUB_SHA}#g; s#script\.js\?v=[^\"]+#script.js?v=${GITHUB_SHA}#g" _site/stealth-editorial/index.html
           sed -i "s#</head>#<link rel=\"stylesheet\" href=\"mobile.css?v=${GITHUB_SHA}\">\n</head>#" _site/stealth-editorial/index.html
+          sed -E -i "s#href=\"style\.css\"#href=\"style.css?v=${GITHUB_SHA}\"#g; s#src=\"script\.js\"#src=\"script.js?v=${GITHUB_SHA}\"#g" _site/stealth-astra-preview/index.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
